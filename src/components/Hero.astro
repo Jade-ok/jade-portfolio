@@ -1,0 +1,149 @@
+---
+// Hero section — main landing area with name and bio
+---
+
+<section class="hero" id="top">
+	<div class="ghost-grid"></div>
+	<h1 class="hero-name">
+		<span class="hero-line">
+			<span class="accent-name">JADE&nbsp;LEE</span><span class="accent-dot">.</span>
+		</span>
+		<span class="hero-line">BUILDS</span>
+		<span class="hero-line">THINGS.</span>
+	</h1>
+	<div class="hero-bottom">
+		<p class="hero-bio">
+			<strong>CS @ UBC</strong> — Vancouver-based builder shipping voice AI, Chrome extensions, and database
+			tooling. Previously a producer & news editor in Korea.
+		</p>
+		<div class="scroll-indicator">
+			Scroll <span class="arrow">↓</span>
+		</div>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 120px 64px 80px;
+		overflow: hidden;
+		background: var(--color-global-bg);
+		color: var(--color-global-text);
+		font-family:
+			"Pretendard",
+			-apple-system,
+			BlinkMacSystemFont,
+			system-ui,
+			sans-serif;
+	}
+
+	@media (max-width: 768px) {
+		.hero {
+			padding: 120px 24px 60px;
+		}
+	}
+
+	.ghost-grid {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.03;
+		background-image:
+			repeating-linear-gradient(
+				0deg,
+				currentColor 0,
+				currentColor 1px,
+				transparent 1px,
+				transparent 80px
+			),
+			repeating-linear-gradient(
+				90deg,
+				currentColor 0,
+				currentColor 1px,
+				transparent 1px,
+				transparent 80px
+			);
+	}
+
+	.hero-name {
+		font-weight: 900;
+		font-size: clamp(64px, 11.5vw, 140px);
+		line-height: 0.88;
+		letter-spacing: -0.05em;
+	}
+
+	.hero-line {
+		display: block;
+	}
+
+	.accent-dot,
+	.accent-name {
+		color: var(--color-accent);
+	}
+
+	.hero-bottom {
+		position: absolute;
+		left: 64px;
+		right: 64px;
+		bottom: 48px;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 24px;
+		font-size: 13px;
+		color: var(--color-muted);
+		font-weight: 500;
+	}
+
+	.hero-bio {
+		max-width: 340px;
+		line-height: 1.6;
+	}
+
+	.hero-bio strong {
+		color: var(--color-global-text);
+		font-weight: 600;
+	}
+
+	.scroll-indicator {
+		font-size: 11px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		color: var(--color-global-text);
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.scroll-indicator .arrow {
+		display: inline-block;
+		animation: bob 1.8s ease-in-out infinite;
+	}
+
+	@keyframes bob {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(6px);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-bottom {
+			position: static;
+			flex-direction: column;
+			align-items: flex-start;
+			margin-top: 48px;
+		}
+		.hero-bottom > * {
+			width: 100%;
+		}
+	}
+</style>
