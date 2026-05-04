@@ -1,4 +1,5 @@
 ---
+import Topbar from "@/components/Topbar.astro";
 import Hero from "@/components/Hero.astro";
 import { siteConfig } from "@/site.config";
 import "@/styles/global.css";
@@ -6,23 +7,37 @@ import "@/styles/global.css";
 
 <!doctype html>
 <html lang={siteConfig.lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jade Lee — Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-  </head>
-  <body>
-    <Hero />
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Jade Lee — Portfolio</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+		/>
+	</head>
+	<body>
+		<Topbar />
+		<Hero />
+	</body>
 </html>
 
 <style is:global>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    background: var(--color-global-bg);
-    color: var(--color-global-text);
-    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-    overflow-x: hidden;
-  }
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	html,
+	body {
+		background: var(--color-global-bg);
+		color: var(--color-global-text);
+		font-family:
+			"Pretendard",
+			-apple-system,
+			BlinkMacSystemFont,
+			system-ui,
+			sans-serif;
+		overflow-x: hidden;
+	}
 </style>

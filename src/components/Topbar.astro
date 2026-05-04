@@ -1,0 +1,120 @@
+---
+// Sticky topbar navigation — shows on every page
+---
+
+<header class="topbar" id="topbar">
+	<a href="#top" class="brand">
+		<span class="dot"></span>
+		<strong>JADE&nbsp;LEE</strong>
+	</a>
+	<nav class="nav-links" aria-label="Primary">
+		<a href="#about"><span class="num">01</span><span>About</span></a>
+		<a href="#works"><span class="num">02</span><span>Projects</span></a>
+		<a href="#history"><span class="num">03</span><span>History</span></a>
+		<a href="#activities"><span class="num">04</span><span>Activities</span></a>
+		<a href="/posts/" class="external"><span>Blog</span><span class="ext-arrow">↗</span></a>
+		<a href="#contact" class="cta"><span class="num">05</span><span>Let's&nbsp;Talk</span></a>
+	</nav>
+</header>
+
+<style>
+	.topbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 50;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px 64px;
+		font-size: 11px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.18em;
+		background: rgba(42, 42, 39, 0.78);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		border-bottom: 1px solid var(--color-muted);
+	}
+
+	.brand {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		color: var(--color-global-text);
+		text-decoration: none;
+	}
+
+	.brand .dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--color-accent);
+		box-shadow: 0 0 12px var(--color-accent);
+	}
+
+	.brand strong {
+		font-weight: 800;
+		letter-spacing: 0.16em;
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.nav-links a {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 10px 16px;
+		border-radius: 999px;
+		color: var(--color-muted);
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-decoration: none;
+		transition:
+			color 0.25s ease,
+			background 0.25s ease;
+	}
+
+	.nav-links a .num {
+		font-variant-numeric: tabular-nums;
+		opacity: 0.55;
+		font-size: 10px;
+	}
+
+	.nav-links a:hover {
+		color: var(--color-global-text);
+		background: rgba(255, 255, 255, 0.04);
+	}
+
+	.nav-links a.external .ext-arrow {
+		font-size: 12px;
+		opacity: 0.7;
+	}
+
+	.nav-links a.cta {
+		margin-left: 8px;
+		color: var(--color-accent);
+		border: 1px solid var(--color-accent);
+	}
+
+	.nav-links a.cta:hover {
+		background: var(--color-accent);
+		color: #000;
+	}
+
+	@media (max-width: 900px) {
+		.topbar {
+			padding: 16px 24px;
+		}
+		.nav-links {
+			display: none;
+		}
+	}
+</style>
