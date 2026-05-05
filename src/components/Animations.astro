@@ -1,0 +1,151 @@
+---
+// GSAP-powered scroll & entrance animations
+// Mounts client-side, uses CSS classes added across components
+---
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  // ===== Hero entrance: clip-path reveal stagger =====
+  // The hero text starts hidden via clip-path and reveals top-to-bottom
+  const heroLines = document.querySelectorAll('.hero-line');
+  if (heroLines.length > 0) {
+    gsap.set(heroLines, { clipPath: 'inset(0 0 100% 0)' });
+    gsap.to(heroLines, {
+      clipPath: 'inset(0 0 0% 0)',
+      duration: 1.1,
+      ease: 'power4.out',
+      stagger: 0.18,
+      delay: 0.2
+    });
+  }
+
+  // ===== Topbar entrance =====
+  gsap.from('.topbar .brand', {
+    y: -12,
+    opacity: 0,
+    duration: 0.8,
+    delay: 0.4,
+    ease: 'power3.out'
+  });
+  gsap.from('.topbar .nav-links > a', {
+    y: -12,
+    opacity: 0,
+    duration: 0.7,
+    delay: 0.55,
+    stagger: 0.06,
+    ease: 'power3.out'
+  });
+
+  // ===== Hero bio + scroll hint =====
+  gsap.from('.hero-bio', {
+    y: 20,
+    opacity: 0,
+    duration: 0.9,
+    delay: 0.8,
+    ease: 'power3.out'
+  });
+  gsap.from('.scroll-indicator', {
+    y: 20,
+    opacity: 0,
+    duration: 0.9,
+    delay: 0.9,
+    ease: 'power3.out'
+  });
+
+  // ===== Section displays (big H2 headings): scroll-triggered fade up =====
+  gsap.utils.toArray<HTMLElement>('.display').forEach((el) => {
+    gsap.from(el, {
+      y: 60,
+      opacity: 0,
+      duration: 1.0,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 85%'
+      }
+    });
+  });
+
+  // ===== About: blockquote + body paragraphs + meta items =====
+  gsap.utils.toArray<HTMLElement>('.about-meta, .blockquote, .about-body, .strength').forEach((el) => {
+    gsap.from(el, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: el,
+        start: 'top 88%'
+      }
+    });
+  });
+
+  // ===== Works rows: stagger from left =====
+  ScrollTrigger.batch('.work-row', {
+    start: 'top 85%',
+    onEnter: (batch) => gsap.fromTo(
+      batch,
+      { x: -20, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.08 }
+    )
+  });
+
+  // ===== Timeline rows (History + Activities) =====
+  ScrollTrigger.batch('.tl-row', {
+    start: 'top 88%',
+    onEnter: (batch) => gsap.fromTo(
+      batch,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.1 }
+    )
+  });
+
+  // ===== Contact list items =====
+  ScrollTrigger.batch('.contact-item', {
+    start: 'top 90%',
+    onEnter: (batch) => gsap.fromTo(
+      batch,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.1 }
+    )
+  });
+
+  // ===== Topbar scroll effect: background darkens + blur =====
+  const topbar = document.getElementById('topbar');
+  if (topbar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        topbar.classList.add('is-scrolled');
+      } else {
+        topbar.classList.remove('is-scrolled');
+      }
+    }, { passive: true });
+  }
+
+  // ===== Active nav highlighting =====
+  const navLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]')) as HTMLAnchorElement[];
+  const sections = navLinks
+    .map((a) => document.querySelector(a.getAttribute('href') || ''))
+    .filter((el): el is HTMLElement => el !== null);
+
+  function updateActiveNav() {
+    const y = window.scrollY + window.innerHeight * 0.35;
+    let activeIdx = 0;
+    sections.forEach((s, i) => {
+      if (s.offsetTop <= y) activeIdx = i;
+    });
+    navLinks.forEach((a, i) => {
+      a.classList.toggle('is-active', i === activeIdx);
+    });
+  }
+
+  if (sections.length > 0) {
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    window.addEventListener('resize', updateActiveNav);
+    updateActiveNav();
+  }
+</script>

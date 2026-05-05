@@ -38,6 +38,30 @@
 		border-bottom: 1px solid var(--color-muted);
 	}
 
+	/* Scrolled state — darker bg + stronger blur (added by JS) */
+	.topbar.is-scrolled {
+		background: color-mix(in srgb, var(--color-global-bg) 88%, transparent);
+		backdrop-filter: blur(18px);
+		-webkit-backdrop-filter: blur(18px);
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+
+	/* Active nav link — lime green pill */
+	.nav-links a.is-active {
+		color: #000;
+		background: var(--color-accent);
+	}
+
+	.nav-links a.is-active .num {
+		opacity: 0.7;
+	}
+
+	.nav-links a.cta.is-active {
+		background: var(--color-accent);
+		color: #000;
+		border-color: var(--color-accent);
+	}
 	.brand {
 		display: flex;
 		align-items: center;
