@@ -1,0 +1,170 @@
+---
+const activities = [
+  {
+    date: "Apr 2026 — Present",
+    title: "IT Conference Team Member",
+    org: "KDD — Korean Tech Professionals Nonprofit",
+    bullets: [
+      "Planning and executing the Annual KDD Conference (200+ expected attendees, Aug 2026), co-hosted with the Consulate General of Korea.",
+      "Owning speaker outreach, workshop programming, sponsor relations, and end-to-end logistics."
+    ]
+  }
+];
+---
+
+<section class="block" id="activities">
+  <div class="container">
+    <div class="label">
+      <span class="bar"></span>
+      <span class="num">04</span>
+      <span>ACTIVITIES</span>
+    </div>
+    
+    <h2 class="display">SHOWING&nbsp;UP<br />FOR <span class="accent">COMMUNITY.</span></h2>
+    
+    <div class="timeline">
+      {activities.map((item) => (
+        <div class="tl-row">
+          <div class="tl-date">{item.date}</div>
+          <div class="tl-content">
+            <h3>{item.title}</h3>
+            <div class="org">{item.org}</div>
+            <ul>
+              {item.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .block {
+    padding: 160px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
+    position: relative;
+  }
+  
+  @media (max-width: 768px) {
+    .block { padding: 100px 0; }
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+  
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 32px;
+  }
+
+  .label .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .label .bar {
+    display: inline-block;
+    width: 48px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .display {
+    font-weight: 900;
+    font-size: clamp(56px, 9vw, 100px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--color-global-text);
+  }
+
+  .display .accent {
+    color: var(--color-accent);
+  }
+
+  .timeline {
+    margin-top: 64px;
+  }
+
+  .tl-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 32px 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
+    align-items: start;
+  }
+
+  .tl-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    padding-top: 6px;
+  }
+
+  .tl-content h3 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--color-global-text);
+  }
+
+  .tl-content .org {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-top: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .tl-content ul {
+    margin-top: 18px;
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tl-content li {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-muted);
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .tl-content li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 8px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .tl-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,360 @@
+---
+// Contact section with simple list layout
+---
+
+<section class="contact block" id="contact">
+	<div class="container">
+		<div class="label">
+			<span class="bar"></span>
+			<span class="num">05</span>
+			<span>CONTACT</span>
+		</div>
+
+		<div class="contact-layout">
+			<div class="contact-headline">
+				<h2 class="contact-display">
+					<span class="l1">LET'S</span>
+					<span class="l2">TALK.</span>
+				</h2>
+				<p class="contact-tagline">
+					I'd love to hear what you're building — or what you're thinking about.
+				</p>
+			</div>
+
+			<ul class="contact-list">
+				<!-- Item 1: Location -->
+				<li class="contact-item">
+					<div class="item-icon">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+							<circle cx="12" cy="10" r="3"></circle>
+						</svg>
+					</div>
+					<div class="item-content">
+						<div class="item-label">Based In</div>
+						<div class="item-value">Vancouver, BC</div>
+						<div class="item-sub">GMT-8 · +1 236-885-9543</div>
+					</div>
+				</li>
+
+				<!-- Item 2: Email (clickable) -->
+				<li
+					class="contact-item is-interactive"
+					id="emailButton"
+					data-email="jade.jinoklee@gmail.com"
+				>
+					<div class="item-icon">
+						<svg
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<rect x="2" y="4" width="20" height="16" rx="2"></rect>
+							<path d="m22 7-10 5L2 7"></path>
+						</svg>
+					</div>
+					<div class="item-content">
+						<div class="item-label">Email</div>
+						<div class="item-value email-text">jade.jinoklee@gmail.com</div>
+						<div class="item-sub">Click to copy</div>
+						<div class="toast" id="toast">Copied ✓</div>
+					</div>
+				</li>
+
+				<!-- Item 3: LinkedIn -->
+				<li class="contact-item is-interactive">
+					<a
+						class="item-link-overlay"
+						href="https://www.linkedin.com/in/jade-lee-86bbab219"
+						target="_blank"
+						rel="noopener"
+						aria-label="LinkedIn profile"></a>
+					<div class="item-icon">
+						<svg viewBox="0 0 24 24" fill="currentColor">
+							<path
+								d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
+							></path>
+						</svg>
+					</div>
+					<div class="item-content">
+						<div class="item-label">LinkedIn</div>
+						<div class="item-value">Jade Lee</div>
+						<div class="item-sub">View profile ↗</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<span>Jade Lee · Portfolio <span class="footer-accent">'26</span></span>
+	<span>Built with Astro & GSAP</span>
+</footer>
+
+<script>
+	const emailItem = document.getElementById("emailButton") as HTMLLIElement;
+	const toast = document.getElementById("toast") as HTMLDivElement;
+	const emailText = emailItem?.querySelector(".email-text") as HTMLDivElement;
+
+	if (emailItem && toast && emailText) {
+		const originalText = emailText.textContent;
+
+		emailItem.addEventListener("click", async () => {
+			const email = emailItem.dataset.email || "";
+
+			try {
+				await navigator.clipboard.writeText(email);
+
+				toast.classList.add("is-visible");
+				emailText.textContent = "Copied!";
+
+				setTimeout(() => {
+					toast.classList.remove("is-visible");
+					emailText.textContent = originalText;
+				}, 2000);
+			} catch (err) {
+				console.error("Failed to copy email:", err);
+			}
+		});
+	}
+</script>
+
+<style>
+	.block {
+		padding: 160px 0;
+		position: relative;
+	}
+
+	.contact {
+		padding: 200px 0 160px;
+		text-align: left;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.container {
+		max-width: 1440px;
+		margin: 0 auto;
+		padding: 0 64px;
+	}
+
+	@media (max-width: 768px) {
+		.container {
+			padding: 0 24px;
+		}
+	}
+
+	.label {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+		margin-bottom: 32px;
+	}
+
+	.label .num {
+		font-variant-numeric: tabular-nums;
+	}
+
+	.label .bar {
+		display: inline-block;
+		width: 48px;
+		height: 1px;
+		background: var(--color-accent);
+	}
+
+	/* 2-column layout */
+	.contact-layout {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 80px;
+		margin-top: 64px;
+		align-items: center;
+	}
+
+	@media (max-width: 900px) {
+		.contact-layout {
+			grid-template-columns: 1fr;
+			gap: 48px;
+		}
+	}
+
+	.contact-display {
+		font-weight: 900;
+		font-size: clamp(72px, 12vw, 160px);
+		line-height: 0.86;
+		letter-spacing: -0.05em;
+	}
+
+	.contact-display .l1 {
+		display: block;
+		color: var(--color-global-text);
+	}
+
+	.contact-display .l2 {
+		display: block;
+		color: var(--color-accent);
+	}
+
+	.contact-tagline {
+		font-size: 18px;
+		line-height: 1.5;
+		color: var(--color-muted);
+		max-width: 380px;
+		margin-top: 24px;
+		font-weight: 400;
+		letter-spacing: -0.01em;
+	}
+
+	@media (max-width: 900px) {
+		.contact-tagline {
+			font-size: 16px;
+		}
+	}
+
+	/* Contact list — uniform structure */
+	.contact-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+		min-height: 280px;
+		gap: 32px;
+	}
+
+	.contact-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 20px;
+		position: relative;
+		transition: opacity 0.3s ease;
+	}
+
+	.contact-item.is-interactive {
+		cursor: pointer;
+	}
+
+	.contact-item.is-interactive:hover {
+		opacity: 0.7;
+	}
+
+	/* Invisible link covering the entire LinkedIn item */
+	.item-link-overlay {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+	}
+
+	.item-icon {
+		width: 24px;
+		height: 24px;
+		color: var(--color-accent);
+		flex-shrink: 0;
+		margin-top: 4px;
+	}
+
+	.item-icon svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.item-content {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		flex: 1;
+		position: relative;
+	}
+
+	.item-label {
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-accent);
+	}
+
+	.item-value {
+		font-size: 18px;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		color: var(--color-global-text);
+		word-break: break-word;
+	}
+
+	.item-sub {
+		font-size: 13px;
+		font-weight: 400;
+		color: var(--color-muted);
+		letter-spacing: 0.02em;
+	}
+
+	/* Toast */
+	.toast {
+		position: absolute;
+		top: -8px;
+		right: 0;
+		padding: 6px 12px;
+		background: var(--color-accent);
+		color: #000;
+		font-size: 10px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		border-radius: 999px;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-4px);
+		transition:
+			opacity 0.3s ease,
+			transform 0.3s ease;
+	}
+
+	.toast.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Footer */
+	footer {
+		padding: 32px 64px;
+		border-top: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
+		display: flex;
+		justify-content: space-between;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--color-muted);
+	}
+
+	footer .footer-accent {
+		color: var(--color-accent);
+	}
+
+	@media (max-width: 768px) {
+		footer {
+			padding: 24px;
+			flex-direction: column;
+			gap: 12px;
+		}
+	}
+</style>
