@@ -1,0 +1,231 @@
+---
+// About section — bio, meta info, and four strength cards
+---
+
+<section class="block" id="about">
+  <div class="container">
+    <div class="label">
+      <span class="bar"></span>
+      <span class="num">01</span>
+      <span>ABOUT</span>
+    </div>
+    
+    <h2 class="display">A BUILDER<br />WITH <span class="accent">A SECOND ACT.</span></h2>
+    
+    <div class="about-grid">
+      <div class="about-meta">
+        <dl>
+          <dt>Based in</dt>
+          <dd>Vancouver, BC</dd>
+          <dt>Studying</dt>
+          <dd>Computer Science, UBC</dd>
+          <dt>Graduating</dt>
+          <dd>May 2027 (Expected)</dd>
+          <dt>Open to</dt>
+          <dd>SWE Internships, Fall and Winter 2026-2027</dd>
+        </dl>
+      </div>
+      <div>
+  <blockquote class="blockquote">
+    I loved journalism because I loved seeing people connect — when we understand each other better, even <em>the parts we dislike start to make sense.</em>
+  </blockquote>
+  <p class="about-body">
+    Currently a final-year CS student at the University of British Columbia, focused on backend systems, APIs, and developer tooling. I'm drawn to projects where engineering meets a real human workflow — voice handoffs for nonprofits, calendar plumbing for university testing facilities, schema design that holds up at 3NF.
+  </p>
+  <p class="about-body">
+    Before UBC, I worked in Korean broadcasting and digital news. I'm starting to think tech can do what journalism did for me — bring people closer to systems they don't fully understand. That's the kind of work I want to keep finding.
+  </p>
+  <p class="about-body">
+    That background still shows up in how I build: I care about the people on the other side of the screen — what they need, what frustrates them, what they don't say out loud.
+  </p>
+
+</div>
+    </div>
+    
+    <div class="strength-grid">
+      <div class="strength">
+        <span class="idx">/01</span>
+        <h4>Backend &amp; APIs</h4>
+        <p>FastAPI, Node.js, and Oracle. Designing endpoints with draft/confirm separation, OAuth flows, and full referential integrity.</p>
+      </div>
+      <div class="strength">
+        <span class="idx">/02</span>
+        <h4>AI Integration</h4>
+        <p>OpenAI Whisper across 50+ languages and GPT-4o-mini for structured JSON extraction — turning 5-minute voice handoffs into 30-second records.</p>
+      </div>
+      <div class="strength">
+        <span class="idx">/03</span>
+        <h4>Shipping &amp; Iteration</h4>
+        <p>Co-shipped a Chrome Extension serving 29 active users, currently coordinating with a UBC facility director for an official endorsement.</p>
+      </div>
+      <div class="strength">
+        <span class="idx">/04</span>
+        <h4>Editorial Eye</h4>
+        <p>Eight years in newsrooms and live broadcast control rooms. I prioritize ruthlessly, write tight, and don't break under deadline pressure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .block {
+    padding: 160px 0;
+    border-bottom: 1px solid var(--color-muted);
+    position: relative;
+  }
+  
+  @media (max-width: 768px) {
+    .block { padding: 100px 0; }
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 64px;
+  }
+  
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 32px;
+  }
+
+  .label .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .label .bar {
+    display: inline-block;
+    width: 48px;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .display {
+    font-weight: 900;
+    font-size: clamp(56px, 9vw, 100px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--color-global-text);
+  }
+
+  .display .accent {
+    color: var(--color-accent);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 80px;
+    margin-top: 64px;
+    align-items: start;
+  }
+  
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .about-meta dt {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-top: 24px;
+  }
+
+  .about-meta dd {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-global-text);
+    margin-top: 6px;
+  }
+
+  .about-meta dt:first-child {
+    margin-top: 0;
+  }
+
+  .blockquote {
+    border-left: 3px solid var(--color-accent);
+    padding: 8px 0 8px 24px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--color-global-text);
+    letter-spacing: -0.01em;
+  }
+
+  .blockquote em {
+    font-style: normal;
+    color: var(--color-accent);
+  }
+
+  .about-body {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--color-muted);
+    margin-top: 28px;
+    font-weight: 400;
+  }
+
+  .about-body + .about-body {
+    margin-top: 18px;
+  }
+
+.strength-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 80px;
+  background: color-mix(in srgb, var(--color-global-text) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
+}
+  
+  @media (max-width: 768px) {
+    .strength-grid { grid-template-columns: 1fr; }
+  }
+
+ .strength {
+  background: color-mix(in srgb, var(--color-global-text) 6%, var(--color-global-bg));
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 200px;
+  transition: background 0.25s ease;
+}
+
+.strength:hover {
+  background: var(--color-global-bg);
+}
+
+  .strength .idx {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+  }
+
+  .strength h4 {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--color-global-text);
+  }
+
+  .strength p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+</style>
