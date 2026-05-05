@@ -1,0 +1,150 @@
+---
+// Site-wide overlay: progress bar + custom cursor
+// Pass cursor={false} to disable custom cursor (e.g., for blog pages)
+interface Props {
+  cursor?: boolean;
+}
+const { cursor = true } = Astro.props;
+---
+
+<!-- Scroll progress bar (top of viewport) -->
+<div class="progress-bar" id="progress"></div>
+
+{cursor && (
+  <>
+    <!-- Custom cursor (desktop only) -->
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+  </>
+)}
+
+<script>
+  // ===== Scroll progress bar =====
+  const bar = document.getElementById('progress') as HTMLDivElement;
+  if (bar) {
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrollableHeight = h.scrollHeight - h.clientHeight;
+      const progress = scrollableHeight > 0 ? h.scrollTop / scrollableHeight : 0;
+      bar.style.width = (progress * 100).toFixed(2) + '%';
+    }, { passive: true });
+  }
+
+  // ===== Custom cursor (desktop only, only if elements exist) =====
+  const dot = document.getElementById('cursorDot') as HTMLDivElement | null;
+  const ring = document.getElementById('cursorRing') as HTMLDivElement | null;
+  
+  if (dot && ring && !window.matchMedia('(max-width: 768px)').matches) {
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let rx = mx;
+    let ry = my;
+
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+    });
+
+    function loop() {
+      // Smooth follow with easing
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      requestAnimationFrame(loop);
+    }
+    loop();
+
+    // Cursor expands on interactive elements
+    const interactiveSelector = 'a, button, [data-cursor="hover"], .work-row, .strength, .magnetic, .contact-item.is-interactive';
+    document.querySelectorAll(interactiveSelector).forEach((el) => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // Hide native cursor on desktop
+    document.body.classList.add('cursor-active');
+  }
+</script>
+
+<style is:global>
+  /* ===== Selection color (block text highlight) ===== */
+  ::selection {
+    background: var(--color-accent);
+    color: #000;
+  }
+
+  ::-moz-selection {
+    background: var(--color-accent);
+    color: #000;
+  }
+
+  /* ===== Scroll progress bar ===== */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--color-accent);
+    z-index: 9999;
+    transition: width 0.08s linear;
+    pointer-events: none;
+  }
+
+  /* ===== Custom cursor ===== */
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 10000;
+    border-radius: 50%;
+    mix-blend-mode: difference;
+    will-change: transform;
+  }
+
+  .cursor-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--color-accent);
+    transform: translate(-50%, -50%);
+  }
+
+  .cursor-ring {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.25s ease, height 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  }
+
+  /* Cursor expands on hover over interactive elements */
+  body.cursor-hover .cursor-ring {
+    width: 52px;
+    height: 52px;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  body.cursor-hover .cursor-dot {
+    background: #000;
+  }
+
+  /* Hide native cursor on desktop when active */
+  @media (min-width: 769px) {
+    body.cursor-active,
+    body.cursor-active * {
+      cursor: none !important;
+    }
+  }
+
+  /* Hide custom cursor on mobile */
+  @media (max-width: 768px) {
+    .cursor-dot,
+    .cursor-ring {
+      display: none;
+    }
+  }
+</style>
