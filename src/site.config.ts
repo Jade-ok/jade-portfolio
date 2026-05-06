@@ -10,7 +10,7 @@ export const siteConfig: SiteConfig = {
 		- The link value found in src/components/layout/Header.astro L:35
 		- In the footer found in src/components/layout/Footer.astro L:12
 	*/
-	title: "Jade 2026",
+	title: "Jade Lee",
 	// Used as both a meta property (src/components/BaseHead.astro L:31 + L:49) & the generated satori png (src/pages/og-image/[slug].png.ts)
 	author: "Jade Lee",
 	// Used as the default description meta property and webmanifest description
@@ -33,20 +33,16 @@ export const siteConfig: SiteConfig = {
 // Used to generate links in both the Header & Footer.
 export const menuLinks: { path: string; title: string }[] = [
 	{
-		path: "/",
-		title: "Home",
-	},
-	{
-		path: "/about/",
-		title: "About",
-	},
-	{
 		path: "/posts/",
 		title: "Blog",
 	},
 	{
 		path: "/notes/",
 		title: "Notes",
+	},
+	{
+		path: "/about/",
+		title: "About",
 	},
 ];
 

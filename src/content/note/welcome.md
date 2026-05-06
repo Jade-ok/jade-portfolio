@@ -1,9 +1,9 @@
 ---
-title: Hello, Welcome
-description: An introduction to using the note feature in Astro Cactus
-publishDate: "2024-10-14T11:23:00Z"
+title: A space for fragments
+description: Short thoughts, half-finished ideas, and things passing through
+publishDate: "2026-05-05T00:00:00Z"
 ---
 
-Hi, Hello. This is an example note feature included with Astro Cactus 🌵
+This is where I keep the small things.
 
-They're for shorter, more concise posts that you'd like to share. They generally don't include headings, but hey, it's entirely up to you!
+Half-formed thoughts, links I want to come back to, photos that capture something I can't quite explain yet, ideas I'm not ready to write a whole post about. Things that don't earn a full essay but are worth catching before they slip away.
