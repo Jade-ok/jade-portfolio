@@ -1,0 +1,211 @@
+---
+// src/pages/prairiecalendar.astro
+// PrairieCalendar landing page (used as the OAuth "Application home page").
+// Hidden: reachable only by direct URL, not linked from the portfolio homepage.
+// URL → https://jadelee.dev/prairiecalendar
+const storeUrl = "https://chromewebstore.google.com/detail/jfgdhmfkgejkgliebffeohcddbohldfk";
+const privacyUrl = "/prairiecalendar-privacy";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<title>PrairieCalendar</title>
+		<meta
+			name="description"
+			content="A Chrome extension that extracts PrairieTest schedules and exports them to your calendar with one click. Built by Team BlueberryPie."
+		/>
+		<style>
+			:root {
+				--blueberry: #2a2a72; /* Deep Blueberry */
+				--crust: #e9c46a; /* Pie Crust */
+				--text: #1a1a1a;
+				--muted: #6b6b75;
+				--rule: #e6e6ee;
+				--soft: #f6f6fb;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				background: #fff;
+				color: var(--text);
+				font-family:
+					system-ui,
+					-apple-system,
+					"Segoe UI",
+					Roboto,
+					sans-serif;
+				line-height: 1.7;
+			}
+			main {
+				max-width: 700px;
+				margin: 0 auto;
+				padding: 72px 24px 96px;
+			}
+			.tag {
+				display: inline-block;
+				font-size: 0.78rem;
+				font-weight: 600;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+				color: var(--blueberry);
+				background: var(--soft);
+				padding: 6px 13px;
+				border-radius: 999px;
+				margin-bottom: 22px;
+			}
+			h1 {
+				font-size: 2.5rem;
+				margin: 0 0 14px;
+				letter-spacing: -0.02em;
+				color: var(--blueberry);
+			}
+			.lede {
+				font-size: 1.18rem;
+				color: var(--muted);
+				margin: 0 0 10px;
+			}
+			.byline {
+				font-size: 0.95rem;
+				color: var(--muted);
+				margin: 0 0 30px;
+			}
+			h2 {
+				font-size: 1.2rem;
+				margin: 44px 0 12px;
+				padding-top: 26px;
+				border-top: 1px solid var(--rule);
+				color: var(--blueberry);
+			}
+			p {
+				margin: 0 0 16px;
+			}
+			ul {
+				margin: 0 0 16px;
+				padding-left: 4px;
+				list-style: none;
+			}
+			li {
+				margin: 10px 0;
+				padding-left: 26px;
+				position: relative;
+			}
+			li::before {
+				content: "•";
+				color: var(--crust);
+				font-weight: 700;
+				position: absolute;
+				left: 6px;
+			}
+			li b {
+				color: var(--text);
+			}
+			code {
+				background: var(--soft);
+				padding: 2px 6px;
+				border-radius: 4px;
+				font-size: 0.9em;
+			}
+			.cta {
+				display: inline-block;
+				background: var(--crust);
+				color: #3a2d00;
+				text-decoration: none;
+				font-weight: 700;
+				padding: 13px 24px;
+				border-radius: 12px;
+				margin-top: 6px;
+			}
+			a {
+				color: var(--blueberry);
+			}
+			footer {
+				margin-top: 50px;
+				padding-top: 24px;
+				border-top: 1px solid var(--rule);
+				color: var(--muted);
+				font-size: 0.9rem;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<span class="tag">Browser Extension</span>
+			<h1>PrairieCalendar</h1>
+			<p class="lede">
+				Extracts your PrairieTest schedule and exports it to your calendar with one click. No more
+				manual copying — and no more anxiety about sleeping through a midterm.
+			</p>
+			<p class="byline">Built with 🫐 by Team BlueberryPie (Jena &amp; Jade)</p>
+
+			<a class="cta" href={storeUrl}>Get it on the Chrome Web Store →</a>
+
+			<h2>Why we built this</h2>
+			<p>
+				Life as a CS student at UBC means constantly checking PrairieTest to book quizzes, examlets,
+				and finals — then manually copying every date into a calendar and double-checking the time
+				and location, because one typo can mean missing an exam. We kept asking the same question:
+				why isn't there just an "Export to Calendar" button? So we built one.
+			</p>
+
+			<h2>What it does</h2>
+			<ul>
+				<li>
+					<b>Smart extraction.</b> Parses all schedule data directly from the PrairieTest webpage.
+				</li>
+				<li>
+					<b>Sleek UI.</b> Shows your full list of reservations in a clean popup with custom icons and
+					our "Deep Blueberry" and "Pie Crust" palette.
+				</li>
+				<li>
+					<b>Selective exporting.</b> Pick exactly which events to export with a simple checkbox list.
+				</li>
+				<li>
+					<b>Instant <code>.ics</code> generation.</b> Turns your selected exams into a valid iCalendar
+					file for Apple Calendar, Outlook, and more.
+				</li>
+				<li>
+					<b>Google Calendar export.</b> Send selected exams straight to your own Google Calendar via
+					OAuth 2.0 — now working in Chrome, Brave, Arc, and Microsoft Edge.
+				</li>
+			</ul>
+
+			<h2>Under the hood</h2>
+			<p>
+				A clean MVP built with vanilla JavaScript. <code>content.js</code>
+				extracts the raw schedule data, <code>parser.js</code> standardizes the formatting, <code
+					>popup.js</code
+				> renders the selectable list, and
+				<code>ics.js</code> generates the calendar file. We wrote custom parsing to handle edge cases,
+				like converting academic term codes (e.g. 2025W2) into accurate calendar years.
+			</p>
+
+			<h2>Privacy first</h2>
+			<p>
+				There is no database. All reservation data is processed locally inside your browser and is
+				never sent to external servers. When you export to Google Calendar, authentication is
+				handled directly by Google via OAuth 2.0, and events are written only to your own calendar.
+			</p>
+			<p>
+				Read the full <a href={privacyUrl}>Privacy Policy</a>.
+			</p>
+
+			<h2>The bigger picture</h2>
+			<p>
+				PrairieTest isn't just a local tool — it's an assessment platform used by institutions
+				across North America. Manual exam tracking is a headache for thousands of students every
+				semester, so PrairieCalendar is built to scale beyond UBC.
+			</p>
+
+			<footer>
+				Questions? Contact
+				<a href="mailto:team-blueberrypie@googlegroups.com">team-blueberrypie@googlegroups.com</a>
+			</footer>
+		</main>
+	</body>
+</html>
