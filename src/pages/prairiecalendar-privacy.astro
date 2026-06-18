@@ -1,0 +1,138 @@
+---
+// src/pages/prairiecalendar-privacy.astro
+// Hidden page: reachable only by direct URL (not linked from the homepage).
+// URL → https://jadelee.dev/prairiecalendar-privacy
+const lastUpdated = "June 18, 2026";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Keeps the page out of search results, but Google's OAuth reviewer can still fetch it directly -->
+		<meta name="robots" content="noindex" />
+		<title>Privacy Policy — PrairieCalendar</title>
+		<style>
+			:root {
+				--text: #1a1a1a;
+				--muted: #6b6b75;
+				--rule: #e6e6ee;
+				--code-bg: #f3f3f8;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				background: #fff;
+				color: var(--text);
+				font-family:
+					system-ui,
+					-apple-system,
+					"Segoe UI",
+					Roboto,
+					sans-serif;
+				line-height: 1.6;
+			}
+			main {
+				max-width: 720px;
+				margin: 0 auto;
+				padding: 56px 24px 96px;
+			}
+			h1 {
+				font-size: 2rem;
+				margin: 0 0 8px;
+				letter-spacing: -0.01em;
+			}
+			.updated {
+				color: var(--muted);
+				font-size: 0.9rem;
+				margin: 0 0 40px;
+			}
+			h2 {
+				font-size: 1.15rem;
+				margin: 40px 0 12px;
+				padding-top: 24px;
+				border-top: 1px solid var(--rule);
+			}
+			p {
+				margin: 0 0 16px;
+			}
+			ul {
+				margin: 0 0 16px;
+				padding-left: 22px;
+			}
+			li {
+				margin: 4px 0;
+			}
+			code {
+				background: var(--code-bg);
+				padding: 2px 6px;
+				border-radius: 4px;
+				font-size: 0.9em;
+			}
+			a {
+				color: #2a2a72;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Privacy Policy</h1>
+			<p class="updated">Last updated: {lastUpdated}</p>
+
+			<p>PrairieCalendar does not collect, sell, or share any personal data with third parties.</p>
+			<p>
+				The extension reads reservation information from the PrairieTest webpage only when the user
+				opens the extension. This information may include exam titles, dates, times, and locations.
+			</p>
+			<p>
+				All processed data is stored locally using Chrome's
+				<code>storage.local</code> API.
+			</p>
+
+			<h2>Google Calendar Export (Optional)</h2>
+			<p>
+				If the user chooses to export schedules to Google Calendar, the extension requests
+				permission to access Google Calendar via OAuth 2.0. Authentication is handled entirely by
+				Google. The extension only writes exam schedule data (title, date, time, location) to the
+				user's own Google Calendar. No data is stored on external servers or shared with third
+				parties.
+			</p>
+
+			<h2>Security and Data Protection Mechanisms</h2>
+			<p>
+				Security procedures are in place to protect the confidentiality of your data. All
+				PrairieTest reservation data is processed locally within the user's browser and is not
+				transmitted to external servers.
+			</p>
+			<p>
+				We use encryption to protect your information during transmission. All communication with
+				Google APIs occurs over secure, encrypted HTTPS connections.
+			</p>
+			<p>
+				Authentication is handled directly by Google via OAuth 2.0, and PrairieCalendar does not
+				store or access user credentials.
+			</p>
+
+			<h2>PrairieCalendar does not:</h2>
+			<ul>
+				<li>Track browsing activity</li>
+				<li>Collect analytics</li>
+				<li>Use cookies</li>
+				<li>Share data with third parties</li>
+			</ul>
+			<p>
+				All locally stored data remains on the user's device and can be cleared at any time by
+				removing the extension or clearing Chrome extension storage.
+			</p>
+
+			<h2>Contact</h2>
+			<p>
+				If you have questions regarding this policy, please contact:<br />
+				<a href="mailto:team-blueberrypie@googlegroups.com">team-blueberrypie@googlegroups.com</a>
+			</p>
+		</main>
+	</body>
+</html>
