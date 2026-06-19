@@ -3,8 +3,12 @@
 // PrairieCalendar landing page (used as the OAuth "Application home page").
 // Hidden: reachable only by direct URL, not linked from the portfolio homepage.
 // URL → https://jadelee.dev/prairiecalendar
-const storeUrl = "https://chromewebstore.google.com/detail/jfgdhmfkgejkgliebffeohcddbohldfk";
+//
+// Images live in: portfolio-site/public/prairiecalendar-img/
+const storeUrl =
+	"https://chromewebstore.google.com/detail/PrairieCalendar/jfgdhmfkgejkgliebffeohcddbohldfk";
 const privacyUrl = "/prairiecalendar-privacy";
+const img = "/prairiecalendar-img";
 ---
 
 <!doctype html>
@@ -43,7 +47,7 @@ const privacyUrl = "/prairiecalendar-privacy";
 				line-height: 1.7;
 			}
 			main {
-				max-width: 700px;
+				max-width: 760px;
 				margin: 0 auto;
 				padding: 72px 24px 96px;
 			}
@@ -73,11 +77,11 @@ const privacyUrl = "/prairiecalendar-privacy";
 			.byline {
 				font-size: 0.95rem;
 				color: var(--muted);
-				margin: 0 0 30px;
+				margin: 0 0 28px;
 			}
 			h2 {
 				font-size: 1.2rem;
-				margin: 44px 0 12px;
+				margin: 52px 0 12px;
 				padding-top: 26px;
 				border-top: 1px solid var(--rule);
 				color: var(--blueberry);
@@ -124,6 +128,35 @@ const privacyUrl = "/prairiecalendar-privacy";
 			a {
 				color: var(--blueberry);
 			}
+
+			/* Images */
+			.hero-shot {
+				width: 100%;
+				height: auto;
+				margin: 34px 0 8px;
+				border-radius: 16px;
+				border: 1px solid var(--rule);
+				box-shadow: 0 18px 40px -22px rgba(42, 42, 114, 0.45);
+			}
+			.gallery {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 16px;
+				margin: 8px 0 4px;
+			}
+			.gallery img {
+				width: 100%;
+				height: auto;
+				border-radius: 12px;
+				border: 1px solid var(--rule);
+				box-shadow: 0 12px 28px -20px rgba(42, 42, 114, 0.4);
+			}
+			.brand-shot {
+				width: 100%;
+				height: auto;
+				margin-top: 28px;
+				border-radius: 16px;
+			}
 			footer {
 				margin-top: 50px;
 				padding-top: 24px;
@@ -144,6 +177,12 @@ const privacyUrl = "/prairiecalendar-privacy";
 			<p class="byline">Built with 🫐 by Team BlueberryPie (Jena &amp; Jade)</p>
 
 			<a class="cta" href={storeUrl}>Get it on the Chrome Web Store →</a>
+
+			<img
+				class="hero-shot"
+				src={`${img}/preview-main-ui.png`}
+				alt="PrairieCalendar popup showing a clean list of upcoming exam reservations"
+			/>
 
 			<h2>Why we built this</h2>
 			<p>
@@ -175,6 +214,22 @@ const privacyUrl = "/prairiecalendar-privacy";
 				</li>
 			</ul>
 
+			<h2>A look inside</h2>
+			<div class="gallery">
+				<img
+					src={`${img}/checkbox-selection-ui.png`}
+					alt="Checkbox interface for selecting which exams to export"
+				/>
+				<img
+					src={`${img}/export-preview-ui.png`}
+					alt="Preview of exams being exported to the calendar"
+				/>
+				<img
+					src={`${img}/real-usage-popup-overlay.png`}
+					alt="PrairieCalendar popup in use over the PrairieTest page"
+				/>
+			</div>
+
 			<h2>Under the hood</h2>
 			<p>
 				A clean MVP built with vanilla JavaScript. <code>content.js</code>
@@ -201,6 +256,8 @@ const privacyUrl = "/prairiecalendar-privacy";
 				across North America. Manual exam tracking is a headache for thousands of students every
 				semester, so PrairieCalendar is built to scale beyond UBC.
 			</p>
+
+			<img class="brand-shot" src={`${img}/bbp_branding1.png`} alt="Team BlueberryPie branding" />
 
 			<footer>
 				Questions? Contact
