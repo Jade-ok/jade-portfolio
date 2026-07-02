@@ -115,7 +115,7 @@ _A note on format: each top-level point is Preyas reacting live as he watched. T
 
 ![Kore-eda Hirokazu](./gore-eda.jpg)
 
-## A few things that stuck with me after
+## A few things that stuck with Preyas
 
 - teacher seeing yori kid hide mom's kid's name on his paper makes him realize what was going on? Is that why he apologized in the storm and he told the mom everything??
 
