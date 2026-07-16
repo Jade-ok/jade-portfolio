@@ -1,5 +1,5 @@
 ---
-title: "Remembering the Future"
+title: "[Movie Review] Arrival, and Ted Chiang's Story of Your Life"
 description: "Seeing the past, present, and future simultaneously. Thoughts on Arrival and Ted Chiang's Story of Your Life."
 publishDate: "2026-07-15"
 tags: ["film", "sci-fi", "ted-chiang", "arrival"]
@@ -13,6 +13,8 @@ Louise Banks discovers that her daughter will eventually die from an incurable d
 
 Light always takes the path that requires the least amount of time to reach its destination.
 
+![Fermat's Principle of Least Time](./FermatsPrinciple.jpg)
+
 (Side note: this was my first time using Procreate!)
 
 When light travels from the air to a destination underwater, it doesn't just bend passively because of the refractive indices of air and water. Instead, before it even departs, light already knows where it will end up, choosing on its own the fastest path to that destination. It almost makes light feel like a conscious being.
@@ -24,6 +26,10 @@ We are used to interpreting events chronologically and causally. When a force is
 The Heptapods, however, live life as a process of fulfilling a journey, already knowing the ending before it even begins.
 
 Saying "my destiny turned out this way because of my past actions" is a fundamentally different way of thinking from "I already know my destiny, but I am choosing to walk this path." And yet these two worldviews do not contradict each other. They can describe the exact same phenomenon.
+
+Louise's life works the same way. Her life is a single set of events. We can read it as "her choices caused her life to turn out this way," or, like the Heptapods, as "she knew the ending and performed the path." The events don't change at all. Only the way of telling them does.
+
+![Arrival movie still](./arrival.jpg)
 
 ## From a Linguistic Perspective
 
