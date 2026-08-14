@@ -1,6 +1,144 @@
 {
-	"baselineKm": 960,
-	"sinceBaselineKm": 0,
-	"lastUpdated": "2026-08-14",
-	"source": "Apple Health"
+  "baselineTotalKm": 960,
+  "baselineSyncedKm": 122.76,
+  "syncedKm": 122.76,
+  "sinceBaselineKm": 0,
+  "totalKm": 960,
+  "runCount": 22,
+  "source": "FitnessSyncer",
+  "updatedAt": "2026-08-14T12:13:04.641Z",
+  "runs": [
+    {
+      "id": "19714038414",
+      "title": "Nike Run Club: Wednesday Morning Run",
+      "distanceKm": 5.02989999807882,
+      "date": 1786552946000
+    },
+    {
+      "id": "19675860623",
+      "title": "Nike Run Club: Sunday Evening Run",
+      "distanceKm": 5.337199997961446,
+      "date": 1786328148000
+    },
+    {
+      "id": "19591609997",
+      "title": "Nike Run Club: Monday Evening Run",
+      "distanceKm": 5.41549999793154,
+      "date": 1785813150000
+    },
+    {
+      "id": "19563780116",
+      "title": "Evening Run",
+      "distanceKm": 10.31189999606135,
+      "date": 1785636107000
+    },
+    {
+      "id": "19502573652",
+      "title": "Morning Run",
+      "distanceKm": 3.2759999987487256,
+      "date": 1785254627000
+    },
+    {
+      "id": "19466365675",
+      "title": "Afternoon Run",
+      "distanceKm": 10.12559999613251,
+      "date": 1785026031000
+    },
+    {
+      "id": "19367819186",
+      "title": "Lunch Run",
+      "distanceKm": 4.0110999984679525,
+      "date": 1784403166000
+    },
+    {
+      "id": "19341112254",
+      "title": "Nike Run Club: Thursday Morning Run",
+      "distanceKm": 10.013399996175362,
+      "date": 1784226139000
+    },
+    {
+      "id": "19271713084",
+      "title": "Nike Run Club: Saturday Morning Run",
+      "distanceKm": 5.007999998087184,
+      "date": 1783786048000
+    },
+    {
+      "id": "19251707069",
+      "title": "Night Run with Jiwon again",
+      "distanceKm": 6.609299997475564,
+      "date": 1783659707000
+    },
+    {
+      "id": "19223979887",
+      "title": "Night Run with Jiwon",
+      "distanceKm": 6.035499997694729,
+      "date": 1783485923000
+    },
+    {
+      "id": "19166143359",
+      "title": "Nike Run Club: Friday Morning Run",
+      "distanceKm": 5.002299998089362,
+      "date": 1783097926000
+    },
+    {
+      "id": "19140747513",
+      "title": "Nike Run Club: Wednesday Morning Run",
+      "distanceKm": 2.6135999990017305,
+      "date": 1782928204000
+    },
+    {
+      "id": "19118740012",
+      "title": "Nike Run Club: Monday Night Run",
+      "distanceKm": 3.6009999986245913,
+      "date": 1782792418000
+    },
+    {
+      "id": "19056782931",
+      "title": "Nike Run Club: Wednesday Evening Run",
+      "distanceKm": 6.067699997682429,
+      "date": 1782346444000
+    },
+    {
+      "id": "19017619829",
+      "title": "Night Run",
+      "distanceKm": 5.013499998085083,
+      "date": 1782101190000
+    },
+    {
+      "id": "18990105711",
+      "title": "Afternoon Run",
+      "distanceKm": 4.010099998468334,
+      "date": 1781912065000
+    },
+    {
+      "id": "18893536921",
+      "title": "Morning Run",
+      "distanceKm": 3.0660999988288973,
+      "date": 1781285099000
+    },
+    {
+      "id": "18815266571",
+      "title": "Nike Run Club: Saturday Afternoon Run",
+      "distanceKm": 5.017099998083709,
+      "date": 1780776736000
+    },
+    {
+      "id": "18764792321",
+      "title": "Nike Run Club: Tuesday Evening Run",
+      "distanceKm": 3.040299998838752,
+      "date": 1780455357000
+    },
+    {
+      "id": "18697382285",
+      "title": "Nike Run Club: Thursday Evening Run",
+      "distanceKm": 4.1211999984259,
+      "date": 1780022823000
+    },
+    {
+      "id": "18642437017",
+      "title": "Nike Run Club: Sunday Evening Run",
+      "distanceKm": 10.033499996167684,
+      "date": 1779675723000
+    }
+  ]
 }

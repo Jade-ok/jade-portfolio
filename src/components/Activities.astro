@@ -1,7 +1,8 @@
 ---
 import running from "@/data/running.json";
 
-const totalRunningKm = running.baselineKm + running.sinceBaselineKm;
+const totalRunningKm = running.totalKm ?? running.baselineTotalKm + running.sinceBaselineKm;
+const sinceBaselineKm = running.sinceBaselineKm ?? 0;
 
 const activities = [
   {
@@ -31,7 +32,7 @@ const activities = [
         <span class="running-label">Running Total</span>
         <strong>{totalRunningKm.toLocaleString("en-US", { maximumFractionDigits: 1 })} km</strong>
       </div>
-      <p>{running.baselineKm} km Nike history + {running.sinceBaselineKm.toFixed(1)} km since baseline via {running.source}</p>
+      <p>{running.baselineTotalKm} km verified total + {sinceBaselineKm.toFixed(1)} km since sync baseline via {running.source}</p>
     </div>
     
     <div class="timeline">
