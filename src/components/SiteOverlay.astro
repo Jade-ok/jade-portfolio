@@ -71,12 +71,12 @@ const { cursor = true } = Astro.props;
   /* ===== Selection color (block text highlight) ===== */
   ::selection {
     background: var(--color-accent);
-    color: #000;
+    color: var(--color-on-accent);
   }
 
   ::-moz-selection {
     background: var(--color-accent);
-    color: #000;
+    color: var(--color-on-accent);
   }
 
   /* ===== Scroll progress bar ===== */
@@ -129,7 +129,7 @@ const { cursor = true } = Astro.props;
   }
 
   body.cursor-hover .cursor-dot {
-    background: #000;
+    background: var(--color-on-accent);
   }
 
   /* Hide native cursor on desktop when active */

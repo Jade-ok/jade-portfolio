@@ -11,48 +11,54 @@
 @property --color-global-bg {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(94% 0.005 90);
+	initial-value: #f7f6e3;
 }
 @property --color-global-text {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(25.5% 0.003 95);
+	initial-value: #546745;
 }
 @property --color-muted {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(50% 0.008 90);
+	initial-value: #8a8b76;
 }
 @property --color-link {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(58% 0.13 115);
+	initial-value: #546745;
 }
 @property --color-accent {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(58% 0.13 115);
+	initial-value: #546745;
 }
 @property --color-accent-2 {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(25.5% 0.003 95);
+	initial-value: #546745;
 }
 @property --color-quote {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: oklch(58% 0.13 115);
+	initial-value: #546745;
+}
+@property --color-on-accent {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: #f7f6e3;
 }
 
 /* Light mode (default fallback) */
 @theme {
-	--color-global-bg: oklch(94% 0.005 90);
-	--color-global-text: oklch(25.5% 0.003 95);
-	--color-muted: oklch(50% 0.008 90);
-	--color-link: oklch(58% 0.13 115);
-	--color-accent: oklch(58% 0.13 115);
-	--color-accent-2: oklch(25.5% 0.003 95);
-	--color-quote: oklch(58% 0.13 115);
+	--color-global-bg: #f7f6e3;
+	--color-global-text: #546745;
+	--color-muted: #8a8b76;
+	--color-link: #546745;
+	--color-accent: #546745;
+	--color-accent-2: #546745;
+	--color-quote: #546745;
+	--color-on-accent: #f7f6e3;
 }
 
 @layer base {
@@ -63,34 +69,37 @@
 
 		/* Default to dark mode */
 		color-scheme: dark;
-		--color-global-bg: oklch(25.5% 0.003 95);
-		--color-global-text: oklch(94% 0.005 90);
-		--color-muted: oklch(64% 0.008 90);
-		--color-link: oklch(93% 0.18 115);
-		--color-accent: oklch(93% 0.18 115);
-		--color-accent-2: oklch(94% 0.005 90);
-		--color-quote: oklch(93% 0.18 115);
+		--color-global-bg: #546745;
+		--color-global-text: #f7f6e3;
+		--color-muted: #d7d2b9;
+		--color-link: #f7f6e3;
+		--color-accent: #f7f6e3;
+		--color-accent-2: #f7f6e3;
+		--color-quote: #f7f6e3;
+		--color-on-accent: #546745;
 
 		&[data-theme="light"] {
 			color-scheme: light;
-			--color-global-bg: oklch(94% 0.005 90);
-			--color-global-text: oklch(25.5% 0.003 95);
-			--color-muted: oklch(50% 0.008 90);
-			--color-link: oklch(58% 0.13 115);
-			--color-accent: oklch(58% 0.13 115);
-			--color-accent-2: oklch(25.5% 0.003 95);
-			--color-quote: oklch(58% 0.13 115);
+			--color-global-bg: #f7f6e3;
+			--color-global-text: #546745;
+			--color-muted: #8a8b76;
+			--color-link: #546745;
+			--color-accent: #546745;
+			--color-accent-2: #546745;
+			--color-quote: #546745;
+			--color-on-accent: #f7f6e3;
 		}
 
 		&[data-theme="dark"] {
 			color-scheme: dark;
-			--color-global-bg: oklch(25.5% 0.003 95);
-			--color-global-text: oklch(94% 0.005 90);
-			--color-muted: oklch(64% 0.008 90);
-			--color-link: oklch(93% 0.18 115);
-			--color-accent: oklch(93% 0.18 115);
-			--color-accent-2: oklch(94% 0.005 90);
-			--color-quote: oklch(93% 0.18 115);
+			--color-global-bg: #546745;
+			--color-global-text: #f7f6e3;
+			--color-muted: #d7d2b9;
+			--color-link: #f7f6e3;
+			--color-accent: #f7f6e3;
+			--color-accent-2: #f7f6e3;
+			--color-quote: #f7f6e3;
+			--color-on-accent: #546745;
 		}
 
 		--color-mode-transition-duration: 300ms;
@@ -103,7 +112,8 @@
 			--color-link var(--color-mode-transition-duration) var(--color-mode-transition-easing),
 			--color-accent var(--color-mode-transition-duration) var(--color-mode-transition-easing),
 			--color-accent-2 var(--color-mode-transition-duration) var(--color-mode-transition-easing),
-			--color-quote var(--color-mode-transition-duration) var(--color-mode-transition-easing);
+			--color-quote var(--color-mode-transition-duration) var(--color-mode-transition-easing),
+			--color-on-accent var(--color-mode-transition-duration) var(--color-mode-transition-easing);
 	}
 
 	:target {
