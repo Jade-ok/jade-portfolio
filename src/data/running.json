@@ -5,139 +5,185 @@
   "sinceBaselineKm": 0,
   "totalKm": 960,
   "runCount": 22,
+  "averagePaceMinPerKm": 6.06,
+  "totalDurationSeconds": 44619,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-08-14T12:13:04.641Z",
+  "updatedAt": "2026-08-14T13:12:35.591Z",
   "runs": [
     {
       "id": "19714038414",
       "title": "Nike Run Club: Wednesday Morning Run",
       "distanceKm": 5.02989999807882,
+      "durationSeconds": 1825,
+      "paceMinPerKm": 6.05,
       "date": 1786552946000
     },
     {
       "id": "19675860623",
       "title": "Nike Run Club: Sunday Evening Run",
       "distanceKm": 5.337199997961446,
+      "durationSeconds": 2017,
+      "paceMinPerKm": 6.3,
       "date": 1786328148000
     },
     {
       "id": "19591609997",
       "title": "Nike Run Club: Monday Evening Run",
       "distanceKm": 5.41549999793154,
+      "durationSeconds": 1823,
+      "paceMinPerKm": 5.61,
       "date": 1785813150000
     },
     {
       "id": "19563780116",
       "title": "Evening Run",
       "distanceKm": 10.31189999606135,
+      "durationSeconds": 3513,
+      "paceMinPerKm": 5.68,
       "date": 1785636107000
     },
     {
       "id": "19502573652",
       "title": "Morning Run",
       "distanceKm": 3.2759999987487256,
+      "durationSeconds": 1389,
+      "paceMinPerKm": 7.07,
       "date": 1785254627000
     },
     {
       "id": "19466365675",
       "title": "Afternoon Run",
       "distanceKm": 10.12559999613251,
+      "durationSeconds": 3494,
+      "paceMinPerKm": 5.75,
       "date": 1785026031000
     },
     {
       "id": "19367819186",
       "title": "Lunch Run",
       "distanceKm": 4.0110999984679525,
+      "durationSeconds": 1250,
+      "paceMinPerKm": 5.19,
       "date": 1784403166000
     },
     {
       "id": "19341112254",
       "title": "Nike Run Club: Thursday Morning Run",
       "distanceKm": 10.013399996175362,
+      "durationSeconds": 3795,
+      "paceMinPerKm": 6.32,
       "date": 1784226139000
     },
     {
       "id": "19271713084",
       "title": "Nike Run Club: Saturday Morning Run",
       "distanceKm": 5.007999998087184,
+      "durationSeconds": 2014,
+      "paceMinPerKm": 6.7,
       "date": 1783786048000
     },
     {
       "id": "19251707069",
       "title": "Night Run with Jiwon again",
       "distanceKm": 6.609299997475564,
+      "durationSeconds": 2618,
+      "paceMinPerKm": 6.6,
       "date": 1783659707000
     },
     {
       "id": "19223979887",
       "title": "Night Run with Jiwon",
       "distanceKm": 6.035499997694729,
+      "durationSeconds": 2416,
+      "paceMinPerKm": 6.67,
       "date": 1783485923000
     },
     {
       "id": "19166143359",
       "title": "Nike Run Club: Friday Morning Run",
       "distanceKm": 5.002299998089362,
+      "durationSeconds": 1740,
+      "paceMinPerKm": 5.8,
       "date": 1783097926000
     },
     {
       "id": "19140747513",
       "title": "Nike Run Club: Wednesday Morning Run",
       "distanceKm": 2.6135999990017305,
+      "durationSeconds": 841,
+      "paceMinPerKm": 5.36,
       "date": 1782928204000
     },
     {
       "id": "19118740012",
       "title": "Nike Run Club: Monday Night Run",
       "distanceKm": 3.6009999986245913,
+      "durationSeconds": 1366,
+      "paceMinPerKm": 6.32,
       "date": 1782792418000
     },
     {
       "id": "19056782931",
       "title": "Nike Run Club: Wednesday Evening Run",
       "distanceKm": 6.067699997682429,
+      "durationSeconds": 2181,
+      "paceMinPerKm": 5.99,
       "date": 1782346444000
     },
     {
       "id": "19017619829",
       "title": "Night Run",
       "distanceKm": 5.013499998085083,
+      "durationSeconds": 1600,
+      "paceMinPerKm": 5.32,
       "date": 1782101190000
     },
     {
       "id": "18990105711",
       "title": "Afternoon Run",
       "distanceKm": 4.010099998468334,
+      "durationSeconds": 1361,
+      "paceMinPerKm": 5.66,
       "date": 1781912065000
     },
     {
       "id": "18893536921",
       "title": "Morning Run",
       "distanceKm": 3.0660999988288973,
+      "durationSeconds": 1107,
+      "paceMinPerKm": 6.02,
       "date": 1781285099000
     },
     {
       "id": "18815266571",
       "title": "Nike Run Club: Saturday Afternoon Run",
       "distanceKm": 5.017099998083709,
+      "durationSeconds": 1879,
+      "paceMinPerKm": 6.24,
       "date": 1780776736000
     },
     {
       "id": "18764792321",
       "title": "Nike Run Club: Tuesday Evening Run",
       "distanceKm": 3.040299998838752,
+      "durationSeconds": 1214,
+      "paceMinPerKm": 6.66,
       "date": 1780455357000
     },
     {
       "id": "18697382285",
       "title": "Nike Run Club: Thursday Evening Run",
       "distanceKm": 4.1211999984259,
+      "durationSeconds": 1651,
+      "paceMinPerKm": 6.68,
       "date": 1780022823000
     },
     {
       "id": "18642437017",
       "title": "Nike Run Club: Sunday Evening Run",
       "distanceKm": 10.033499996167684,
+      "durationSeconds": 3525,
+      "paceMinPerKm": 5.86,
       "date": 1779675723000
     }
   ]

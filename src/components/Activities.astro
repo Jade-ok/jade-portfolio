@@ -3,6 +3,9 @@ import running from "@/data/running.json";
 
 const totalRunningKm = running.totalKm ?? running.baselineTotalKm + running.sinceBaselineKm;
 const sinceBaselineKm = running.sinceBaselineKm ?? 0;
+const averagePace = running.averagePaceMinPerKm
+  ? `${Math.floor(running.averagePaceMinPerKm)}:${String(Math.round((running.averagePaceMinPerKm % 1) * 60)).padStart(2, "0")}/km`
+  : null;
 
 const activities = [
   {
@@ -32,7 +35,10 @@ const activities = [
         <span class="running-label">Running Total</span>
         <strong>{totalRunningKm.toLocaleString("en-US", { maximumFractionDigits: 1 })} km</strong>
       </div>
-      <p>{running.baselineTotalKm} km verified total + {sinceBaselineKm.toFixed(1)} km since sync baseline via {running.source}</p>
+      <p>
+        {running.baselineTotalKm} km verified total + {sinceBaselineKm.toFixed(1)} km since sync baseline via {running.source}
+        {averagePace && <><br />Avg pace {averagePace}</>}
+      </p>
     </div>
     
     <div class="timeline">

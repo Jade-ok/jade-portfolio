@@ -107,6 +107,7 @@ for (let offset = 0; ; offset += 100) {
 
 // 3. 각 activity 상세 데이터를 읽어서 Running만 합산
 let totalKm = 0;
+let totalDurationSeconds = 0;
 let runCount = 0;
 const runs = [];
 
@@ -126,14 +127,21 @@ for (const item of items) {
 
   if (activity.fitnessSyncerActivity === "Running") {
     const distanceKm = Number(activity.distanceKM ?? 0);
+    const durationSeconds = Number(activity.duration ?? 0);
+    const paceMinPerKm =
+      Number(activity.pace) ||
+      (distanceKm > 0 && durationSeconds > 0 ? durationSeconds / 60 / distanceKm : 0);
 
     totalKm += distanceKm;
+    totalDurationSeconds += durationSeconds;
     runCount += 1;
 
     runs.push({
       id: item.itemId,
       title: activity.title ?? "Run",
       distanceKm,
+      durationSeconds,
+      paceMinPerKm: Number(paceMinPerKm.toFixed(2)),
       date: activity.date ?? null,
     });
   }
@@ -144,6 +152,10 @@ const baselineTotalKm = Number(RUNNING_BASELINE_TOTAL_KM);
 const baselineSyncedKm = Number(RUNNING_BASELINE_SYNCED_KM);
 const syncedKm = Number(totalKm.toFixed(2));
 const sinceBaselineKm = Number((syncedKm - baselineSyncedKm).toFixed(2));
+const averagePaceMinPerKm =
+  totalKm > 0 && totalDurationSeconds > 0
+    ? Number((totalDurationSeconds / 60 / totalKm).toFixed(2))
+    : 0;
 
 if (!Number.isFinite(baselineTotalKm)) {
   throw new Error("RUNNING_BASELINE_TOTAL_KM must be a number.");
@@ -160,6 +172,8 @@ const output = {
   sinceBaselineKm,
   totalKm: Number((baselineTotalKm + sinceBaselineKm).toFixed(2)),
   runCount,
+  averagePaceMinPerKm,
+  totalDurationSeconds,
   source: "FitnessSyncer",
   updatedAt: new Date().toISOString(),
   runs,
@@ -174,5 +188,6 @@ await fs.writeFile(
 
 console.log(`Running activities: ${runCount}`);
 console.log(`Synced running distance: ${syncedKm.toFixed(2)} km`);
+console.log(`Average pace: ${averagePaceMinPerKm.toFixed(2)} min/km`);
 console.log(`Displayed total distance: ${output.totalKm.toFixed(2)} km`);
 console.log("Saved: src/data/running.json");
