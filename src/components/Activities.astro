@@ -1,4 +1,8 @@
 ---
+import running from "@/data/running.json";
+
+const totalRunningKm = running.baselineKm + running.sinceBaselineKm;
+
 const activities = [
   {
     date: "Apr 2026 — Present",
@@ -21,6 +25,14 @@ const activities = [
     </div>
     
     <h2 class="display">SHOWING&nbsp;UP<br />FOR <span class="accent">COMMUNITY.</span></h2>
+
+    <div class="running-card">
+      <div>
+        <span class="running-label">Running Total</span>
+        <strong>{totalRunningKm.toLocaleString("en-US", { maximumFractionDigits: 1 })} km</strong>
+      </div>
+      <p>{running.baselineKm} km Nike history + {running.sinceBaselineKm.toFixed(1)} km since baseline via {running.source}</p>
+    </div>
     
     <div class="timeline">
       {activities.map((item) => (
@@ -99,6 +111,47 @@ const activities = [
     margin-top: 64px;
   }
 
+  .running-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 48px;
+    padding: 28px 32px;
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-muted) 20%, transparent);
+    align-items: flex-end;
+  }
+
+  .running-card div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .running-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .running-card strong {
+    font-size: clamp(42px, 7vw, 84px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--color-global-text);
+  }
+
+  .running-card p {
+    max-width: 320px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--color-muted);
+    text-align: right;
+  }
+
   .tl-row {
     display: grid;
     grid-template-columns: 200px 1fr;
@@ -162,6 +215,16 @@ const activities = [
   }
 
   @media (max-width: 768px) {
+    .running-card {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px;
+    }
+
+    .running-card p {
+      text-align: left;
+    }
+
     .tl-row {
       grid-template-columns: 1fr;
       gap: 12px;

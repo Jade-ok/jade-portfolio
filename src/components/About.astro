@@ -187,8 +187,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 1px;
   margin-top: 80px;
-  background: color-mix(in srgb, var(--color-global-text) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
+  background: color-mix(in srgb, var(--color-muted) 24%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-muted) 24%, transparent);
 }
   
   @media (max-width: 768px) {
@@ -196,7 +196,7 @@
   }
 
  .strength {
-  background: color-mix(in srgb, var(--color-global-text) 6%, var(--color-global-bg));
+  background: var(--color-surface);
   padding: 36px;
   display: flex;
   flex-direction: column;
@@ -206,7 +206,7 @@
 }
 
 .strength:hover {
-  background: var(--color-global-bg);
+  background: color-mix(in srgb, var(--color-surface) 68%, var(--color-global-bg));
 }
 
   .strength .idx {

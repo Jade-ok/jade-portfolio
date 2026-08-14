@@ -11,95 +11,103 @@
 @property --color-global-bg {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #f7f6e3;
+	initial-value: #fbf8ee;
 }
 @property --color-global-text {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #546745;
+	initial-value: #2e3320;
 }
 @property --color-muted {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #8a8b76;
+	initial-value: #4a5030;
 }
 @property --color-link {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #546745;
+	initial-value: #a85e28;
 }
 @property --color-accent {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #546745;
+	initial-value: #c9a344;
 }
 @property --color-accent-2 {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #546745;
+	initial-value: #2e3320;
 }
 @property --color-quote {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #546745;
+	initial-value: #a85e28;
 }
 @property --color-on-accent {
 	syntax: "<color>";
 	inherits: true;
-	initial-value: #f7f6e3;
+	initial-value: #2e3320;
+}
+@property --color-surface {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: #ede4c9;
 }
 
 /* Light mode (default fallback) */
 @theme {
-	--color-global-bg: #f7f6e3;
-	--color-global-text: #546745;
-	--color-muted: #8a8b76;
-	--color-link: #546745;
-	--color-accent: #546745;
-	--color-accent-2: #546745;
-	--color-quote: #546745;
-	--color-on-accent: #f7f6e3;
+	--color-global-bg: #fbf8ee;
+	--color-global-text: #2e3320;
+	--color-muted: #4a5030;
+	--color-link: #a85e28;
+	--color-accent: #c9a344;
+	--color-accent-2: #2e3320;
+	--color-quote: #a85e28;
+	--color-on-accent: #2e3320;
+	--color-surface: #ede4c9;
 }
 
 @layer base {
 	html {
-		color-scheme: light dark;
+		color-scheme: light;
 		accent-color: var(--color-accent);
 		scrollbar-gutter: stable;
 
-		/* Default to dark mode */
-		color-scheme: dark;
-		--color-global-bg: #546745;
-		--color-global-text: #f7f6e3;
-		--color-muted: #d7d2b9;
-		--color-link: #f7f6e3;
-		--color-accent: #f7f6e3;
-		--color-accent-2: #f7f6e3;
-		--color-quote: #f7f6e3;
-		--color-on-accent: #546745;
+		/* Default to the light paper palette */
+		--color-global-bg: #fbf8ee;
+		--color-global-text: #2e3320;
+		--color-muted: #4a5030;
+		--color-link: #a85e28;
+		--color-accent: #c9a344;
+		--color-accent-2: #2e3320;
+		--color-quote: #a85e28;
+		--color-on-accent: #2e3320;
+		--color-surface: #ede4c9;
 
 		&[data-theme="light"] {
 			color-scheme: light;
-			--color-global-bg: #f7f6e3;
-			--color-global-text: #546745;
-			--color-muted: #8a8b76;
-			--color-link: #546745;
-			--color-accent: #546745;
-			--color-accent-2: #546745;
-			--color-quote: #546745;
-			--color-on-accent: #f7f6e3;
+			--color-global-bg: #fbf8ee;
+			--color-global-text: #2e3320;
+			--color-muted: #4a5030;
+			--color-link: #a85e28;
+			--color-accent: #c9a344;
+			--color-accent-2: #2e3320;
+			--color-quote: #a85e28;
+			--color-on-accent: #2e3320;
+			--color-surface: #ede4c9;
 		}
 
 		&[data-theme="dark"] {
 			color-scheme: dark;
-			--color-global-bg: #546745;
-			--color-global-text: #f7f6e3;
-			--color-muted: #d7d2b9;
-			--color-link: #f7f6e3;
-			--color-accent: #f7f6e3;
-			--color-accent-2: #f7f6e3;
-			--color-quote: #f7f6e3;
-			--color-on-accent: #546745;
+			--color-global-bg: #2e3320;
+			--color-global-text: #fbf8ee;
+			--color-muted: #ede4c9;
+			--color-link: #c9a344;
+			--color-accent: #c9a344;
+			--color-accent-2: #fbf8ee;
+			--color-quote: #a85e28;
+			--color-on-accent: #2e3320;
+			--color-surface: #4a5030;
 		}
 
 		--color-mode-transition-duration: 300ms;
@@ -113,7 +121,8 @@
 			--color-accent var(--color-mode-transition-duration) var(--color-mode-transition-easing),
 			--color-accent-2 var(--color-mode-transition-duration) var(--color-mode-transition-easing),
 			--color-quote var(--color-mode-transition-duration) var(--color-mode-transition-easing),
-			--color-on-accent var(--color-mode-transition-duration) var(--color-mode-transition-easing);
+			--color-on-accent var(--color-mode-transition-duration) var(--color-mode-transition-easing),
+			--color-surface var(--color-mode-transition-duration) var(--color-mode-transition-easing);
 	}
 
 	:target {

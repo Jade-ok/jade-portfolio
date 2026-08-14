@@ -32,15 +32,15 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.18em;
-		background: rgba(42, 42, 39, 0.78);
+		background: color-mix(in srgb, #4a5030 94%, transparent);
 		backdrop-filter: blur(14px);
 		-webkit-backdrop-filter: blur(14px);
-		border-bottom: 1px solid var(--color-muted);
+		border-bottom: 1px solid color-mix(in srgb, #fbf8ee 24%, transparent);
 	}
 
 	/* Scrolled state — darker bg + stronger blur (added by JS) */
 	.topbar.is-scrolled {
-		background: color-mix(in srgb, var(--color-global-bg) 88%, transparent);
+		background: color-mix(in srgb, #2e3320 94%, transparent);
 		backdrop-filter: blur(18px);
 		-webkit-backdrop-filter: blur(18px);
 		padding-top: 14px;
@@ -66,7 +66,7 @@
 		display: flex;
 		align-items: center;
 		gap: 10px;
-		color: var(--color-global-text);
+		color: #fbf8ee;
 		text-decoration: none;
 	}
 
@@ -74,8 +74,8 @@
 		width: 7px;
 		height: 7px;
 		border-radius: 50%;
-		background: var(--color-accent);
-		box-shadow: 0 0 12px var(--color-accent);
+		background: #c9a344;
+		box-shadow: 0 0 12px color-mix(in srgb, #c9a344 70%, transparent);
 	}
 
 	.brand strong {
@@ -96,7 +96,7 @@
 		gap: 8px;
 		padding: 10px 16px;
 		border-radius: 999px;
-		color: var(--color-muted);
+		color: color-mix(in srgb, #fbf8ee 72%, #4a5030);
 		font-size: 11px;
 		font-weight: 700;
 		letter-spacing: 0.18em;
@@ -113,8 +113,8 @@
 	}
 
 	.nav-links a:hover {
-		color: var(--color-global-text);
-		background: rgba(255, 255, 255, 0.04);
+		color: #fbf8ee;
+		background: color-mix(in srgb, #fbf8ee 12%, transparent);
 	}
 
 	.nav-links a.external .ext-arrow {
@@ -124,8 +124,8 @@
 
 	.nav-links a.cta {
 		margin-left: 8px;
-		color: var(--color-accent);
-		border: 1px solid var(--color-accent);
+		color: #fbf8ee;
+		border: 1px solid color-mix(in srgb, #c9a344 75%, transparent);
 	}
 
 	.nav-links a.cta:hover {
