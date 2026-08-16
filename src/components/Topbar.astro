@@ -3,84 +3,76 @@
 ---
 
 <header class="topbar" id="topbar">
-	<a href="#top" class="brand">
-		<span class="dot"></span>
-		<strong>JADE&nbsp;LEE</strong>
-	</a>
-	<nav class="nav-links" aria-label="Primary">
-		<a href="#about"><span class="num">01</span><span>About</span></a>
-		<a href="#works"><span class="num">02</span><span>Projects</span></a>
-		<a href="#history"><span class="num">03</span><span>History</span></a>
-		<a href="#activities"><span class="num">04</span><span>Activities</span></a>
-		<a href="/posts/" class="external"><span>Blog</span><span class="ext-arrow">↗</span></a>
-		<a href="#contact" class="cta"><span class="num">05</span><span>Let's&nbsp;Talk</span></a>
-	</nav>
+	<a href="#top" class="brand">JADE LEE<span class="period">.</span></a>
+	<div class="nav-right">
+		<nav class="nav-links" aria-label="Primary">
+			<a href="#about"><span class="num">01</span>ABOUT</a>
+			<a href="#works"><span class="num">02</span>PROJECTS</a>
+			<a href="#toolset"><span class="num">03</span>TOOLSET</a>
+			<a href="#history"><span class="num">04</span>THE PATH</a>
+			<a href="#contact"><span class="num">05</span>LET'S CONNECT</a>
+		</nav>
+		<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+			<svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"></path>
+			</svg>
+			<svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+				<circle cx="12" cy="12" r="4"></circle>
+				<path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"></path>
+			</svg>
+		</button>
+	</div>
 </header>
+
+<script>
+	const toggle = document.getElementById("theme-toggle") as HTMLButtonElement | null;
+
+	if (toggle) {
+		toggle.addEventListener("click", () => {
+			const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+			document.dispatchEvent(
+				new CustomEvent("theme-change", { detail: { theme: isDark ? "light" : "dark" } }),
+			);
+		});
+	}
+</script>
 
 <style>
 	.topbar {
-		position: fixed;
+		position: sticky;
 		top: 0;
-		left: 0;
-		right: 0;
 		z-index: 50;
+		height: 72px;
+		max-width: 1400px;
+		margin: 0 auto;
+		padding: 0 48px;
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
-		align-items: center;
-		padding: 20px 64px;
-		font-size: 11px;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.18em;
-		background: color-mix(in srgb, #4a5030 94%, transparent);
-		backdrop-filter: blur(14px);
-		-webkit-backdrop-filter: blur(14px);
-		border-bottom: 1px solid color-mix(in srgb, #fbf8ee 24%, transparent);
+		gap: 24px;
+		background: var(--nav-bg);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--hairline);
 	}
 
-	/* Scrolled state — darker bg + stronger blur (added by JS) */
-	.topbar.is-scrolled {
-		background: color-mix(in srgb, #2e3320 94%, transparent);
-		backdrop-filter: blur(18px);
-		-webkit-backdrop-filter: blur(18px);
-		padding-top: 14px;
-		padding-bottom: 14px;
-	}
-
-	/* Active nav link — lime green pill */
-	.nav-links a.is-active {
-		color: var(--color-on-accent);
-		background: var(--color-accent);
-	}
-
-	.nav-links a.is-active .num {
-		opacity: 0.7;
-	}
-
-	.nav-links a.cta.is-active {
-		background: var(--color-accent);
-		color: var(--color-on-accent);
-		border-color: var(--color-accent);
-	}
 	.brand {
+		font-family: "Archivo", sans-serif;
+		font-size: 19px;
+		font-weight: 800;
+		letter-spacing: -0.01em;
+		color: var(--ink);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.brand .period {
+		color: var(--rust);
+	}
+
+	.nav-right {
 		display: flex;
 		align-items: center;
-		gap: 10px;
-		color: #fbf8ee;
-		text-decoration: none;
-	}
-
-	.brand .dot {
-		width: 7px;
-		height: 7px;
-		border-radius: 50%;
-		background: #c9a344;
-		box-shadow: 0 0 12px color-mix(in srgb, #c9a344 70%, transparent);
-	}
-
-	.brand strong {
-		font-weight: 800;
-		letter-spacing: 0.16em;
 	}
 
 	.nav-links {
@@ -90,52 +82,74 @@
 	}
 
 	.nav-links a {
-		position: relative;
-		display: inline-flex;
+		display: flex;
 		align-items: center;
-		gap: 8px;
-		padding: 10px 16px;
-		border-radius: 999px;
-		color: color-mix(in srgb, #fbf8ee 72%, #4a5030);
-		font-size: 11px;
-		font-weight: 700;
-		letter-spacing: 0.18em;
+		gap: 6px;
+		padding: 8px 12px;
+		border-bottom: 2px solid transparent;
+		color: var(--moss);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 500;
+		letter-spacing: 0.02em;
 		text-decoration: none;
 		transition:
-			color 0.25s ease,
-			background 0.25s ease;
+			color 0.2s ease,
+			border-color 0.2s ease;
 	}
 
 	.nav-links a .num {
-		font-variant-numeric: tabular-nums;
-		opacity: 0.55;
-		font-size: 10px;
+		color: var(--moss);
+		opacity: 0.5;
 	}
 
-	.nav-links a:hover {
-		color: #fbf8ee;
-		background: color-mix(in srgb, #fbf8ee 12%, transparent);
+	.nav-links a.is-active {
+		color: var(--ink);
+		font-weight: 600;
+		border-bottom-color: var(--rust);
 	}
 
-	.nav-links a.external .ext-arrow {
-		font-size: 12px;
-		opacity: 0.7;
+	.nav-links a.is-active .num {
+		color: var(--rust);
+		opacity: 1;
 	}
 
-	.nav-links a.cta {
+	.theme-toggle {
+		width: 34px;
+		height: 34px;
 		margin-left: 8px;
-		color: #fbf8ee;
-		border: 1px solid color-mix(in srgb, #c9a344 75%, transparent);
+		padding: 0;
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: transparent;
+		border: 1px solid var(--card-line);
+		border-radius: 0;
+		color: var(--moss);
+		cursor: pointer;
 	}
 
-	.nav-links a.cta:hover {
-		background: var(--color-accent);
-		color: var(--color-on-accent);
+	.theme-toggle .icon {
+		width: 15px;
+		height: 15px;
 	}
 
-	@media (max-width: 900px) {
+	.icon-sun {
+		display: none;
+	}
+
+	:global([data-theme="dark"]) .icon-sun {
+		display: block;
+	}
+
+	:global([data-theme="dark"]) .icon-moon {
+		display: none;
+	}
+
+	@media (max-width: 1100px) {
 		.topbar {
-			padding: 16px 24px;
+			padding: 0 24px;
 		}
 		.nav-links {
 			display: none;

@@ -1,149 +1,537 @@
 ---
-// Hero section — main landing area with name and bio
+import running from "@/data/running.json";
+
+const totalKm = running.totalKm ?? running.baselineTotalKm + running.sinceBaselineKm;
+const averagePace = running.averagePaceMinPerKm
+	? `${Math.floor(running.averagePaceMinPerKm)}:${String(
+			Math.round((running.averagePaceMinPerKm % 1) * 60),
+		).padStart(2, "0")}`
+	: null;
+
+function relativeTime(iso: string) {
+	const diffMs = Date.now() - new Date(iso).getTime();
+	const mins = Math.round(diffMs / 60000);
+	if (mins < 1) return "JUST NOW";
+	if (mins < 60) return `${mins}M AGO`;
+	const hours = Math.round(mins / 60);
+	if (hours < 24) return `${hours}H AGO`;
+	const days = Math.round(hours / 24);
+	if (days === 1) return "YESTERDAY";
+	return `${days}D AGO`;
+}
+
+const syncedLabel = relativeTime(running.updatedAt);
+const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 60 * 1000;
 ---
 
-<section class="hero" id="top">
-	<div class="ghost-grid"></div>
-	<h1 class="hero-name">
-		<span class="hero-line">
-			<span class="accent-name">JADE&nbsp;LEE</span><span class="accent-dot">.</span>
-		</span>
-		<span class="hero-line">BUILDS</span>
-		<span class="hero-line">THINGS.</span>
-	</h1>
-	<div class="hero-bottom">
-		<p class="hero-bio">
-			<strong>CS @ UBC</strong> — Vancouver-based builder shipping voice AI, Chrome extensions, and database
-			tooling. Previously a producer & news editor in Korea.
-		</p>
-		<div class="scroll-indicator">
-			Scroll <span class="arrow">↓</span>
+<section class="about" id="about">
+	<div class="top">
+		<div class="container">
+			<div class="photo-col">
+				<div class="photo">
+					<img src="/images/jade-running.jpg" alt="Jade running at sunset in Vancouver" />
+					<div class="overlay" class:list={[{ "is-stale": isStale }]}>
+						<div class="live-row">
+							<span class="live-dot-wrap">
+								<span class="live-ring"></span>
+								<span class="live-pulse"></span>
+							</span>
+							<span class="live-label">LIVE</span>
+						</div>
+						<div class="running-label">I'M RUNNING · TOTAL</div>
+						<div class="running-total">
+							{totalKm.toLocaleString("en-US", { maximumFractionDigits: 1 })}<span>km</span>
+						</div>
+						{averagePace && (
+							<div class="pace">{averagePace} <span>avg /km</span></div>
+						)}
+					</div>
+				</div>
+				<div class="caption">
+					<span class="caption-icon">⟳</span>
+					<span>AUTO-SYNCED FROM {running.source.toUpperCase()} · <span class="caption-time">{syncedLabel}</span></span>
+				</div>
+			</div>
+
+			<div class="text-col">
+				<div class="eyebrow">
+					<span class="rule"></span>
+					PORTFOLIO — 2026
+				</div>
+
+				<h1 class="name">JADE LEE<span class="period">.</span></h1>
+
+				<div class="subtitle">Computer Science student <span class="rust">@ UBC</span></div>
+
+				<div class="meta-row">
+					<span class="meta-item">BCS · 4TH YEAR · VANCOUVER, CA</span>
+					<span class="divider"></span>
+					<span class="available">
+						<span class="available-dot"></span>
+						AVAILABLE SUMMER 2026
+					</span>
+				</div>
+
+				<p class="tagline">
+					Turning <em>messy human input</em> into structured, useful software — with voice, Chrome, and
+					databases.
+				</p>
+
+				<div class="cta-row">
+					<a href="#works" class="btn primary">VIEW PROJECTS <span aria-hidden="true">→</span></a>
+					<a href="#contact" class="btn secondary">GET IN TOUCH</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="band">
+		<div class="band-inner">
+			<div>
+				<div class="band-label sage">01 — BEFORE</div>
+				<div class="band-body dim">Producer &amp; news editor in Korea. Structuring information under deadline.</div>
+			</div>
+			<div>
+				<div class="band-label mustard">02 — NOW</div>
+				<div class="band-body now">Building voice AI tools &amp; shipping side projects to real users.</div>
+			</div>
+			<div>
+				<div class="band-label sage">03 — NEXT</div>
+				<div class="band-body dim">Summer 2026 backend, cloud, or fullstack SWE internships.</div>
+			</div>
 		</div>
 	</div>
 </section>
 
 <style>
-	.hero {
-		position: relative;
-		min-height: 100vh;
+	.about {
+		box-sizing: border-box;
+		height: calc(100dvh - 72px);
+		overflow: hidden;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.top {
+		flex: 1 1 auto;
+		min-height: 0;
+		display: flex;
+		align-items: center;
 		justify-content: center;
-		padding: 120px 64px 80px;
+		padding: clamp(20px, 3vh, 44px) 0;
+	}
+
+	.container {
+		width: 100%;
+		max-width: 1200px;
+		padding: 0 48px;
+		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: clamp(36px, 5vw, 72px);
+		align-items: center;
+	}
+
+	/* ---------- photo column ---------- */
+
+	.photo-col {
+		width: calc(min(50vh, 540px) * 0.5625);
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.photo {
+		position: relative;
 		overflow: hidden;
-		background: var(--color-global-bg);
-		color: var(--color-global-text);
-		font-family:
-			"Pretendard",
-			-apple-system,
-			BlinkMacSystemFont,
-			system-ui,
-			sans-serif;
+		width: 100%;
+		aspect-ratio: 9 / 16;
+		background: var(--moss);
 	}
 
-	@media (max-width: 768px) {
-		.hero {
-			padding: 120px 24px 60px;
-		}
-	}
-
-	.ghost-grid {
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		opacity: 0.03;
-		background-image:
-			repeating-linear-gradient(
-				0deg,
-				currentColor 0,
-				currentColor 1px,
-				transparent 1px,
-				transparent 80px
-			),
-			repeating-linear-gradient(
-				90deg,
-				currentColor 0,
-				currentColor 1px,
-				transparent 1px,
-				transparent 80px
-			);
-	}
-
-	.hero-name {
-		font-weight: 900;
-		font-size: clamp(64px, 11.5vw, 140px);
-		line-height: 0.88;
-		letter-spacing: -0.05em;
-	}
-
-	.hero-line {
+	.photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 		display: block;
 	}
 
-	.accent-dot,
-	.accent-name {
-		color: var(--color-accent);
-	}
-
-	.hero-bottom {
+	.overlay {
 		position: absolute;
-		left: 64px;
-		right: 64px;
-		bottom: 48px;
+		left: 0;
+		right: 0;
+		top: 0;
+		padding: 14px 16px 16px;
+		background: linear-gradient(
+			180deg,
+			rgba(247, 249, 250, 0.92) 0%,
+			rgba(247, 249, 250, 0.88) 74%,
+			rgba(247, 249, 250, 0) 100%
+		);
+		color: var(--ink-deep);
+		pointer-events: none;
+	}
+
+	.live-row {
 		display: flex;
-		justify-content: space-between;
-		align-items: flex-end;
-		gap: 24px;
-		font-size: 13px;
-		color: var(--color-muted);
-		font-weight: 500;
-	}
-
-	.hero-bio {
-		max-width: 340px;
-		line-height: 1.6;
-	}
-
-	.hero-bio strong {
-		color: var(--color-global-text);
-		font-weight: 600;
-	}
-
-	.scroll-indicator {
-		font-size: 11px;
+		align-items: center;
+		gap: 7px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 9px;
 		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.18em;
-		color: var(--color-global-text);
+		letter-spacing: 0.14em;
+		/* fixed literal — this sits on the hero photo's light stat plate,
+		   which never themes since the photo underneath it never changes */
+		color: #4a5030;
+		margin-bottom: 6px;
+	}
+
+	.live-dot-wrap {
+		position: relative;
+		width: 6px;
+		height: 6px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.live-ring,
+	.live-pulse {
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: var(--rust);
+	}
+
+	.live-ring {
+		animation: liveRing 2.4s ease-out infinite;
+	}
+
+	.live-pulse {
+		animation: livePulse 2.4s ease-in-out infinite;
+	}
+
+	.overlay.is-stale .live-ring,
+	.overlay.is-stale .live-pulse {
+		animation: none;
+	}
+
+	.overlay.is-stale .live-ring {
+		display: none;
+	}
+
+	.overlay.is-stale .live-pulse {
+		/* fixed literal — see .live-row note above */
+		background: #7a6b4f;
+	}
+
+	.overlay.is-stale .live-label {
+		color: #7a6b4f;
+	}
+
+	.live-label {
+		color: var(--rust);
+		font-size: 10px;
+	}
+
+	.running-label {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 9.5px;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		color: var(--ink-deep);
+		margin-bottom: 5px;
+		white-space: nowrap;
+	}
+
+	.running-total {
+		font-family: "Archivo", sans-serif;
+		font-weight: 900;
+		font-size: clamp(34px, 6vh, 56px);
+		line-height: 0.82;
+		letter-spacing: -0.05em;
+		white-space: nowrap;
+	}
+
+	.running-total span {
+		font-size: 0.34em;
+		margin-left: 3px;
+		color: var(--rust);
+	}
+
+	.pace {
+		margin-top: 8px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 11.5px;
+		font-weight: 700;
+		color: var(--ink-deep);
+		white-space: nowrap;
+	}
+
+	.pace span {
+		/* fixed literal — see .live-row note above */
+		color: #4a5030;
+	}
+
+	.caption {
+		display: flex;
+		align-items: baseline;
+		gap: 6px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 10.5px;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		line-height: 1.5;
+		color: var(--stone);
+	}
+
+	.caption-icon {
+		line-height: 1;
+	}
+
+	.caption-time {
+		color: var(--rust);
+	}
+
+	@keyframes livePulse {
+		0%,
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 0.35;
+			transform: scale(0.82);
+		}
+	}
+
+	@keyframes liveRing {
+		0% {
+			opacity: 0.55;
+			transform: scale(1);
+		}
+		70%,
+		100% {
+			opacity: 0;
+			transform: scale(2.6);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.live-ring,
+		.live-pulse {
+			animation: none;
+		}
+		.live-ring {
+			display: none;
+		}
+	}
+
+	/* ---------- text column ---------- */
+
+	.text-col {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 600;
+		color: var(--taupe);
+		letter-spacing: 0.06em;
+		margin-bottom: clamp(14px, 2.4vh, 26px);
+	}
+
+	.eyebrow .rule {
+		width: 24px;
+		height: 1px;
+		background: var(--rust);
+	}
+
+	.name {
+		margin: 0;
+		font-family: "Archivo", sans-serif;
+		font-weight: 900;
+		font-size: clamp(52px, min(9vw, 11.5vh), 116px);
+		line-height: 0.86;
+		letter-spacing: -0.05em;
+		color: var(--ink);
+	}
+
+	.name .period {
+		color: var(--rust);
+	}
+
+	.subtitle {
+		margin-top: clamp(14px, 2.4vh, 24px);
+		font-family: "Archivo", sans-serif;
+		font-weight: 700;
+		font-size: clamp(19px, min(2.4vw, 3.2vh), 28px);
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		color: var(--moss);
+	}
+
+	.subtitle .rust {
+		color: var(--rust);
+	}
+
+	.meta-row {
+		margin-top: clamp(8px, 1.4vh, 12px);
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		flex-wrap: wrap;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 500;
+		color: var(--taupe);
+		letter-spacing: 0.04em;
+	}
+
+	.meta-item {
+		white-space: nowrap;
+	}
+
+	.divider {
+		width: 1px;
+		height: 12px;
+		background: var(--hairline);
+	}
+
+	.available {
 		display: flex;
 		align-items: center;
 		gap: 8px;
+		color: var(--rust);
+		font-weight: 600;
+		white-space: nowrap;
 	}
 
-	.scroll-indicator .arrow {
-		display: inline-block;
-		animation: bob 1.8s ease-in-out infinite;
+	.available-dot {
+		width: 7px;
+		height: 7px;
+		background: var(--rust);
+		border-radius: 50%;
 	}
 
-	@keyframes bob {
-		0%,
-		100% {
-			transform: translateY(0);
-		}
-		50% {
-			transform: translateY(6px);
-		}
+	.tagline {
+		margin: clamp(16px, 2.8vh, 26px) 0 0;
+		font-family: "Fraunces", serif;
+		font-weight: 400;
+		font-size: clamp(16px, min(1.9vw, 2.5vh), 22px);
+		line-height: 1.4;
+		letter-spacing: -0.01em;
+		color: var(--stone);
+		text-wrap: pretty;
 	}
 
-	@media (max-width: 768px) {
-		.hero-bottom {
-			position: static;
-			flex-direction: column;
-			align-items: flex-start;
-			margin-top: 48px;
-		}
-		.hero-bottom > * {
-			width: 100%;
-		}
+	.tagline em {
+		font-style: italic;
+		color: var(--rust);
+	}
+
+	.cta-row {
+		display: flex;
+		gap: 12px;
+		margin-top: clamp(18px, 3.2vh, 34px);
+		flex-wrap: wrap;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		padding: clamp(11px, 1.7vh, 15px) 26px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 13px;
+		font-weight: 700;
+		text-decoration: none;
+		border-radius: 0;
+	}
+
+	.btn.primary {
+		background: var(--rust);
+		color: var(--on-rust);
+	}
+
+	.btn.primary span {
+		font-size: 15px;
+	}
+
+	.btn.secondary {
+		background: transparent;
+		color: var(--ink);
+		border: 1.5px solid var(--hairline);
+	}
+
+	/* ---------- before / now / next band ---------- */
+
+	.band {
+		flex: 0 0 auto;
+		background: var(--moss-band);
+	}
+
+	.band-inner {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: clamp(20px, 3.4vh, 40px) 48px;
+		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0;
+	}
+
+	.band-inner > div:nth-child(1) {
+		padding: 0 32px 0 0;
+	}
+
+	.band-inner > div:nth-child(2) {
+		padding: 0 32px;
+		border-left: 1px solid rgba(226, 224, 205, 0.2);
+	}
+
+	.band-inner > div:nth-child(3) {
+		padding: 0 0 0 32px;
+		border-left: 1px solid rgba(226, 224, 205, 0.2);
+	}
+
+	.band-label {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		margin-bottom: clamp(6px, 1.2vh, 12px);
+	}
+
+	.band-label.sage {
+		color: var(--sage-muted);
+	}
+
+	.band-label.mustard {
+		color: var(--mustard-light);
+	}
+
+	.band-body {
+		font-size: clamp(14px, min(1.15vw, 2.1vh), 17px);
+		line-height: 1.5;
+		text-wrap: pretty;
+	}
+
+	.band-body.dim {
+		color: var(--cream-dim);
+		font-weight: 400;
+	}
+
+	.band-body.now {
+		/* fixed literal — the band is one of the three always-dark
+		   sections and never themes, per spec */
+		color: #fbf8ee;
+		font-weight: 500;
 	}
 </style>

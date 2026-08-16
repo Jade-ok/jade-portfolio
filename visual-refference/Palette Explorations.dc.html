@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+  a { color: inherit; }
+</style>
+</helmet>
+
+<div style="padding: 48px; background: #efece3; min-height: 100vh; font-family: 'Inter', system-ui, sans-serif;">
+
+  <div style="max-width: 1400px; margin: 0 auto 48px; display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap;">
+    <h1 style="font-size: 32px; font-weight: 700; letter-spacing: -0.02em; margin: 0; color: #3d3a2e;">따뜻한 올가닉 팔레트 6종</h1>
+    <p style="margin: 0; color: #7a7563; font-size: 14px; line-height: 1.5; max-width: 640px;">
+      현재 배경(#F5F0DC 근처)이 조금 노란기가 강해 눈이 피로할 수 있어요. 채도를 살짝 낮추고, 배경/텍스트 명도 대비를 좁혀서 부드럽게 만든 6가지 조합입니다. 각 카드 아래 헥스 코드를 그대로 복사해서 쓰세요.
+    </p>
+  </div>
+
+  <section id="5a" style="max-width: 1400px; margin: 0 auto 48px; display: flex; flex-direction: column; gap: 24px;">
+
+    <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+      <a href="#5a" style="background: #3f4a2a; color: #ede4c9; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; text-decoration: none;">5a</a>
+      <h2 style="margin: 0; font-size: 22px; font-weight: 700; color: #3d3a2e;">밝은 배경 + 따뜻한 액센트 (친구 피드백 반영)</h2>
+      <span style="font-size: 13px; color: #7a6b4f;">배경만 밝게, 그린·머스타드는 유지</span>
+    </div>
+
+    <div style="font-size: 13px; color: #6b6a55; line-height: 1.6; max-width: 780px;">
+      배경을 크림/아이보리보다 <strong>더 밝은 페이퍼 화이트</strong>로 올려서 답답함을 없애고, 모스 그린·머스타드·브라운은 <strong>포인트로만</strong> 남겨 따뜻함은 유지. 배경 4단계 밝기별로 비교해보세요.
+    </div>
+
+    <!-- Row: 4 background brightness options -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+
+      <!-- BG-1: current -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #d8d1bd; background: #f5f0dc; aspect-ratio: 1; display: flex; align-items: flex-end; padding: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #7a6b4f;">현재</span>
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3d3a2e;"><strong>#F5F0DC</strong></div>
+        <div style="font-size: 11px; color: #7a6b4f; line-height: 1.4;">지금 사이트. 노랑끼 있고 톤이 무거움.</div>
+      </div>
+
+      <!-- BG-2: paper cream -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #e5dfc8; background: #faf5e6; aspect-ratio: 1; display: flex; align-items: flex-end; padding: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #7a6b4f;">한 톤 ↑</span>
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3d3a2e;"><strong>#FAF5E6</strong></div>
+        <div style="font-size: 11px; color: #7a6b4f; line-height: 1.4;">밝은 크림. 여전히 따뜻하지만 답답함 줄어듦.</div>
+      </div>
+
+      <!-- BG-3: paper white -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #ece7d4; background: #fbf8ee; aspect-ratio: 1; display: flex; align-items: flex-end; padding: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #7a6b4f;">추천 ★</span>
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3d3a2e;"><strong>#FBF8EE</strong></div>
+        <div style="font-size: 11px; color: #7a6b4f; line-height: 1.4;">페이퍼 화이트. 밝지만 하얗지 않음. 눈 편함 + 개성 유지.</div>
+      </div>
+
+      <!-- BG-4: warm white -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="border-radius: 12px; overflow: hidden; border: 1px solid #eeeadd; background: #fdfaf3; aspect-ratio: 1; display: flex; align-items: flex-end; padding: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #7a6b4f;">거의 화이트</span>
+        </div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3d3a2e;"><strong>#FDFAF3</strong></div>
+        <div style="font-size: 11px; color: #7a6b4f; line-height: 1.4;">웜 화이트. 가장 밝음. 따뜻함이 살짝 옅어질 수 있음.</div>
+      </div>
+
+    </div>
+
+    <!-- Final recommended palette on bright bg -->
+    <div style="background: #fbf8ee; border-radius: 16px; padding: 32px; border: 1px solid #ece7d4;">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px;">
+        <span style="background: #3f4a2a; color: #fbf8ee; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">FINAL</span>
+        <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #3f4a2a;">추천 최종 팔레트</h3>
+        <span style="font-size: 12px; color: #7a6b4f;">밝은 페이퍼 + 따뜻한 액센트</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #fbf8ee; aspect-ratio: 1; border-radius: 10px; border: 1px solid #ece7d4;"></div><div style="margin-top: 8px; color: #3f4a2a;"><strong>#FBF8EE</strong><br><span style="color:#7a6b4f;">bg · paper</span></div></div>
+        <div><div style="background: #3f4a2a; aspect-ratio: 1; border-radius: 10px;"></div><div style="margin-top: 8px; color: #3f4a2a;"><strong>#3F4A2A</strong><br><span style="color:#7a6b4f;">text · moss</span></div></div>
+        <div><div style="background: #6b7a4a; aspect-ratio: 1; border-radius: 10px;"></div><div style="margin-top: 8px; color: #3f4a2a;"><strong>#6B7A4A</strong><br><span style="color:#7a6b4f;">secondary · fern</span></div></div>
+        <div><div style="background: #c9a344; aspect-ratio: 1; border-radius: 10px;"></div><div style="margin-top: 8px; color: #3f4a2a;"><strong>#C9A344</strong><br><span style="color:#7a6b4f;">accent · mustard</span></div></div>
+        <div><div style="background: #a85e28; aspect-ratio: 1; border-radius: 10px;"></div><div style="margin-top: 8px; color: #3f4a2a;"><strong>#A85E28</strong><br><span style="color:#7a6b4f;">warm · rust</span></div></div>
+        <div><div style="background: #7a6b4f; aspect-ratio: 1; border-radius: 10px;"></div><div style="margin-top: 8px; color: #3f4a2a;"><strong>#7A6B4F</strong><br><span style="color:#7a6b4f;">muted text</span></div></div>
+      </div>
+    </div>
+
+    <div style="font-size: 12px; color: #6b6a55; line-height: 1.6; background: #ece7d4; padding: 16px 20px; border-radius: 10px;">
+      💡 <strong>핵심 원리:</strong> 배경을 밝게 하면 (1) 답답함이 사라지고 (2) 짙은 모스 그린 텍스트가 훨씬 <strong>또렷</strong>하게 보여서 오히려 눈에 더 잘 띔. (3) 따뜻함은 배경보다 <strong>액센트 색</strong>(머스타드·러스트)에서 나오는 게 정석. 배경까지 노랗게 하면 화면 전체가 흐릿해져요.
+    </div>
+
+  </section>
+
+  <section id="4a" style="max-width: 1400px; margin: 0 auto 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+
+    <div style="grid-column: 1 / -1; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+      <a href="#4a" style="background: #3f4a2a; color: #ede4c9; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; text-decoration: none;">4a</a>
+      <h2 style="margin: 0; font-size: 22px; font-weight: 700; color: #3d3a2e;">Moss+Mustard "더 눈에 띄게" 3안</h2>
+      <span style="font-size: 13px; color: #7a6b4f;">배경 톤 / 대비 / 임팩트 강화</span>
+    </div>
+
+    <!-- A: Deeper background tone -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="background: #3f4a2a; color: #ede4c9; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">A</span>
+        <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #3d3a2e;">배경 톤 진하게</h3>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #c8bfa0;">
+        <div style="background: #e0d4a8; padding: 20px; aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #3f4a2a;">
+            <span>● JADE LEE</span>
+            <span style="background: #3f4a2a; color: #e0d4a8; padding: 3px 8px; border-radius: 999px;">ABOUT</span>
+          </div>
+          <div style="font-size: 34px; font-weight: 900; color: #3f4a2a; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS <span style="color: #b8892e;">THINGS.</span></div>
+          <div style="font-size: 9px; color: #3f4a2a; font-family: 'JetBrains Mono', monospace;">CS @ UBC · Vancouver</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; align-items: center;">
+        <div style="width:20px; height:20px; background:#ede4c9; border:1px solid #c8bfa0; border-radius:4px;"></div>
+        <span style="color:#7a6b4f;">#EDE4C9 →</span>
+        <div style="width:20px; height:20px; background:#e0d4a8; border-radius:4px;"></div>
+        <span style="color:#3d3a2e; font-weight:600;">#E0D4A8</span>
+      </div>
+      <div style="font-size: 11px; color: #6b6a55; line-height: 1.5;">가장 안전. 배경만 한 톤 진하게 하면 화면 전체에 <strong>존재감</strong>이 생기고 모스 그린과 대비도 살아남.</div>
+    </div>
+
+    <!-- B: Split mustard band -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="background: #b8892e; color: #262d18; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">B</span>
+        <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #3d3a2e;">머스타드 밴드 히어로</h3>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #c8bfa0;">
+        <div style="aspect-ratio: 4/3; display: grid; grid-template-rows: 1fr auto;">
+          <div style="background: #ede4c9; padding: 20px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #3f4a2a;">
+              <span>● JADE LEE</span>
+              <span style="background: #3f4a2a; color: #ede4c9; padding: 3px 8px; border-radius: 999px;">ABOUT</span>
+            </div>
+            <div style="font-size: 34px; font-weight: 900; color: #3f4a2a; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="background: #c9a344; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; color: #3f2e10; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;">
+            <span>NOW SHIPPING → VOICE AI · CHROME EXT · DB TOOLS</span>
+            <span>2026</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; align-items: center;">
+        <div style="width:20px; height:20px; background:#c9a344; border-radius:4px;"></div>
+        <span style="color:#3d3a2e; font-weight:600;">#C9A344 밴드</span>
+      </div>
+      <div style="font-size: 11px; color: #6b6a55; line-height: 1.5;">히어로 하단에 <strong>머스타드 티커 밴드</strong>. 흐르는 텍스트로 만들면 애니메이션 요소까지 확보. 시선 확실히 끌림.</div>
+    </div>
+
+    <!-- C: Big graphic element -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="background: #a85e28; color: #f6efd8; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">C</span>
+        <h3 style="margin: 0; font-size: 16px; font-weight: 700; color: #3d3a2e;">큰 그래픽 오브젝트</h3>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #c8bfa0;">
+        <div style="background: #ede4c9; padding: 20px; aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;">
+          <div style="position: absolute; right: -40px; top: -40px; width: 220px; height: 220px; border-radius: 50%; background: #c9a344;"></div>
+          <div style="position: absolute; right: 20px; top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #3f2e10; writing-mode: vertical-rl; font-weight: 700;">EST · 2020</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: #3f4a2a; position: relative;">
+            <span>● JADE LEE</span>
+          </div>
+          <div style="font-size: 34px; font-weight: 900; color: #3f4a2a; line-height: 0.95; letter-spacing: -0.03em; position: relative;">JADE LEE.<br>BUILDS<br>THINGS.</div>
+          <div style="font-size: 9px; color: #3f4a2a; font-family: 'JetBrains Mono', monospace; position: relative;">CS @ UBC · Vancouver</div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px; align-items: center;">
+        <div style="width:20px; height:20px; background:#c9a344; border-radius:50%;"></div>
+        <span style="color:#3d3a2e; font-weight:600;">머스타드 원 · 오브젝트</span>
+      </div>
+      <div style="font-size: 11px; color: #6b6a55; line-height: 1.5;">머스타드 <strong>원/도형</strong>을 큰 그래픽 요소로. 브랜드 시그니처 오브젝트가 되고, 스크롤/호버로 움직이면 더 재밌음.</div>
+    </div>
+
+  </section>
+
+  <section id="3a" style="max-width: 1400px; margin: 0 auto 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;">
+
+    <div style="grid-column: 1 / -1; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;">
+      <a href="#3a" style="background: #4a3a28; color: #f4ead6; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; text-decoration: none;">3a</a>
+      <h2 style="margin: 0; font-size: 22px; font-weight: 700; color: #3d3a2e;">좋아하신 톤 조합 실전 미리보기</h2>
+      <span style="font-size: 13px; color: #7a6b4f;">Moss+Mustard 실사용 · Walnut&Fern 확장 · 눈편한 Rye</span>
+    </div>
+
+    <!-- 3-1: Moss + Mustard fully used -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #3f4a2a; color: #ede4c9; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">03·A</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Moss + Mustard 실제 조합</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">머스타드를 UI에 실제로 배치</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #ede4c9; padding: 24px 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3f4a2a;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 8px; height: 8px; background: #b8892e; border-radius: 50%;"></span>JADE LEE</span>
+            <span style="display: flex; gap: 14px;">
+              <span style="background: #3f4a2a; color: #ede4c9; padding: 4px 10px; border-radius: 999px;">01 ABOUT</span>
+              <span>02 PROJECTS</span>
+              <span>03 HISTORY</span>
+              <span style="color: #b8892e; font-weight: 600;">LET'S TALK →</span>
+            </span>
+          </div>
+          <div>
+            <div style="font-size: 52px; font-weight: 900; color: #3f4a2a; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS <span style="color: #b8892e;">THINGS.</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div style="font-size: 11px; color: #3f4a2a; font-family: 'JetBrains Mono', monospace; max-width: 60%;"><strong>CS @ UBC</strong> — Vancouver-based builder shipping voice AI, Chrome extensions.</div>
+            <span style="background: #b8892e; color: #262d18; font-size: 10px; font-weight: 700; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">NEW · 2026</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px;">
+        <div><div style="background: #ede4c9; aspect-ratio: 1; border-radius: 6px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 4px; color: #6b6a55;">#EDE4C9<br>bg</div></div>
+        <div><div style="background: #3f4a2a; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#3F4A2A<br>moss</div></div>
+        <div><div style="background: #b8892e; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#B8892E<br>mustard</div></div>
+        <div><div style="background: #7a8a5a; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#7A8A5A<br>sage</div></div>
+        <div><div style="background: #a85e28; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#A85E28<br>rust</div></div>
+        <div><div style="background: #d9c68a; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#D9C68A<br>straw</div></div>
+        <div><div style="background: #f6efd8; aspect-ratio: 1; border-radius: 6px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 4px; color: #6b6a55;">#F6EFD8<br>paper</div></div>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #d8d1bd; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d8d1bd;">
+        <div style="background: #ede4c9; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#7a8a5a;">CARD · DEFAULT</div>
+          <div style="font-size: 14px; font-weight: 800; color: #3f4a2a;">Voice AI</div>
+          <div style="font-size: 10px; color: #7a8a5a;">Chrome extension</div>
+          <span style="background:#b8892e; color:#262d18; font-size:9px; padding:2px 8px; border-radius:999px; align-self:flex-start; font-family:'JetBrains Mono',monospace;">SHIPPED</span>
+        </div>
+        <div style="background: #f6efd8; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#7a8a5a;">CARD · PAPER</div>
+          <div style="font-size: 14px; font-weight: 800; color: #3f4a2a;">DB Tooling</div>
+          <div style="font-size: 10px; color: #7a8a5a;">Postgres helper</div>
+          <span style="background:#a85e28; color:#f6efd8; font-size:9px; padding:2px 8px; border-radius:999px; align-self:flex-start; font-family:'JetBrains Mono',monospace;">WIP</span>
+        </div>
+        <div style="background: #3f4a2a; padding: 16px; display: flex; flex-direction: column; gap: 6px; color:#ede4c9;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#d9c68a;">CARD · DARK</div>
+          <div style="font-size: 14px; font-weight: 800;">History</div>
+          <div style="font-size: 10px; color: #d9c68a;">2020 — 2026</div>
+          <span style="background:#b8892e; color:#262d18; font-size:9px; padding:2px 8px; border-radius:999px; align-self:flex-start; font-family:'JetBrains Mono',monospace;">TIMELINE</span>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: #6b6a55; line-height: 1.5;">→ 코어(모스+머스타드+베이지) 위에 <strong>Sage / Rust / Straw / Paper</strong> 4개 서포트. Sage(#7A8A5A)는 보조 텍스트, Rust(#A85E28)는 WIP·경고, Straw(#D9C68A)는 다크 위 액센트, Paper(#F6EFD8)는 카드 대비용.</div>
+    </div>
+
+    <!-- 3-2: Moss + Mustard - mustard as background block -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #3f4a2a; color: #ede4c9; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">03·B</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Moss + Mustard 섹션 대비</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">머스타드 블록 반전</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd; display: grid; grid-template-columns: 2fr 1fr;">
+        <div style="background: #ede4c9; padding: 24px; aspect-ratio: auto; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #3f4a2a;">● JADE LEE</div>
+          <div style="font-size: 38px; font-weight: 900; color: #3f4a2a; line-height: 0.95; letter-spacing: -0.03em;">BUILDS<br>THINGS.</div>
+          <div style="font-size: 10px; color: #3f4a2a; font-family: 'JetBrains Mono', monospace;">CS @ UBC</div>
+        </div>
+        <div style="background: #c9a344; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; color: #3f2e10;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700;">FEATURED</div>
+          <div style="font-size: 18px; font-weight: 800; line-height: 1.1;">Voice AI Chrome extension</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px;">→ view case</div>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: #6b6a55; line-height: 1.5;">→ 프로젝트 카드나 CTA 섹션에 <strong>머스타드 블록</strong>을 통째로 쓰는 방법. 대비가 강해서 시선을 끕니다.</div>
+    </div>
+
+    <!-- 3-3: Walnut & Fern expanded -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #4a3a28; color: #ece3d0; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">06·A</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Walnut & Fern 확장</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">브라운 텍스트 + 그린 액센트</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8c8a8;">
+        <div style="background: #ece3d0; padding: 24px 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a3a28;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 8px; height: 8px; background: #6b7a4a; border-radius: 50%;"></span>JADE LEE</span>
+            <span style="display: flex; gap: 14px;">
+              <span style="background: #4a3a28; color: #ece3d0; padding: 4px 10px; border-radius: 999px;">01 ABOUT</span>
+              <span>02 PROJECTS</span>
+              <span>03 HISTORY</span>
+              <span style="color: #6b7a4a; font-weight: 600;">LET'S TALK →</span>
+            </span>
+          </div>
+          <div>
+            <div style="font-size: 52px; font-weight: 900; color: #4a3a28; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS <span style="color: #6b7a4a;">THINGS.</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div style="font-size: 11px; color: #6b4a35; font-family: 'JetBrains Mono', monospace; max-width: 60%;"><strong style="color:#4a3a28;">CS @ UBC</strong> — Vancouver-based builder shipping voice AI, Chrome extensions.</div>
+            <span style="background: #6b7a4a; color: #ece3d0; font-size: 10px; font-weight: 700; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">NEW · 2026</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 9px;">
+        <div><div style="background: #ece3d0; aspect-ratio: 1; border-radius: 6px; border: 1px solid #d8c8a8;"></div><div style="margin-top: 4px; color: #6b6a55;">#ECE3D0<br>bg</div></div>
+        <div><div style="background: #4a3a28; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#4A3A28<br>walnut</div></div>
+        <div><div style="background: #6b7a4a; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#6B7A4A<br>fern</div></div>
+        <div><div style="background: #a8946e; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#A8946E<br>tan</div></div>
+        <div><div style="background: #c67848; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#C67848<br>terra</div></div>
+        <div><div style="background: #d9b878; aspect-ratio: 1; border-radius: 6px;"></div><div style="margin-top: 4px; color: #6b6a55;">#D9B878<br>honey</div></div>
+        <div><div style="background: #f8f2e2; aspect-ratio: 1; border-radius: 6px; border: 1px solid #d8c8a8;"></div><div style="margin-top: 4px; color: #6b6a55;">#F8F2E2<br>paper</div></div>
+      </div>
+      <div style="border-radius: 12px; overflow: hidden; border: 1px solid #d8c8a8; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #d8c8a8;">
+        <div style="background: #ece3d0; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#a8946e;">CARD · DEFAULT</div>
+          <div style="font-size: 14px; font-weight: 800; color: #4a3a28;">Voice AI</div>
+          <div style="font-size: 10px; color: #6b4a35;">Chrome extension</div>
+          <span style="background:#6b7a4a; color:#ece3d0; font-size:9px; padding:2px 8px; border-radius:999px; align-self:flex-start; font-family:'JetBrains Mono',monospace;">SHIPPED</span>
+        </div>
+        <div style="background: #f8f2e2; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#a8946e;">CARD · PAPER</div>
+          <div style="font-size: 14px; font-weight: 800; color: #4a3a28;">DB Tooling</div>
+          <div style="font-size: 10px; color: #6b4a35;">Postgres helper</div>
+          <span style="background:#c67848; color:#f8f2e2; font-size:9px; padding:2px 8px; border-radius:999px; align-self:flex-start; font-family:'JetBrains Mono',monospace;">WIP</span>
+        </div>
+        <div style="background: #4a3a28; padding: 16px; display: flex; flex-direction: column; gap: 6px; color:#ece3d0;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:9px; color:#a8946e;">CARD · DARK</div>
+          <div style="font-size: 14px; font-weight: 800;">History</div>
+          <div style="font-size: 10px; color: #d9b878;">2020 — 2026</div>
+          <span style="background:#d9b878; color:#4a3a28; font-size:9px; padding:2px 8px; border-radius:999px; align-self:flex-start; font-family:'JetBrains Mono',monospace;">TIMELINE</span>
+        </div>
+      </div>
+      <div style="font-size: 12px; color: #6b6a55; line-height: 1.5;">→ 코어(월넛+펀+베이지) 3색 위에 <strong>Tan / Terra / Honey / Paper</strong> 4개 서포트 칩을 얹으면 카드·태그·다크섹션까지 커버 가능. Terra(#C67848)는 WIP·경고, Honey(#D9B878)는 배지·아이콘, Paper(#F8F2E2)는 카드 배경 대비용.</div>
+    </div>
+
+    <!-- 3-4: Softened Rye - keep yellow but tone down -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #5a4020; color: #ecd888; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">10·A</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Soft Rye — 눈편한 버전</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">배경은 크림, 노랑은 포인트로</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8c8a8;">
+        <div style="background: #f5ecd0; padding: 24px 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5a4020;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 8px; height: 8px; background: #e8c94a; border-radius: 50%;"></span>JADE LEE</span>
+            <span style="display: flex; gap: 14px;">
+              <span style="background: #5a4020; color: #f5ecd0; padding: 4px 10px; border-radius: 999px;">01 ABOUT</span>
+              <span>02 PROJECTS</span>
+              <span>03 HISTORY</span>
+              <span style="color: #a85e28; font-weight: 600;">LET'S TALK →</span>
+            </span>
+          </div>
+          <div>
+            <div style="font-size: 52px; font-weight: 900; color: #5a4020; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS <span style="background: #e8c94a; padding: 0 8px; border-radius: 4px;">THINGS.</span></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div style="font-size: 11px; color: #8a6a30; font-family: 'JetBrains Mono', monospace; max-width: 60%;"><strong style="color:#5a4020;">CS @ UBC</strong> — Vancouver-based builder shipping voice AI, Chrome extensions.</div>
+            <span style="background: #e8c94a; color: #5a4020; font-size: 10px; font-weight: 700; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">NEW · 2026</span>
+          </div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f5ecd0; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8c8a8;"></div><div style="margin-top: 6px; color: #6b6a55;">#F5ECD0<br>bg (부드러움)</div></div>
+        <div><div style="background: #e8c94a; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#E8C94A<br>노랑 유지</div></div>
+        <div><div style="background: #5a4020; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#5A4020<br>text</div></div>
+        <div><div style="background: #a85e28; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#A85E28<br>accent</div></div>
+      </div>
+      <div style="font-size: 12px; color: #6b6a55; line-height: 1.5;">→ 노랑(#E8C94A)은 그대로 예쁜 채로 <strong>배지·하이라이트</strong>에만 쓰고, 배경은 크림으로 낮춤. 눈부심 해결.</div>
+    </div>
+
+  </section>
+
+  <section id="2a" style="max-width: 1400px; margin: 0 auto 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;">
+
+    <div style="grid-column: 1 / -1; display: flex; align-items: baseline; gap: 16px;">
+      <a href="#2a" style="background: #4a3a28; color: #f4ead6; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; text-decoration: none;">2a</a>
+      <h2 style="margin: 0; font-size: 22px; font-weight: 700; color: #3d3a2e;">토스티 브라운 · 옐로 베이스 4종</h2>
+      <span style="font-size: 13px; color: #7a6b4f;">구운 빵, 카라멜, 위스키 느낌</span>
+    </div>
+
+    <!-- Toasty 1: Caramel Toast -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #5c3a1e; color: #f2dfb8; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">07</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Caramel Toast</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">캐러멜 · 구운 식빵</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8c5a0;">
+        <div style="background: #f2dfb8; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5c3a1e;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #5c3a1e; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #5c3a1e; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #8a5e30; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f2dfb8; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8c5a0;"></div><div style="margin-top: 6px; color: #6b6a55;">#F2DFB8<br>bg</div></div>
+        <div><div style="background: #5c3a1e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#5C3A1E<br>primary</div></div>
+        <div><div style="background: #c8842e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#C8842E<br>accent</div></div>
+        <div><div style="background: #8a5e30; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#8A5E30<br>text2</div></div>
+      </div>
+    </div>
+
+    <!-- Toasty 2: Honey Whiskey -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #6b3f18; color: #f5e6c0; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">08</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Honey Whiskey</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">꿀 · 위스키 앰버</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8c5a0;">
+        <div style="background: #f5e6c0; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b3f18;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #d49838; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #6b3f18; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #9c6a2e; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f5e6c0; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8c5a0;"></div><div style="margin-top: 6px; color: #6b6a55;">#F5E6C0<br>bg</div></div>
+        <div><div style="background: #6b3f18; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#6B3F18<br>primary</div></div>
+        <div><div style="background: #d49838; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#D49838<br>amber</div></div>
+        <div><div style="background: #9c6a2e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#9C6A2E<br>text2</div></div>
+      </div>
+    </div>
+
+    <!-- Toasty 3: Roasted Almond -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #4a2e18; color: #ecd4a8; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">09</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Roasted Almond</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">진한 로스팅 · 아몬드 브라운</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #c8b088;">
+        <div style="background: #ecd4a8; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a2e18;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #4a2e18; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #4a2e18; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #7a4e28; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #ecd4a8; aspect-ratio: 1; border-radius: 8px; border: 1px solid #c8b088;"></div><div style="margin-top: 6px; color: #6b6a55;">#ECD4A8<br>bg</div></div>
+        <div><div style="background: #4a2e18; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#4A2E18<br>primary</div></div>
+        <div><div style="background: #b8712e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#B8712E<br>accent</div></div>
+        <div><div style="background: #7a4e28; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#7A4E28<br>text2</div></div>
+      </div>
+    </div>
+
+    <!-- Toasty 4: Buttered Rye -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #5a4020; color: #f0d888; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">10</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Buttered Rye</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">버터 · 노란 호밀빵</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d4bc78;">
+        <div style="background: #f0d888; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5a4020;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #5a4020; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #5a4020; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #8a6a30; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f0d888; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d4bc78;"></div><div style="margin-top: 6px; color: #6b6a55;">#F0D888<br>bg</div></div>
+        <div><div style="background: #5a4020; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#5A4020<br>primary</div></div>
+        <div><div style="background: #a85e28; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#A85E28<br>accent</div></div>
+        <div><div style="background: #8a6a30; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#8A6A30<br>text2</div></div>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="1a" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;">
+    <div style="grid-column: 1 / -1; display: flex; align-items: baseline; gap: 16px;">
+      <a href="#1a" style="background: #6b6a55; color: #f2eede; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; text-decoration: none;">1a</a>
+      <h2 style="margin: 0; font-size: 22px; font-weight: 700; color: #3d3a2e;">이전 그린 계열 6종</h2>
+    </div>
+
+    <!-- Palette 1: Sage & Oat -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #3d3a2e; color: #f2eede; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">01</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Sage & Oat</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">차분한 세이지 그린 · 오트밀</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #f2eede; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6a55;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #6b6a55; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #6b6a55; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #6b6a55; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f2eede; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 6px; color: #6b6a55;">#F2EEDE<br>bg</div></div>
+        <div><div style="background: #6b6a55; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#6B6A55<br>primary</div></div>
+        <div><div style="background: #b8a878; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#B8A878<br>accent</div></div>
+        <div><div style="background: #3d3a2e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#3D3A2E<br>text</div></div>
+      </div>
+    </div>
+
+    <!-- Palette 2: Olive & Cream (refined from current) -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #4a5030; color: #f0ead6; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">02</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Olive & Cream</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">현재 톤 개선 · 노랑끼 완화</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #f0ead6; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a5030;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #4a5030; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #4a5030; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #4a5030; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f0ead6; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 6px; color: #6b6a55;">#F0EAD6<br>bg</div></div>
+        <div><div style="background: #4a5030; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#4A5030<br>primary</div></div>
+        <div><div style="background: #c9b878; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#C9B878<br>accent</div></div>
+        <div><div style="background: #2e3320; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#2E3320<br>text</div></div>
+      </div>
+    </div>
+
+    <!-- Palette 3: Moss & Mustard -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #3f4a2a; color: #ede4c9; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">03</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Moss & Mustard</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">깊은 이끼 · 머스타드 포인트</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #ede4c9; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3f4a2a;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #b8892e; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #3f4a2a; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #3f4a2a; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #ede4c9; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 6px; color: #6b6a55;">#EDE4C9<br>bg</div></div>
+        <div><div style="background: #3f4a2a; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#3F4A2A<br>primary</div></div>
+        <div><div style="background: #b8892e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#B8892E<br>accent</div></div>
+        <div><div style="background: #262d18; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#262D18<br>text</div></div>
+      </div>
+    </div>
+
+    <!-- Palette 4: Forest & Clay -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #2f3d2a; color: #ebe1cc; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">04</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Forest & Clay</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">숲 · 테라코타 브라운</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #ebe1cc; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #2f3d2a;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #a8623f; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #2f3d2a; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #6b4a35; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #ebe1cc; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 6px; color: #6b6a55;">#EBE1CC<br>bg</div></div>
+        <div><div style="background: #2f3d2a; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#2F3D2A<br>primary</div></div>
+        <div><div style="background: #a8623f; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#A8623F<br>accent</div></div>
+        <div><div style="background: #6b4a35; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#6B4A35<br>text2</div></div>
+      </div>
+    </div>
+
+    <!-- Palette 5: Matcha Latte -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #5a6b3f; color: #f4efe1; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">05</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Matcha Latte</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">밝고 크리미 · 눈에 가장 편함</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #f4efe1; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #5a6b3f;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #5a6b3f; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #5a6b3f; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #7a6b4f; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #f4efe1; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 6px; color: #6b6a55;">#F4EFE1<br>bg</div></div>
+        <div><div style="background: #5a6b3f; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#5A6B3F<br>primary</div></div>
+        <div><div style="background: #d4b876; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#D4B876<br>accent</div></div>
+        <div><div style="background: #7a6b4f; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#7A6B4F<br>text2</div></div>
+      </div>
+    </div>
+
+    <!-- Palette 6: Walnut & Fern -->
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="background: #4a3a28; color: #ece3d0; font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace;">06</span>
+          <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #3d3a2e;">Walnut & Fern</h2>
+        </div>
+        <span style="font-size: 12px; color: #7a7563;">브라운 중심 · 그린 서브</span>
+      </div>
+      <div style="border-radius: 16px; overflow: hidden; border: 1px solid #d8d1bd;">
+        <div style="background: #ece3d0; padding: 32px; aspect-ratio: 16/10; display: flex; flex-direction: column; justify-content: space-between;">
+          <div style="display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4a3a28;">
+            <span style="display: flex; align-items: center; gap: 8px;"><span style="width: 6px; height: 6px; background: #6b7a4a; border-radius: 50%;"></span>JADE LEE</span>
+            <span>ABOUT · PROJECTS · HISTORY</span>
+          </div>
+          <div>
+            <div style="font-size: 56px; font-weight: 900; color: #4a3a28; line-height: 0.95; letter-spacing: -0.03em;">JADE LEE.<br>BUILDS THINGS.</div>
+          </div>
+          <div style="font-size: 11px; color: #6b7a4a; font-family: 'JetBrains Mono', monospace;">CS @ UBC — Vancouver-based builder.</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 10px;">
+        <div><div style="background: #ece3d0; aspect-ratio: 1; border-radius: 8px; border: 1px solid #d8d1bd;"></div><div style="margin-top: 6px; color: #6b6a55;">#ECE3D0<br>bg</div></div>
+        <div><div style="background: #4a3a28; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#4A3A28<br>primary</div></div>
+        <div><div style="background: #6b7a4a; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#6B7A4A<br>accent</div></div>
+        <div><div style="background: #a8946e; aspect-ratio: 1; border-radius: 8px;"></div><div style="margin-top: 6px; color: #6b6a55;">#A8946E<br>tan</div></div>
+      </div>
+    </div>
+
+  </section>
+
+  <div style="max-width: 1400px; margin: 48px auto 0; padding: 24px; background: #e5dfc8; border-radius: 12px; color: #4a4a3a; font-size: 13px; line-height: 1.6;">
+    <strong style="color: #3d3a2e;">💡 눈이 피로한 이유:</strong> 현재 배경(#F5F0DC 근처)이 노란색(hue ~85°) 채도가 살짝 높아 밝은 화면에서 눈부심이 있어요. 위 조합들은 채도를 5-8% 낮추고, hue를 좀 더 뉴트럴한 방향으로 이동시켰습니다. 개인적으로 <strong>02 (현재 톤 개선)</strong> 또는 <strong>05 (Matcha Latte)</strong>가 지금 사이트 분위기를 유지하면서 눈 피로를 줄이기 가장 좋습니다.
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

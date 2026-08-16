@@ -1,21 +1,21 @@
 ---
 const skills = [
-  "Python",
-  "FastAPI",
-  "JavaScript",
-  "Node.js",
-  "Oracle SQL",
-  "OpenAI Whisper",
-  "Chrome APIs",
-  "OAuth 2.0",
-  "Java",
-  "C/C++"
+	"Python",
+	"FastAPI",
+	"JavaScript",
+	"Node.js",
+	"Oracle SQL",
+	"OpenAI Whisper",
+	"Chrome APIs",
+	"OAuth 2.0",
+	"Java",
+	"C/C++",
 ];
 ---
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    {[...skills, ...skills].map((skill, i) => (
+    {[...skills, ...skills].map((skill) => (
       <>
         <span>{skill}</span>
         <span class="star">✦</span>

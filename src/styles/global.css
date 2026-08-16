@@ -4,6 +4,22 @@
 /* config for tailwindcss-typography plugin */
 @config "../../tailwind.config.ts";
 
+@font-face {
+	font-family: "Roboto Mono";
+	src: url("../assets/roboto-mono-regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Roboto Mono";
+	src: url("../assets/roboto-mono-700.ttf") format("truetype");
+	font-weight: 700 900;
+	font-style: normal;
+	font-display: swap;
+}
+
 /* use a selector-based strategy for dark mode */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
@@ -65,6 +81,77 @@
 	--color-quote: #a85e28;
 	--color-on-accent: #2e3320;
 	--color-surface: #ede4c9;
+}
+
+/*
+ * Homepage redesign tokens (design_handoff_jade_lee_homepage).
+ * Fully independent from the --color-* system above (which still powers
+ * blog/Base.astro pages via ThemeProvider) — the homepage now has its own
+ * dark-mode toggle, and this token set is what it themes against, so that
+ * toggling homepage dark mode can never regress blog dark mode or vice versa.
+ */
+:root {
+	/* brand colors — fixed across both themes, never re-themed */
+	--rust: #a85e28;
+	--mustard: #c9a344;
+	--mustard-light: #e8b95c;
+	--on-rust: #fbf8ee; /* fixed text color for rust-filled surfaces */
+	--on-mustard: #2e3320; /* fixed text color for mustard-filled surfaces */
+
+	/* the three always-dark sections (hero band, hero photo stat plate,
+	   project detail panel) — fixed, never re-themed */
+	--ink-deep: #2b3218;
+	--moss-band: #3c4326;
+	--sage-muted: #a9ac86;
+	--cream-dim: #e2e0cd;
+
+	/* theme-aware surface & text tokens */
+	--paper: #fbf8ee;
+	--sand: #ede4c9;
+	--greige: #dcd6c6;
+	--field: #fbf8ee;
+	--ink: #2e3320;
+	--moss: #4a5030;
+	--taupe: #7a6b4f;
+	--taupe-dim: #665f47;
+	--stone: #6b6a55;
+	--hairline: #ece5cf;
+	--rule: #c6bfab;
+	--rule-sand: #d5c9a9;
+	--card-line: #d8d1bd;
+	--nav-bg: rgba(251, 248, 238, 0.85);
+}
+
+[data-theme="dark"] {
+	--paper: #1f2418;
+	--sand: #2b3121;
+	--greige: #262c1d;
+	--field: #171b12;
+	--ink: #f4f1e4;
+	--moss: #dcdcc6;
+	--taupe: #a5a888;
+	--taupe-dim: #a9ac86;
+	--stone: #bfbfa8;
+	--hairline: #3a4029;
+	--rule: #3d4429;
+	--rule-sand: #3d4429;
+	--card-line: #3f4630;
+	--nav-bg: rgba(31, 36, 24, 0.86);
+}
+
+#contact input::placeholder,
+#contact textarea::placeholder {
+	color: #6f6758;
+}
+
+[data-theme="dark"] #contact input::placeholder,
+[data-theme="dark"] #contact textarea::placeholder {
+	color: #8f9377;
+}
+
+[data-theme="dark"] ::selection {
+	background: #c9a344;
+	color: #1f2418;
 }
 
 @layer base {

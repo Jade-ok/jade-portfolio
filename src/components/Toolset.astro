@@ -1,0 +1,180 @@
+---
+const categories = [
+	{
+		name: "AI & Cloud",
+		items: [
+			{ name: "Amazon Bedrock", tag: "Mock Interview" },
+			{ name: "AWS Lambda", tag: "Mock Interview" },
+			{ name: "Amazon Nova 2 Sonic", tag: "Speech-to-Speech" },
+			{ name: "Google Gemini API", tag: "Football Scout" },
+			{ name: "Kiro", tag: "Spec-Driven Dev" },
+		],
+	},
+	{
+		name: "Languages",
+		items: [
+			{ name: "Python", tag: "Daily" },
+			{ name: "JavaScript", tag: "Daily" },
+			{ name: "TypeScript", tag: "Mock Interview" },
+			{ name: "SQL", tag: "Smart Home" },
+			{ name: "Java", tag: "CPSC 210" },
+			{ name: "C / C++", tag: "CPSC 213" },
+		],
+	},
+	{
+		name: "Backend & Data",
+		items: [
+			{ name: "FastAPI", tag: "Mock Interview" },
+			{ name: "Node.js", tag: "Smart Home" },
+			{ name: "Oracle Database", tag: "Smart Home" },
+			{ name: "SQLite", tag: "Football Scout" },
+			{ name: "pandas", tag: "Football Scout" },
+			{ name: "REST APIs", tag: "" },
+		],
+	},
+	{
+		name: "Frontend & Tools",
+		items: [
+			{ name: "React", tag: "Mock Interview" },
+			{ name: "HTML / CSS", tag: "PrairieCalendar" },
+			{ name: "Chrome APIs", tag: "PrairieCalendar" },
+			{ name: "OAuth 2.0", tag: "Google Calendar" },
+			{ name: "Git & GitHub", tag: "Daily" },
+		],
+	},
+];
+---
+
+<section class="toolset" id="toolset">
+	<div class="container">
+		<div class="eyebrow">
+			<span class="rule"></span>
+			03 · TOOLSET
+		</div>
+		<h2 class="heading">WHAT I BUILD WITH<span class="period">.</span></h2>
+
+		<div class="grid">
+			{
+				categories.map((cat) => (
+					<div class="category">
+						<div class="cat-header">
+							<span>{cat.name.toUpperCase()}</span>
+							<span class="count">{String(cat.items.length).padStart(2, "0")}</span>
+						</div>
+						<div class="items">
+							{cat.items.map((item) => (
+								<div class="tool-row">
+									<span class="name">{item.name}</span>
+								</div>
+							))}
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.toolset {
+		background: var(--greige);
+		border-top: 1px solid var(--rule);
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.container {
+		max-width: 1080px;
+		margin: 0 auto;
+		padding: 100px 48px;
+	}
+
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		color: var(--taupe-dim);
+		margin-bottom: 16px;
+	}
+
+	.eyebrow .rule {
+		width: 32px;
+		height: 2px;
+		background: var(--mustard);
+	}
+
+	.heading {
+		margin: 0 0 72px;
+		font-family: "Archivo", sans-serif;
+		font-weight: 900;
+		font-size: 88px;
+		line-height: 0.9;
+		letter-spacing: -0.035em;
+		color: var(--moss);
+	}
+
+	.heading .period {
+		color: var(--mustard);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 0 48px;
+	}
+
+	.cat-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		padding-bottom: 14px;
+		border-bottom: 1px solid var(--rule);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		color: var(--ink);
+	}
+
+	.cat-header .count {
+		font-weight: 600;
+		color: var(--taupe-dim);
+	}
+
+	.items {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.tool-row {
+		padding: 18px 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.tool-row:last-child {
+		border-bottom: none;
+	}
+
+	.tool-row .name {
+		font-family: "Archivo", sans-serif;
+		font-weight: 700;
+		font-size: 16px;
+		color: var(--ink);
+	}
+
+	@media (max-width: 900px) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 48px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

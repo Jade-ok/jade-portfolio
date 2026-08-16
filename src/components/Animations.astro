@@ -9,53 +9,6 @@
   
   gsap.registerPlugin(ScrollTrigger);
 
-  // ===== Hero entrance: clip-path reveal stagger =====
-  // The hero text starts hidden via clip-path and reveals top-to-bottom
-  const heroLines = document.querySelectorAll('.hero-line');
-  if (heroLines.length > 0) {
-    gsap.set(heroLines, { clipPath: 'inset(0 0 100% 0)' });
-    gsap.to(heroLines, {
-      clipPath: 'inset(0 0 0% 0)',
-      duration: 1.1,
-      ease: 'power4.out',
-      stagger: 0.18,
-      delay: 0.2
-    });
-  }
-
-  // ===== Topbar entrance =====
-  gsap.from('.topbar .brand', {
-    y: -12,
-    opacity: 0,
-    duration: 0.8,
-    delay: 0.4,
-    ease: 'power3.out'
-  });
-  gsap.from('.topbar .nav-links > a', {
-    y: -12,
-    opacity: 0,
-    duration: 0.7,
-    delay: 0.55,
-    stagger: 0.06,
-    ease: 'power3.out'
-  });
-
-  // ===== Hero bio + scroll hint =====
-  gsap.from('.hero-bio', {
-    y: 20,
-    opacity: 0,
-    duration: 0.9,
-    delay: 0.8,
-    ease: 'power3.out'
-  });
-  gsap.from('.scroll-indicator', {
-    y: 20,
-    opacity: 0,
-    duration: 0.9,
-    delay: 0.9,
-    ease: 'power3.out'
-  });
-
   // ===== Section displays (big H2 headings): scroll-triggered fade up =====
   gsap.utils.toArray<HTMLElement>('.display').forEach((el) => {
     gsap.from(el, {
@@ -66,20 +19,6 @@
       scrollTrigger: {
         trigger: el,
         start: 'top 85%'
-      }
-    });
-  });
-
-  // ===== About: blockquote + body paragraphs + meta items =====
-  gsap.utils.toArray<HTMLElement>('.about-meta, .blockquote, .about-body, .strength').forEach((el) => {
-    gsap.from(el, {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 88%'
       }
     });
   });
@@ -105,7 +44,7 @@
   });
 
   // ===== Contact list items =====
-  ScrollTrigger.batch('.contact-item', {
+  ScrollTrigger.batch('.link-row', {
     start: 'top 90%',
     onEnter: (batch) => gsap.fromTo(
       batch,

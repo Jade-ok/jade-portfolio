@@ -1,239 +1,192 @@
 ---
-const workExperience = [
-  {
-    date: "Sep 2019 — Aug 2024",
-    title: "Customer Relations",
-    org: "Starbucks & Hospitality",
-    bullets: [
-      "Provided customer service in a fast-paced hospitality environment.",
-      "Managed daily sales reconciliation, inventory, and new hire training."
-    ]
-  },
-  {
-    date: "Dec 2016 — Jan 2019",
-    title: "Digital News Editing Assistant",
-    org: "The Hankyoreh",
-    bullets: [
-      "Curated and arranged online news by editorial priority; optimized headlines for SEO and reader engagement.",
-      "Delivered real-time website updates during major events including election results and live sports broadcasts."
-    ]
-  },
-  {
-    date: "Dec 2011 — Sep 2016",
-    title: "Assistant Producer",
-    org: "Daegu Munhwa Broadcasting Corporation (MBC)",
-    bullets: [
-      "Oversaw production schedules and guest coordination for debate programs.",
-      "Operated live slow-motion systems for sports broadcasts."
-    ]
-  }
+const timeline = [
+	{
+		year: 2026,
+		title: "IT Conference Team Member",
+		org: "KDD — Korean Tech Professionals Nonprofit",
+		location: "Vancouver, CA",
+		body: "Planning and executing the Annual KDD Conference (200+ attendees, Aug 2026) with the Consulate General of Korea — speaker outreach, programming, sponsor relations, and logistics.",
+	},
+	{
+		year: 2024,
+		title: "Bachelor of Computer Science",
+		org: "University of British Columbia",
+		location: "Vancouver, CA",
+		body: "Coursework in Object-Oriented Programming, Data Structures & Algorithms, Applied Machine Learning, Computer Systems, and Relational Database Systems.",
+	},
+	{
+		year: 2019,
+		title: "Customer Relations",
+		org: "Starbucks & Hospitality",
+		location: "Vancouver, CA",
+		body: "Customer service in a fast-paced hospitality environment, plus daily sales reconciliation, inventory, and new hire training.",
+	},
+	{
+		year: 2016,
+		title: "Digital News Editing Assistant",
+		org: "The Hankyoreh",
+		location: "Seoul, KR",
+		body: "Curated and arranged online news by editorial priority, optimizing headlines for SEO while delivering real-time updates during major live events.",
+	},
+	{
+		year: 2011,
+		title: "Assistant Producer",
+		org: "Daegu Munhwa Broadcasting Corporation (MBC)",
+		location: "Daegu, KR",
+		body: "Oversaw production schedules and guest coordination for debate programs, and operated live slow-motion systems for sports broadcasts.",
+	},
+	{
+		year: 2007,
+		title: "B.A. in Journalism & Mass Communication",
+		org: "Kyungpook National University",
+		location: "Daegu, KR",
+		body: "Double Major in Business Administration.",
+	},
 ];
 
-const education = [
-  {
-    date: "Sep 2024 — May 2027",
-    title: "Bachelor of Computer Science",
-    org: "University of British Columbia",
-    bullets: [
-      "Coursework: Object-Oriented Programming (Java), Data Structures & Algorithms (C++), Applied Machine Learning (Python).",
-      "Computer Systems (C / Assembly), Relational Database Systems (SQL)."
-    ]
-  },
-  {
-    date: "Mar 2007 — Aug 2013",
-    title: "B.A. in Journalism & Mass Communication",
-    org: "Kyungpook National University",
-    bullets: [
-      "Double Major in Business Administration."
-    ]
-  }
-];
+const mostRecentYear = Math.max(...timeline.map((t) => t.year));
 ---
 
-<section class="block" id="history">
-  <div class="container">
-    <div class="label">
-      <span class="bar"></span>
-      <span class="num">03</span>
-      <span>HISTORY</span>
-    </div>
-    
-    <h2 class="display">A DECADE<br />BEFORE <span class="accent">THE PIVOT.</span></h2>
-    
-    <div class="label sub-label">
-      <span class="bar"></span>
-      <span>WORK EXPERIENCE</span>
-    </div>
-    <div class="timeline">
-      {workExperience.map((item) => (
-        <div class="tl-row">
-          <div class="tl-date">{item.date}</div>
-          <div class="tl-content">
-            <h3>{item.title}</h3>
-            <div class="org">{item.org}</div>
-            <ul>
-              {item.bullets.map((b) => <li>{b}</li>)}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </div>
+<section class="history" id="history">
+	<div class="container">
+		<div class="eyebrow">
+			<span class="rule"></span>
+			04 · HISTORY
+		</div>
+		<h2 class="heading">THE PATH<span class="period">.</span></h2>
 
-    <div class="label sub-label">
-      <span class="bar"></span>
-      <span>EDUCATION</span>
-    </div>
-    <div class="timeline">
-      {education.map((item) => (
-        <div class="tl-row">
-          <div class="tl-date">{item.date}</div>
-          <div class="tl-content">
-            <h3>{item.title}</h3>
-            <div class="org">{item.org}</div>
-            <ul>
-              {item.bullets.map((b) => <li>{b}</li>)}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
+		<div class="timeline">
+			{
+				timeline.map((item) => (
+					<div class="tl-row">
+						<div class:list={["tl-year", { current: item.year === mostRecentYear }]}>
+							{item.year}
+							{item.year === mostRecentYear && " —"}
+						</div>
+						<div class="tl-content">
+							<h3>{item.title}</h3>
+							<div class="org">{item.org}</div>
+							<p class="body">{item.body}</p>
+						</div>
+						<div class="tl-location">{item.location.toUpperCase()}</div>
+					</div>
+				))
+			}
+			<div class="tl-close" />
+		</div>
+	</div>
 </section>
 
 <style>
-  .block {
-    padding: 160px 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
-    position: relative;
-  }
-  
-  @media (max-width: 768px) {
-    .block { padding: 100px 0; }
-  }
+	.container {
+		max-width: 1080px;
+		margin: 0 auto;
+		padding: 100px 48px;
+	}
 
-  .container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 64px;
-  }
-  
-  @media (max-width: 768px) {
-    .container { padding: 0 24px; }
-  }
+	.eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		color: var(--taupe-dim);
+		margin-bottom: 16px;
+	}
 
-  .label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 32px;
-  }
+	.eyebrow .rule {
+		width: 32px;
+		height: 2px;
+		background: var(--mustard);
+	}
 
-  .label .num {
-    font-variant-numeric: tabular-nums;
-  }
+	.heading {
+		margin: 0 0 56px;
+		font-family: "Archivo", sans-serif;
+		font-weight: 900;
+		font-size: 88px;
+		line-height: 0.9;
+		letter-spacing: -0.035em;
+		color: var(--moss);
+	}
 
-  .label .bar {
-    display: inline-block;
-    width: 48px;
-    height: 1px;
-    background: var(--color-accent);
-  }
+	.heading .period {
+		color: var(--mustard);
+	}
 
-  .sub-label {
-    margin-top: 80px;
-    margin-bottom: 0;
-  }
+	.timeline {
+		display: flex;
+		flex-direction: column;
+	}
 
-  .display {
-    font-weight: 900;
-    font-size: clamp(56px, 9vw, 100px);
-    line-height: 0.92;
-    letter-spacing: -0.04em;
-    color: var(--color-global-text);
-  }
+	.tl-row {
+		display: grid;
+		grid-template-columns: 90px 1fr 140px;
+		gap: 24px;
+		padding: 20px 0;
+		border-top: 1px solid var(--rule);
+		align-items: baseline;
+	}
 
-  .display .accent {
-    color: var(--color-accent);
-  }
+	.tl-close {
+		border-top: 1px solid var(--rule);
+	}
 
-  .timeline {
-    margin-top: 32px;
-  }
+	.tl-year {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 12px;
+		font-weight: 700;
+		color: var(--moss);
+	}
 
-  .tl-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 48px;
-    padding: 32px 0;
-    border-top: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
-    align-items: start;
-  }
+	.tl-year.current {
+		color: var(--rust);
+	}
 
-  .tl-row:last-child {
-    border-bottom: 1px solid color-mix(in srgb, var(--color-global-text) 12%, transparent);
-  }
+	.tl-content h3 {
+		margin: 0 0 4px;
+		font-family: "Archivo", sans-serif;
+		font-weight: 700;
+		font-size: 17px;
+		color: var(--ink);
+	}
 
-  .tl-date {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-muted);
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-    padding-top: 6px;
-  }
+	.tl-content .org {
+		margin-bottom: 5px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--taupe-dim);
+	}
 
-  .tl-content h3 {
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: var(--color-global-text);
-  }
+	.tl-content .body {
+		margin: 0;
+		font-family: "Archivo", sans-serif;
+		font-size: 13px;
+		font-weight: 400;
+		line-height: 1.45;
+		color: var(--moss);
+	}
 
-  .tl-content .org {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-accent);
-    margin-top: 6px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
+	.tl-location {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 10px;
+		font-weight: 600;
+		color: var(--taupe-dim);
+		text-align: right;
+	}
 
-  .tl-content ul {
-    margin-top: 18px;
-    padding-left: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .tl-content li {
-    font-size: 15px;
-    line-height: 1.7;
-    color: var(--color-muted);
-    padding-left: 20px;
-    position: relative;
-  }
-
-  .tl-content li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 11px;
-    width: 8px;
-    height: 1px;
-    background: var(--color-accent);
-  }
-
-  @media (max-width: 768px) {
-    .tl-row {
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-  }
+	@media (max-width: 768px) {
+		.tl-row {
+			grid-template-columns: 1fr;
+			gap: 8px;
+		}
+		.tl-location {
+			text-align: left;
+		}
+	}
 </style>
