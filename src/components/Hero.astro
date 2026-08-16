@@ -56,7 +56,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 			<div class="text-col">
 				<div class="eyebrow">
 					<span class="rule"></span>
-					PORTFOLIO — 2026
+					PORTFOLIO - 2026
 				</div>
 
 				<h1 class="name">JADE LEE<span class="period">.</span></h1>
@@ -75,7 +75,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 				</div>
 
 				<p class="tagline">
-					Recent interests include cloud infrastructure, multi-agent systems, security, and networks —
+					Recent interests include cloud infrastructure, multi-agent systems, security, and networks -
 					<em>so many things to learn!</em>
 				</p>
 
@@ -90,15 +90,15 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	<div class="band">
 		<div class="band-inner">
 			<div>
-				<div class="band-label sage">01 — BEFORE</div>
+				<div class="band-label sage">01 - BEFORE</div>
 				<div class="band-body dim">Producer &amp; news editor in Korea. Structuring information under deadline.</div>
 			</div>
 			<div>
-				<div class="band-label mustard">02 — NOW</div>
+				<div class="band-label mustard">02 - NOW</div>
 				<div class="band-body now">Architecting a reliable, multi-agent AI scouting assistant.</div>
 			</div>
 			<div>
-				<div class="band-label sage">03 — NEXT</div>
+				<div class="band-label sage">03 - NEXT</div>
 				<div class="band-body dim">Manifesting a Backend, Cloud, or Full-stack internship.</div>
 			</div>
 		</div>
@@ -112,6 +112,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		overflow: hidden;
 		display: flex;
 		flex-direction: column;
+		scroll-margin-top: 72px;
 	}
 
 	.top {
@@ -148,7 +149,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		overflow: hidden;
 		width: 100%;
 		aspect-ratio: 9 / 16;
-		background: var(--moss);
+		background: var(--body);
 	}
 
 	.photo img {
@@ -164,14 +165,23 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		right: 0;
 		top: 0;
 		padding: 14px 16px 16px;
+		/* fixed literal — this scrim sits on the hero photo, which never
+		   themes since the photo underneath it never changes */
 		background: linear-gradient(
 			180deg,
 			rgba(247, 249, 250, 0.92) 0%,
 			rgba(247, 249, 250, 0.88) 74%,
 			rgba(247, 249, 250, 0) 100%
 		);
-		color: var(--ink-deep);
+		color: var(--ink);
 		pointer-events: none;
+	}
+
+	/* dark theme's --ink flips light (for legibility on dark page backgrounds
+	   elsewhere), which would be unreadable on this always-light scrim — so
+	   dark mode alone keeps a fixed dark literal here */
+	[data-jl-theme="dark"] .overlay {
+		color: #2b3218;
 	}
 
 	.live-row {
@@ -182,9 +192,6 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		font-size: 9px;
 		font-weight: 700;
 		letter-spacing: 0.14em;
-		/* fixed literal — this sits on the hero photo's light stat plate,
-		   which never themes since the photo underneath it never changes */
-		color: #4a5030;
 		margin-bottom: 6px;
 	}
 
@@ -202,7 +209,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		position: absolute;
 		inset: 0;
 		border-radius: 50%;
-		background: var(--rust);
+		background: var(--accent-mark);
 	}
 
 	.live-ring {
@@ -223,16 +230,14 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	}
 
 	.overlay.is-stale .live-pulse {
-		/* fixed literal — see .live-row note above */
-		background: #7a6b4f;
+		background: var(--taupe);
 	}
 
 	.overlay.is-stale .live-label {
-		color: #7a6b4f;
+		color: var(--taupe);
 	}
 
 	.live-label {
-		color: var(--rust);
 		font-size: 10px;
 	}
 
@@ -241,7 +246,6 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		font-size: 9.5px;
 		font-weight: 700;
 		letter-spacing: 0.01em;
-		color: var(--ink-deep);
 		margin-bottom: 5px;
 		white-space: nowrap;
 	}
@@ -253,12 +257,13 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		line-height: 0.82;
 		letter-spacing: -0.05em;
 		white-space: nowrap;
+		color: var(--heading);
 	}
 
 	.running-total span {
 		font-size: 0.34em;
 		margin-left: 3px;
-		color: var(--rust);
+		color: var(--accent);
 	}
 
 	.pace {
@@ -266,13 +271,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		font-family: "JetBrains Mono", monospace;
 		font-size: 11.5px;
 		font-weight: 700;
-		color: var(--ink-deep);
 		white-space: nowrap;
-	}
-
-	.pace span {
-		/* fixed literal — see .live-row note above */
-		color: #4a5030;
 	}
 
 	.caption {
@@ -292,7 +291,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	}
 
 	.caption-time {
-		color: var(--rust);
+		color: var(--accent);
 	}
 
 	@keyframes livePulse {
@@ -352,7 +351,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	.eyebrow .rule {
 		width: 24px;
 		height: 1px;
-		background: var(--rust);
+		background: var(--accent-mark);
 	}
 
 	.name {
@@ -362,11 +361,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		font-size: clamp(52px, min(9vw, 11.5vh), 116px);
 		line-height: 0.86;
 		letter-spacing: -0.05em;
-		color: var(--ink);
+		color: var(--heading);
 	}
 
 	.name .period {
-		color: var(--rust);
+		color: var(--accent-mark);
 	}
 
 	.subtitle {
@@ -376,11 +375,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		font-size: clamp(19px, min(2.4vw, 3.2vh), 28px);
 		line-height: 1.15;
 		letter-spacing: -0.02em;
-		color: var(--moss);
+		color: var(--body);
 	}
 
 	.subtitle .rust {
-		color: var(--rust);
+		color: var(--accent);
 	}
 
 	.interests-line {
@@ -419,7 +418,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		color: var(--rust);
+		color: var(--accent);
 		font-weight: 600;
 		white-space: nowrap;
 	}
@@ -427,7 +426,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	.available-dot {
 		width: 7px;
 		height: 7px;
-		background: var(--rust);
+		background: var(--accent-mark);
 		border-radius: 50%;
 	}
 
@@ -444,7 +443,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 	.tagline em {
 		font-style: italic;
-		color: var(--rust);
+		color: var(--accent);
 	}
 
 	.cta-row {
@@ -467,8 +466,8 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	}
 
 	.btn.primary {
-		background: var(--rust);
-		color: var(--on-rust);
+		background: var(--accent);
+		color: var(--on-accent);
 	}
 
 	.btn.primary span {
@@ -485,7 +484,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 	.band {
 		flex: 0 0 auto;
-		background: var(--moss-band);
+		background: var(--band);
 	}
 
 	.band-inner {
@@ -521,28 +520,25 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	}
 
 	.band-label.sage {
-		color: var(--sage-muted);
+		color: var(--band-label);
 	}
 
 	.band-label.mustard {
-		color: var(--mustard-light);
+		color: var(--band-now);
 	}
 
 	.band-body {
 		font-size: clamp(14px, min(1.15vw, 2.1vh), 17px);
 		line-height: 1.5;
 		text-wrap: pretty;
+		color: var(--band-text);
 	}
 
 	.band-body.dim {
-		color: var(--cream-dim);
 		font-weight: 400;
 	}
 
 	.band-body.now {
-		/* fixed literal — the band is one of the three always-dark
-		   sections and never themes, per spec */
-		color: #fbf8ee;
 		font-weight: 500;
 	}
 </style>

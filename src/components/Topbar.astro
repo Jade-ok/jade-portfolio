@@ -3,36 +3,109 @@
 ---
 
 <header class="topbar" id="topbar">
-	<a href="#top" class="brand">JADE LEE<span class="period">.</span></a>
-	<div class="nav-right">
-		<nav class="nav-links" aria-label="Primary">
-			<a href="#about"><span class="num">01</span>ABOUT</a>
-			<a href="#works"><span class="num">02</span>PROJECTS</a>
-			<a href="#toolset"><span class="num">03</span>TOOLSET</a>
-			<a href="#history"><span class="num">04</span>THE PATH</a>
-			<a href="#contact"><span class="num">05</span>LET'S CONNECT</a>
-		</nav>
-		<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-			<svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-				<path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1-8.313-12.454z"></path>
-			</svg>
-			<svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-				<circle cx="12" cy="12" r="4"></circle>
-				<path d="M12 3v1M12 20v1M4.2 4.2l.7.7M19.1 19.1l.7.7M3 12h1M20 12h1M4.2 19.8l.7-.7M19.1 4.9l.7-.7"></path>
-			</svg>
-		</button>
+	<div class="topbar-inner">
+		<a href="#top" class="brand">JADE LEE<span class="period">.</span></a>
+		<div class="nav-right">
+			<nav class="nav-links" aria-label="Primary">
+				<a href="#about"><span class="num">01</span>ABOUT</a>
+				<a href="#works"><span class="num">02</span>PROJECTS</a>
+				<a href="#toolset"><span class="num">03</span>TOOLSET</a>
+				<a href="#history"><span class="num">04</span>THE PATH</a>
+				<a href="#contact"><span class="num">05</span>LET'S CONNECT</a>
+			</nav>
+			<div class="theme-switch" id="theme-switch" role="group" aria-label="Theme">
+				<button type="button" class="theme-swatch swatch-light" data-theme-choice="light" aria-label="Light theme">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<circle cx="12" cy="12" r="4"></circle>
+						<path d="M12 2v2"></path>
+						<path d="M12 20v2"></path>
+						<path d="m4.93 4.93 1.41 1.41"></path>
+						<path d="m17.66 17.66 1.41 1.41"></path>
+						<path d="M2 12h2"></path>
+						<path d="M20 12h2"></path>
+						<path d="m6.34 17.66-1.41 1.41"></path>
+						<path d="m19.07 4.93-1.41 1.41"></path>
+					</svg>
+				</button>
+				<button type="button" class="theme-swatch swatch-dark" data-theme-choice="dark" aria-label="Dark theme">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<path class="moon-fill" d="M21 14.2A8.6 8.6 0 0 1 9.8 3a8.8 8.8 0 1 0 11.2 11.2Z"></path>
+					</svg>
+				</button>
+				<button type="button" class="theme-swatch swatch-race" data-theme-choice="race" aria-label="Race theme">
+					<svg aria-hidden="true" viewBox="0 0 24 24">
+						<path d="M9.2 8h5.6a4 4 0 0 1 0 8H9.2a4 4 0 0 1 0-8Z"></path>
+						<path d="M9.4 12h5.2"></path>
+					</svg>
+				</button>
+			</div>
+			<button type="button" class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</button>
+		</div>
 	</div>
 </header>
 
-<script>
-	const toggle = document.getElementById("theme-toggle") as HTMLButtonElement | null;
+<nav class="mobile-nav" id="mobile-nav" aria-label="Primary mobile">
+	<a href="#about"><span class="num">01</span>ABOUT</a>
+	<a href="#works"><span class="num">02</span>PROJECTS</a>
+	<a href="#toolset"><span class="num">03</span>TOOLSET</a>
+	<a href="#history"><span class="num">04</span>THE PATH</a>
+	<a href="#contact"><span class="num">05</span>LET'S CONNECT</a>
+</nav>
 
-	if (toggle) {
-		toggle.addEventListener("click", () => {
-			const isDark = document.documentElement.getAttribute("data-theme") === "dark";
-			document.dispatchEvent(
-				new CustomEvent("theme-change", { detail: { theme: isDark ? "light" : "dark" } }),
-			);
+<script>
+	const themeSwitch = document.getElementById("theme-switch");
+	const swatches = Array.from(
+		document.querySelectorAll<HTMLButtonElement>(".theme-swatch"),
+	);
+
+	function syncActiveSwatch() {
+		const current = document.documentElement.getAttribute("data-jl-theme") || "light";
+		swatches.forEach((s) => {
+			const isActive = s.dataset.themeChoice === current;
+			s.classList.toggle("is-active", isActive);
+			s.setAttribute("aria-pressed", String(isActive));
+		});
+	}
+
+	if (themeSwitch) {
+		swatches.forEach((s) => {
+			s.addEventListener("click", () => {
+				document.dispatchEvent(
+					new CustomEvent("jl-theme-change", { detail: { theme: s.dataset.themeChoice } }),
+				);
+				syncActiveSwatch();
+			});
+		});
+		syncActiveSwatch();
+	}
+
+	const menuToggle = document.getElementById("menu-toggle") as HTMLButtonElement | null;
+	const mobileNav = document.getElementById("mobile-nav");
+	const topbar = document.getElementById("topbar");
+
+	function closeMobileNav() {
+		mobileNav?.classList.remove("is-open");
+		menuToggle?.setAttribute("aria-expanded", "false");
+		topbar?.classList.remove("menu-is-open");
+	}
+
+	if (menuToggle && mobileNav) {
+		menuToggle.addEventListener("click", () => {
+			const isOpen = mobileNav.classList.toggle("is-open");
+			menuToggle.setAttribute("aria-expanded", String(isOpen));
+			topbar?.classList.toggle("menu-is-open", isOpen);
+		});
+
+		mobileNav.querySelectorAll("a").forEach((a) => {
+			a.addEventListener("click", closeMobileNav);
+		});
+
+		window.addEventListener("resize", () => {
+			if (window.innerWidth > 800) closeMobileNav();
 		});
 	}
 </script>
@@ -42,6 +115,13 @@
 		position: sticky;
 		top: 0;
 		z-index: 50;
+		background: var(--nav-bg);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--hairline);
+	}
+
+	.topbar-inner {
 		height: 72px;
 		max-width: 1400px;
 		margin: 0 auto;
@@ -50,10 +130,6 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: 24px;
-		background: var(--nav-bg);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-bottom: 1px solid var(--hairline);
 	}
 
 	.brand {
@@ -61,13 +137,13 @@
 		font-size: 19px;
 		font-weight: 800;
 		letter-spacing: -0.01em;
-		color: var(--ink);
+		color: var(--heading);
 		text-decoration: none;
 		white-space: nowrap;
 	}
 
 	.brand .period {
-		color: var(--rust);
+		color: var(--accent-mark);
 	}
 
 	.nav-right {
@@ -87,72 +163,183 @@
 		gap: 6px;
 		padding: 8px 12px;
 		border-bottom: 2px solid transparent;
-		color: var(--moss);
+		color: var(--body);
 		font-family: "JetBrains Mono", monospace;
 		font-size: 12px;
 		font-weight: 500;
 		letter-spacing: 0.02em;
 		text-decoration: none;
+		white-space: nowrap;
 		transition:
 			color 0.2s ease,
 			border-color 0.2s ease;
 	}
 
 	.nav-links a .num {
-		color: var(--moss);
+		color: var(--body);
 		opacity: 0.5;
 	}
 
 	.nav-links a.is-active {
 		color: var(--ink);
 		font-weight: 600;
-		border-bottom-color: var(--rust);
+		border-bottom-color: var(--accent-mark);
 	}
 
 	.nav-links a.is-active .num {
-		color: var(--rust);
+		color: var(--accent);
 		opacity: 1;
 	}
 
-	.theme-toggle {
+	.theme-switch {
+		display: flex;
+		align-items: center;
+		gap: 18px;
+		margin-left: 18px;
+		padding: 0;
+		flex-shrink: 0;
+		border: none;
+	}
+
+	.theme-swatch {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 26px;
+		height: 26px;
+		padding: 0;
+		border: none;
+		border-radius: 50%;
+		background: transparent;
+		color: var(--taupe);
+		cursor: pointer;
+		opacity: 0.72;
+		transition:
+			color 0.18s ease,
+			opacity 0.18s ease,
+			transform 0.18s ease;
+	}
+
+	.theme-swatch svg {
+		width: 24px;
+		height: 24px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 2.4;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		display: block;
+	}
+
+	.swatch-light svg {
+		color: var(--ink);
+	}
+
+	.swatch-dark svg {
+		color: #a79d83;
+	}
+
+	.swatch-dark .moon-fill {
+		fill: currentColor;
+		stroke: none;
+	}
+
+	.swatch-race svg {
+		color: #a79d83;
+		stroke-width: 2.8;
+	}
+
+	.theme-swatch:hover,
+	.theme-swatch.is-active {
+		color: var(--ink);
+		opacity: 1;
+		transform: translateY(-1px);
+	}
+
+	/* ---------- mobile menu toggle + panel ---------- */
+
+	.menu-toggle {
+		display: none;
 		width: 34px;
 		height: 34px;
 		margin-left: 8px;
 		padding: 0;
 		flex-shrink: 0;
-		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		gap: 5px;
 		background: transparent;
 		border: 1px solid var(--card-line);
 		border-radius: 0;
-		color: var(--moss);
 		cursor: pointer;
 	}
 
-	.theme-toggle .icon {
-		width: 15px;
-		height: 15px;
+	.menu-toggle .bar {
+		width: 16px;
+		height: 1.5px;
+		background: var(--body);
+		transition:
+			transform 0.2s ease,
+			opacity 0.2s ease;
 	}
 
-	.icon-sun {
+	.topbar.menu-is-open .menu-toggle .bar:nth-child(1) {
+		transform: translateY(6.5px) rotate(45deg);
+	}
+
+	.topbar.menu-is-open .menu-toggle .bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.topbar.menu-is-open .menu-toggle .bar:nth-child(3) {
+		transform: translateY(-6.5px) rotate(-45deg);
+	}
+
+	.mobile-nav {
 		display: none;
+		position: sticky;
+		top: 72px;
+		z-index: 49;
+		flex-direction: column;
+		background: var(--nav-bg);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--hairline);
 	}
 
-	:global([data-theme="dark"]) .icon-sun {
-		display: block;
+	.mobile-nav.is-open {
+		display: flex;
 	}
 
-	:global([data-theme="dark"]) .icon-moon {
-		display: none;
+	.mobile-nav a {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 16px 24px;
+		border-top: 1px solid var(--hairline);
+		color: var(--body);
+		font-family: "JetBrains Mono", monospace;
+		font-size: 13px;
+		font-weight: 500;
+		letter-spacing: 0.02em;
+		text-decoration: none;
 	}
 
-	@media (max-width: 1100px) {
-		.topbar {
+	.mobile-nav a .num {
+		color: var(--accent);
+		opacity: 0.7;
+	}
+
+	@media (max-width: 800px) {
+		.topbar-inner {
 			padding: 0 24px;
 		}
 		.nav-links {
 			display: none;
+		}
+		.menu-toggle {
+			display: flex;
 		}
 	}
 </style>

@@ -15,24 +15,28 @@ const standard = projects.filter((p) => !p.featured);
 				</div>
 				<h2 class="heading">PROJECTS<span class="period">.</span></h2>
 			</div>
-			<div class="count">FOUR PROJECTS · 2025—2026</div>
+			<div class="count">FOUR PROJECTS · 2025-2026</div>
 		</div>
 
 		{
 			featured && (
 				<a class="featured-card" href={featured.href}>
 					<div class="media">
-						<div class="placeholder">
-							<span>{featured.title.toUpperCase()} — COVER</span>
-						</div>
+						{
+							featured.coverImage ? (
+								<img src={featured.coverImage} alt={`${featured.title} screenshot`} loading="lazy" />
+							) : (
+								<div class="placeholder">
+									<span>{featured.title.toUpperCase()} - COVER</span>
+								</div>
+							)
+						}
 						<span class="badge mustard">FEATURED · {featured.statusLabel.toUpperCase()}</span>
 					</div>
 					<div class="body">
 						<div>
 							<div class="meta-row">
-								<span>
-									<span class="num">{featured.num}</span> · {featured.title.toUpperCase()}
-								</span>
+								<span>{featured.eyebrow.toUpperCase()}</span>
 								<span>{featured.year}</span>
 							</div>
 							<h3>{featured.title}</h3>
@@ -56,16 +60,20 @@ const standard = projects.filter((p) => !p.featured);
 				standard.map((p) => (
 					<a class="card" href={p.href}>
 						<div class="media">
-							<div class="placeholder">
-								<span>{p.title.toUpperCase()} — COVER</span>
-							</div>
+							{
+								p.coverImage ? (
+									<img src={p.coverImage} alt={`${p.title} screenshot`} loading="lazy" />
+								) : (
+									<div class="placeholder">
+										<span>{p.title.toUpperCase()} - COVER</span>
+									</div>
+								)
+							}
 							<span class="badge rust">{p.statusLabel.toUpperCase()}</span>
 						</div>
 						<div class="body">
 							<div class="meta-row nowrap">
-								<span>
-									<span class="num">{p.num}</span> · {p.title.toUpperCase()}
-								</span>
+								<span>{p.eyebrow.toUpperCase()}</span>
 								<span>{p.meta.toUpperCase()}</span>
 							</div>
 							<h3>{p.title}</h3>
@@ -91,6 +99,7 @@ const standard = projects.filter((p) => !p.featured);
 		max-width: 1080px;
 		margin: 0 auto;
 		padding: 128px 48px;
+		scroll-margin-top: -28px;
 	}
 
 	.header-row {
@@ -117,7 +126,7 @@ const standard = projects.filter((p) => !p.featured);
 	.eyebrow .rule {
 		width: 32px;
 		height: 2px;
-		background: var(--mustard);
+		background: var(--accent-2);
 	}
 
 	.heading {
@@ -127,11 +136,11 @@ const standard = projects.filter((p) => !p.featured);
 		font-size: 88px;
 		line-height: 0.9;
 		letter-spacing: -0.035em;
-		color: var(--moss);
+		color: var(--heading);
 	}
 
 	.heading .period {
-		color: var(--mustard);
+		color: var(--accent-2);
 	}
 
 	.count {
@@ -161,8 +170,10 @@ const standard = projects.filter((p) => !p.featured);
 	.featured-card .media {
 		position: relative;
 		min-width: 0;
-		min-height: 300px;
+		aspect-ratio: 16 / 10;
+		min-height: 0;
 		overflow: hidden;
+		background: #050605;
 	}
 
 	.placeholder {
@@ -171,26 +182,38 @@ const standard = projects.filter((p) => !p.featured);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: color-mix(in srgb, var(--moss) 88%, black);
+		background: color-mix(in srgb, var(--panel) 88%, black);
 		font-family: "JetBrains Mono", monospace;
 		font-size: 9px;
 		font-weight: 700;
 		letter-spacing: 0.08em;
-		color: color-mix(in srgb, var(--paper) 45%, transparent);
+		/* fixed literal, not var(--paper) — --panel stays dark in every
+		   theme (including dark mode, where --paper itself flips dark) */
+		color: rgba(251, 248, 238, 0.45);
 		text-align: center;
 		padding: 10px;
 	}
 
+	.media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+
 	.featured-card .body {
-		padding: 44px 40px;
+		padding: 40px;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 24px;
+		gap: 22px;
 	}
 
 	.featured-card .meta-row {
-		margin-bottom: 20px;
+		margin-bottom: 18px;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.06em;
 	}
 
 	.featured-card h3 {
@@ -199,24 +222,37 @@ const standard = projects.filter((p) => !p.featured);
 		font-weight: 800;
 		font-size: clamp(22px, 2.3vw, 28px);
 		line-height: 1.1;
-		letter-spacing: -0.02em;
-		color: var(--ink);
+		letter-spacing: 0;
+		color: var(--heading);
 	}
 
 	.featured-card .desc {
 		margin: 0;
+		max-width: none;
 		font-size: 13.5px;
 		line-height: 1.55;
-		color: var(--moss);
+		color: var(--body);
 		text-wrap: pretty;
 	}
 
 	.featured-card .pill {
 		padding: 4px 9px;
-		gap: 5px;
 		font-size: 9px;
+		letter-spacing: 0.03em;
 		background: var(--paper);
-		color: var(--moss);
+		color: var(--body);
+	}
+
+	.featured-card .pills {
+		gap: 6px;
+		max-width: none;
+	}
+
+	.featured-card .footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		gap: 24px;
 	}
 
 	.view-link {
@@ -224,7 +260,8 @@ const standard = projects.filter((p) => !p.featured);
 		font-family: "JetBrains Mono", monospace;
 		font-size: 11px;
 		font-weight: 600;
-		color: var(--rust);
+		letter-spacing: 0.04em;
+		color: var(--accent);
 		white-space: nowrap;
 	}
 
@@ -238,12 +275,15 @@ const standard = projects.filter((p) => !p.featured);
 	}
 
 	.badge.mustard {
-		top: 20px;
-		left: 20px;
-		padding: 6px 14px;
-		font-size: 10px;
-		background: var(--mustard);
-		color: var(--on-mustard);
+		top: 14px;
+		left: 14px;
+		padding: 5px 11px;
+		font-size: 9.5px;
+		letter-spacing: 0.03em;
+		background: var(--accent-2);
+		color: var(--on-accent-2);
+		box-shadow: 0 8px 16px rgba(5, 6, 5, 0.2);
+		z-index: 2;
 	}
 
 	.badge.rust {
@@ -252,8 +292,8 @@ const standard = projects.filter((p) => !p.featured);
 		padding: 5px 11px;
 		font-size: 9.5px;
 		letter-spacing: 0.03em;
-		background: var(--rust);
-		color: var(--on-rust);
+		background: var(--accent);
+		color: var(--on-accent);
 	}
 
 	.meta-row {
@@ -262,11 +302,6 @@ const standard = projects.filter((p) => !p.featured);
 		align-items: center;
 		font-family: "JetBrains Mono", monospace;
 		color: var(--taupe);
-	}
-
-	.meta-row .num {
-		color: var(--rust);
-		font-weight: 700;
 	}
 
 	.meta-row.nowrap {
@@ -327,14 +362,14 @@ const standard = projects.filter((p) => !p.featured);
 		font-size: 18px;
 		line-height: 1.2;
 		letter-spacing: -0.015em;
-		color: var(--ink);
+		color: var(--heading);
 	}
 
 	.card .desc {
 		margin: 0;
 		font-size: 12.5px;
 		line-height: 1.5;
-		color: var(--moss);
+		color: var(--body);
 		text-wrap: pretty;
 	}
 
@@ -355,14 +390,14 @@ const standard = projects.filter((p) => !p.featured);
 		padding: 3px 8px;
 		font-size: 8px;
 		background: var(--sand);
-		color: var(--moss);
+		color: var(--body);
 	}
 
 	.read-link {
 		font-family: "JetBrains Mono", monospace;
 		font-size: 10.5px;
 		font-weight: 600;
-		color: var(--rust);
+		color: var(--accent);
 		white-space: nowrap;
 	}
 

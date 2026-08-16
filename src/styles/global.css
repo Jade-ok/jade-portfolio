@@ -86,32 +86,24 @@
 /*
  * Homepage redesign tokens (design_handoff_jade_lee_homepage).
  * Fully independent from the --color-* system above (which still powers
- * blog/Base.astro pages via ThemeProvider) — the homepage now has its own
- * dark-mode toggle, and this token set is what it themes against, so that
- * toggling homepage dark mode can never regress blog dark mode or vice versa.
+ * blog/Base.astro pages via ThemeProvider) — the homepage has its own
+ * three-way theme (light / dark / race), keyed off data-jl-theme (set by
+ * JLThemeProvider.astro), never data-theme — so it can never collide with
+ * or regress the blog's separate binary dark mode, and vice versa.
+ * Each section sets its own scroll-margin-top (see its component file) to land
+ * just below the sticky 72px topbar with a small visual gap — the value differs
+ * per section because each has a different top padding to compensate for.
  */
+
 :root {
-	/* brand colors — fixed across both themes, never re-themed */
-	--rust: #a85e28;
-	--mustard: #c9a344;
-	--mustard-light: #e8b95c;
-	--on-rust: #fbf8ee; /* fixed text color for rust-filled surfaces */
-	--on-mustard: #2e3320; /* fixed text color for mustard-filled surfaces */
-
-	/* the three always-dark sections (hero band, hero photo stat plate,
-	   project detail panel) — fixed, never re-themed */
-	--ink-deep: #2b3218;
-	--moss-band: #3c4326;
-	--sage-muted: #a9ac86;
-	--cream-dim: #e2e0cd;
-
-	/* theme-aware surface & text tokens */
+	/* surface & text tokens */
 	--paper: #fbf8ee;
 	--sand: #ede4c9;
 	--greige: #dcd6c6;
 	--field: #fbf8ee;
 	--ink: #2e3320;
-	--moss: #4a5030;
+	--body: #4a5030;
+	--heading: #4a5030;
 	--taupe: #7a6b4f;
 	--taupe-dim: #665f47;
 	--stone: #6b6a55;
@@ -120,15 +112,36 @@
 	--rule-sand: #d5c9a9;
 	--card-line: #d8d1bd;
 	--nav-bg: rgba(251, 248, 238, 0.85);
+
+	/* accents */
+	--accent: #a85e28;
+	--accent-mark: #a85e28;
+	--accent-2: #c9a344;
+
+	/* dark band / detail panel surfaces */
+	--band: #3c4326;
+	--band-text: #e2e0cd;
+	--band-label: #a9ac86;
+	--band-now: #e8b95c;
+	--panel: #2e3320;
+
+	/* fixed text-on-accent-fill colors — not in the token spec's literal
+	   table, added because var(--paper) itself flips dark in dark mode,
+	   which would put dark text on the (still-brown) accent fill; and
+	   --accent-2 needs light text in race (purple) but dark text in
+	   light/dark (mustard), so it can't be a single fixed value either. */
+	--on-accent: #fbf8ee;
+	--on-accent-2: #2e3320;
 }
 
-[data-theme="dark"] {
+[data-jl-theme="dark"] {
 	--paper: #1f2418;
 	--sand: #2b3121;
 	--greige: #262c1d;
 	--field: #171b12;
 	--ink: #f4f1e4;
-	--moss: #dcdcc6;
+	--body: #dcdcc6;
+	--heading: #dcdcc6;
 	--taupe: #a5a888;
 	--taupe-dim: #a9ac86;
 	--stone: #bfbfa8;
@@ -137,6 +150,50 @@
 	--rule-sand: #3d4429;
 	--card-line: #3f4630;
 	--nav-bg: rgba(31, 36, 24, 0.86);
+
+	--accent: #a85e28;
+	--accent-mark: #a85e28;
+	--accent-2: #c9a344;
+
+	--band: #3c4326;
+	--band-text: #e2e0cd;
+	--band-label: #a9ac86;
+	--band-now: #e8b95c;
+	--panel: #2e3320;
+
+	--on-accent: #fbf8ee;
+	--on-accent-2: #2e3320;
+}
+
+[data-jl-theme="race"] {
+	--paper: #fdf6e8;
+	--sand: #f6ead8;
+	--greige: #ddebe7;
+	--field: #fdf6e8;
+	--ink: #123f3b;
+	--body: #137f76;
+	--heading: #7e5cb0;
+	--taupe: #6e6480;
+	--taupe-dim: #4a6560;
+	--stone: #137f76;
+	--hairline: #e6d8c2;
+	--rule: #bfd4cf;
+	--rule-sand: #e6d8c2;
+	--card-line: #dfcfb6;
+	--nav-bg: rgba(253, 246, 232, 0.85);
+
+	--accent: #c9543f;
+	--accent-mark: #e97a6c;
+	--accent-2: #7e5cb0;
+
+	--band: #117e76;
+	--band-text: #d9ece9;
+	--band-label: #a8d5cf;
+	--band-now: #f2a99c;
+	--panel: #0e4f4a;
+
+	--on-accent: #fdf6e8;
+	--on-accent-2: #fdf6e8;
 }
 
 #contact input::placeholder,
@@ -144,14 +201,19 @@
 	color: #6f6758;
 }
 
-[data-theme="dark"] #contact input::placeholder,
-[data-theme="dark"] #contact textarea::placeholder {
+[data-jl-theme="dark"] #contact input::placeholder,
+[data-jl-theme="dark"] #contact textarea::placeholder {
 	color: #8f9377;
 }
 
-[data-theme="dark"] ::selection {
+[data-jl-theme="dark"] ::selection {
 	background: #c9a344;
 	color: #1f2418;
+}
+
+[data-jl-theme="race"] ::selection {
+	background: #7e5cb0;
+	color: #fdf6e8;
 }
 
 @layer base {

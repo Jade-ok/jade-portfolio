@@ -1,0 +1,41 @@
+{/*
+	Homepage-only tri-theme (light / dark / race). Fully independent from
+	ThemeProvider.astro's blog dark mode — different attribute (data-jl-theme,
+	not data-theme) and different localStorage key (jl-theme, not theme) — so
+	the two systems never collide or overwrite each other's state.
+	Inlined + placed before first paint to avoid a flash of the wrong theme.
+*/}
+<script is:inline>
+	const jlDarkPref = window.matchMedia("(prefers-color-scheme: dark)");
+
+	function getJLUserPref() {
+		const saved = typeof localStorage !== "undefined" && localStorage.getItem("jl-theme");
+		if (saved === "light" || saved === "dark" || saved === "race") return saved;
+		// race is never a default — only ever reached by an explicit pick, so it's excluded here
+		return jlDarkPref.matches ? "dark" : "light";
+	}
+
+	function setJLTheme(newTheme) {
+		if (newTheme !== "light" && newTheme !== "dark" && newTheme !== "race") {
+			return console.warn(`Invalid jl-theme value '${newTheme}'. Expected 'light' | 'dark' | 'race'.`);
+		}
+		document.documentElement.setAttribute("data-jl-theme", newTheme);
+		if (typeof localStorage !== "undefined") {
+			localStorage.setItem("jl-theme", newTheme);
+		}
+	}
+
+	setJLTheme(getJLUserPref());
+
+	document.addEventListener("astro:after-swap", () => setJLTheme(getJLUserPref()));
+
+	document.addEventListener("jl-theme-change", (e) => {
+		setJLTheme(e.detail.theme);
+	});
+
+	// only auto-follow OS changes if the visitor hasn't explicitly picked a theme
+	jlDarkPref.addEventListener("change", (e) => {
+		if (localStorage.getItem("jl-theme")) return;
+		setJLTheme(e.matches ? "dark" : "light");
+	});
+</script>

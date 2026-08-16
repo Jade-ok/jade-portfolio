@@ -31,10 +31,10 @@ const links = [
 			05 · LET'S CONNECT
 		</div>
 		<h2 class="heading">
-			HEY — I'D LOVE<br />
+			HEY - I'D LOVE<br />
 			TO CONNECT<span class="period">.</span>
 		</h2>
-		<p class="lede">Internships, voice/AI side projects, or coffee in Vancouver — the box below reaches me directly.</p>
+		<p class="lede">Internships, voice/AI side projects, or coffee in Vancouver - the box below reaches me directly.</p>
 
 		<div class="grid">
 			<form class="form" id="contact-form">
@@ -133,7 +133,7 @@ const links = [
 			e.preventDefault();
 
 			if (!ENDPOINT) {
-				status.textContent = "Form isn't wired to a backend yet — email me directly below.";
+				status.textContent = "Form isn't wired to a backend yet - email me directly below.";
 				status.classList.add("is-error");
 				return;
 			}
@@ -151,13 +151,13 @@ const links = [
 				});
 
 				if (res.ok) {
-					status.textContent = "Message sent — thanks, I'll get back to you soon.";
+					status.textContent = "Message sent - thanks, I'll get back to you soon.";
 					form.reset();
 				} else {
 					throw new Error("Request failed");
 				}
 			} catch {
-				status.textContent = "Something went wrong — email me directly below instead.";
+				status.textContent = "Something went wrong - email me directly below instead.";
 				status.classList.add("is-error");
 			} finally {
 				submitBtn.disabled = false;
@@ -173,6 +173,7 @@ const links = [
 		color: var(--ink);
 		padding: 120px 0 56px;
 		border-top: 1px solid var(--rule);
+		scroll-margin-top: -20px;
 	}
 
 	.container {
@@ -196,7 +197,7 @@ const links = [
 	.eyebrow .rule {
 		width: 32px;
 		height: 2px;
-		background: var(--rust);
+		background: var(--accent-2);
 	}
 
 	.heading {
@@ -206,11 +207,11 @@ const links = [
 		font-size: clamp(56px, 8vw, 96px);
 		line-height: 0.88;
 		letter-spacing: -0.045em;
-		color: var(--moss);
+		color: var(--heading);
 	}
 
 	.heading .period {
-		color: var(--rust);
+		color: var(--accent-2);
 	}
 
 	.lede {
@@ -287,8 +288,8 @@ const links = [
 		display: inline-flex;
 		align-items: center;
 		gap: 10px;
-		background: var(--rust);
-		color: var(--on-rust);
+		background: var(--accent);
+		color: var(--on-accent);
 		border: none;
 		border-radius: 0;
 		padding: 17px 34px;
@@ -309,12 +310,12 @@ const links = [
 		font-family: "JetBrains Mono", monospace;
 		font-size: 11.5px;
 		font-weight: 600;
-		color: var(--moss);
+		color: var(--body);
 		min-height: 1.4em;
 	}
 
 	.form-status.is-error {
-		color: var(--rust);
+		color: var(--accent);
 	}
 
 	/* ---------- links ---------- */
@@ -342,7 +343,7 @@ const links = [
 		width: 19px;
 		height: 19px;
 		flex-shrink: 0;
-		color: var(--rust);
+		color: var(--accent);
 	}
 
 	.link-text {
@@ -372,7 +373,7 @@ const links = [
 		margin-left: auto;
 		font-family: "JetBrains Mono", monospace;
 		font-size: 14px;
-		color: var(--rust);
+		color: var(--accent-mark);
 	}
 
 	.email-option {
@@ -397,7 +398,7 @@ const links = [
 		font-family: "JetBrains Mono", monospace;
 		font-size: 13px;
 		font-weight: 700;
-		color: var(--rust);
+		color: var(--accent);
 		text-decoration: none;
 		cursor: pointer;
 	}
@@ -407,8 +408,8 @@ const links = [
 		top: calc(100% + 8px);
 		left: 0;
 		padding: 6px 12px;
-		background: var(--mustard);
-		color: var(--on-mustard);
+		background: var(--accent-2);
+		color: var(--on-accent-2);
 		font-family: "JetBrains Mono", monospace;
 		font-size: 10px;
 		font-weight: 700;
@@ -454,6 +455,6 @@ const links = [
 		width: 8px;
 		height: 8px;
 		border-radius: 50%;
-		background: var(--rust);
+		background: var(--accent-mark);
 	}
 </style>

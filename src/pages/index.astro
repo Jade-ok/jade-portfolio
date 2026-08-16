@@ -3,6 +3,7 @@ import Animations from "@/components/Animations.astro";
 import Contact from "@/components/Contact.astro";
 import Hero from "@/components/Hero.astro";
 import History from "@/components/History.astro";
+import JLThemeProvider from "@/components/JLThemeProvider.astro";
 import SiteOverlay from "@/components/SiteOverlay.astro";
 import ThemeProvider from "@/components/ThemeProvider.astro";
 import Toolset from "@/components/Toolset.astro";
@@ -16,9 +17,10 @@ import "@/styles/global.css";
 <html lang={siteConfig.lang}>
 	<head>
 		<ThemeProvider />
+		<JLThemeProvider />
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Jade Lee — Portfolio</title>
+		<title>Jade Lee - Portfolio</title>
 		<link
 			rel="stylesheet"
 			href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
@@ -48,6 +50,9 @@ import "@/styles/global.css";
 		padding: 0;
 		box-sizing: border-box;
 	}
+	html {
+		overflow-x: hidden;
+	}
 	html,
 	body {
 		background: var(--paper);
@@ -58,6 +63,5 @@ import "@/styles/global.css";
 			BlinkMacSystemFont,
 			system-ui,
 			sans-serif;
-		overflow-x: hidden;
 	}
 </style>
