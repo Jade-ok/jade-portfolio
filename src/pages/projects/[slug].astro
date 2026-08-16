@@ -1,9 +1,12 @@
 ---
 import Animations from "@/components/Animations.astro";
 import BaseHead from "@/components/BaseHead.astro";
+import JLThemeProvider from "@/components/JLThemeProvider.astro";
+import ProjectDetail from "@/components/ProjectDetail.astro";
 import SiteOverlay from "@/components/SiteOverlay.astro";
 import Topbar from "@/components/Topbar.astro";
 import { getProject, projects } from "@/data/projects";
+import { getProjectDetailContent } from "@/data/projectDetails";
 
 export function getStaticPaths() {
 	return projects.map((p) => ({ params: { slug: p.slug } }));
@@ -11,374 +14,41 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const project = getProject(slug as string);
+const detail = project ? getProjectDetailContent(project.slug) : undefined;
 
-if (!project) {
+if (!project || !detail) {
 	return Astro.redirect("/404");
 }
 ---
 
 <html lang="en">
 	<head>
+		<JLThemeProvider />
 		<BaseHead description={project.desc} title={`${project.title} - Jade Lee`} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&display=swap"
+		/>
 	</head>
 	<body>
 		<SiteOverlay cursor={false} />
 		<Topbar />
-
 		<main class="detail-page">
-			<div class="container">
-				<a href="/#works" class="breadcrumb">
-					← ALL PROJECTS · DETAIL VIEW
-				</a>
-
-				<section class="panel">
-					<div class="panel-decoration" aria-hidden="true"></div>
-
-					<div class="panel-header">
-						<div class="panel-intro">
-							<p class="kicker">{project.detail.kicker}</p>
-							<h1 class="title">{project.title}<span class="accent">.</span></h1>
-							<p class="lede">{project.detail.lede}</p>
-						</div>
-						<div class="stat-cards">
-							{
-								project.detail.stats.map((s, i) => (
-									<div class:list={["stat-card", i === 0 && "full"]}>
-										<p class="stat-label">{s.label.toUpperCase()}</p>
-										<p class="stat-value">{s.value}</p>
-									</div>
-								))
-							}
-						</div>
-					</div>
-
-					<div class="media-grid">
-						<div class="media-slot media-main">
-							<span>COVER IMAGE - PLACEHOLDER</span>
-						</div>
-						<div class="media-stack">
-							<div class="media-slot">
-								<span>DIAGRAM - PLACEHOLDER</span>
-							</div>
-							<div class="media-slot">
-								<span>PHOTO - PLACEHOLDER</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="narrative">
-						{
-							project.detail.narrative.map((n) => (
-								<div class="narrative-item">
-									<p class="narrative-label">{n.label.toUpperCase()}</p>
-									<h3>{n.title}</h3>
-									<p>{n.body}</p>
-								</div>
-							))
-						}
-					</div>
-
-					<div class="action-row">
-						{
-							project.detail.links.map((l, i) => (
-								<a href={l.href} class:list={["action-link", i === 0 && "primary"]}>
-									{l.label}
-								</a>
-							))
-						}
-					</div>
-				</section>
-			</div>
+			<ProjectDetail project={detail} />
 		</main>
-
 		<Animations />
 	</body>
 </html>
 
 <style is:global>
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
 	html,
 	body {
-		background: var(--color-global-bg);
-		color: var(--color-global-text);
-		font-family:
-			"Pretendard",
-			-apple-system,
-			BlinkMacSystemFont,
-			system-ui,
-			sans-serif;
-		overflow-x: hidden;
+		background: var(--paper);
+		color: var(--ink);
 	}
-</style>
-
-<style>
 	.detail-page {
-		padding: 140px 0 120px;
-	}
-
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 64px;
-	}
-
-	@media (max-width: 768px) {
-		.container {
-			padding: 0 24px;
-		}
-	}
-
-	.breadcrumb {
-		display: inline-block;
-		margin-bottom: 32px;
-		font-family:
-			"Roboto Mono",
-			"SFMono-Regular",
-			Consolas,
-			monospace;
-		font-size: 11px;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--color-muted);
-		text-decoration: none;
-	}
-
-	.breadcrumb:hover {
-		color: var(--color-link);
-	}
-
-	.panel {
-		position: relative;
-		overflow: hidden;
-		border-radius: 32px;
-		padding: 56px;
-		background: var(--color-global-text);
-		color: var(--color-global-bg);
-	}
-
-	@media (max-width: 768px) {
-		.panel {
-			padding: 32px 24px;
-			border-radius: 20px;
-		}
-	}
-
-	.panel-decoration {
-		position: absolute;
-		top: -60px;
-		right: -60px;
-		width: 120px;
-		height: 120px;
-		border-radius: 50%;
-		background: var(--color-accent);
-		opacity: 0.9;
-	}
-
-	.panel-header {
-		position: relative;
-		display: grid;
-		grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-		gap: 48px;
-		align-items: end;
-	}
-
-	@media (max-width: 900px) {
-		.panel-header {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	.kicker {
-		font-family:
-			"Roboto Mono",
-			"SFMono-Regular",
-			Consolas,
-			monospace;
-		font-size: 12px;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--color-accent);
-	}
-
-	.title {
-		margin-top: 16px;
-		font-weight: 900;
-		font-size: clamp(48px, 7vw, 80px);
-		line-height: 0.9;
-		letter-spacing: -0.03em;
-	}
-
-	.title .accent {
-		color: var(--color-accent);
-	}
-
-	.lede {
-		max-width: 480px;
-		margin-top: 20px;
-		font-size: 18px;
-		line-height: 1.5;
-		color: color-mix(in srgb, var(--color-global-bg) 84%, transparent);
-	}
-
-	.stat-cards {
-		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-		gap: 12px;
-	}
-
-	.stat-card {
-		background: color-mix(in srgb, var(--color-global-bg) 8%, transparent);
-		border: 1px solid color-mix(in srgb, var(--color-global-bg) 12%, transparent);
-		border-radius: 16px;
-		padding: 20px;
-	}
-
-	.stat-card.full {
-		grid-column: 1 / -1;
-	}
-
-	.stat-label {
-		font-family:
-			"Roboto Mono",
-			"SFMono-Regular",
-			Consolas,
-			monospace;
-		font-size: 10px;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		color: var(--color-accent);
-	}
-
-	.stat-value {
-		margin-top: 8px;
-		font-size: 16px;
-		font-weight: 700;
-	}
-
-	.media-grid {
-		display: grid;
-		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-		gap: 20px;
-		margin-top: 56px;
-	}
-
-	@media (max-width: 768px) {
-		.media-grid {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	.media-stack {
-		display: grid;
-		gap: 20px;
-	}
-
-	.media-slot {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border-radius: 20px;
-		background: color-mix(in srgb, var(--color-global-bg) 6%, transparent);
-		border: 1px dashed color-mix(in srgb, var(--color-global-bg) 20%, transparent);
-		font-family:
-			"Roboto Mono",
-			monospace;
-		font-size: 10px;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		color: color-mix(in srgb, var(--color-global-bg) 40%, transparent);
-		text-align: center;
-		padding: 12px;
-	}
-
-	.media-main {
-		aspect-ratio: 16 / 9;
-	}
-
-	.media-stack .media-slot {
-		aspect-ratio: 4 / 3;
-	}
-
-	.narrative {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 40px;
-		margin-top: 56px;
-		padding-top: 40px;
-		border-top: 1px solid color-mix(in srgb, var(--color-global-bg) 15%, transparent);
-	}
-
-	@media (max-width: 900px) {
-		.narrative {
-			grid-template-columns: 1fr;
-			gap: 32px;
-		}
-	}
-
-	.narrative-label {
-		font-family:
-			"Roboto Mono",
-			monospace;
-		font-size: 11px;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		color: var(--color-accent);
-	}
-
-	.narrative-item h3 {
-		margin-top: 10px;
-		font-size: 18px;
-		font-weight: 700;
-		letter-spacing: -0.01em;
-	}
-
-	.narrative-item p:last-child {
-		margin-top: 12px;
-		font-size: 14px;
-		line-height: 1.7;
-		color: color-mix(in srgb, var(--color-global-bg) 82%, transparent);
-	}
-
-	.action-row {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 14px;
-		margin-top: 48px;
-	}
-
-	.action-link {
-		display: inline-flex;
-		align-items: center;
-		padding: 13px 26px;
-		border-radius: 999px;
-		font-family:
-			"Roboto Mono",
-			monospace;
-		font-size: 13px;
-		font-weight: 700;
-		text-decoration: none;
-		border: 1.5px solid color-mix(in srgb, var(--color-global-bg) 30%, transparent);
-		color: var(--color-global-bg);
-		transition:
-			background 0.2s ease,
-			color 0.2s ease;
-	}
-
-	.action-link.primary {
-		background: var(--color-accent);
-		border-color: var(--color-accent);
-		color: var(--color-global-text);
-	}
-
-	.action-link:hover {
-		background: var(--color-global-bg);
-		border-color: var(--color-global-bg);
-		color: var(--color-global-text);
+		font-family: "Archivo", sans-serif;
 	}
 </style>

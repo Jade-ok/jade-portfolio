@@ -24,7 +24,7 @@ export const projects: Project[] = [
 		slug: "ai-mock-interview-coach",
 		title: "AI Mock Interview Coach",
 		year: "Aug 2026",
-		statusLabel: "1st Place · UBC CIC",
+		statusLabel: "1st Place · CIC × AWS Hackathon",
 		eyebrow: "Hackathon",
 		meta: "Hackathon · 2026",
 		desc: "Speech-to-speech interview practice powered by Amazon Nova 2 Sonic, built in a team of five. Proposed a three-agent architecture and owned the Evaluator - prompt, schema, and scoring logic - as an AWS Lambda service on Bedrock.",

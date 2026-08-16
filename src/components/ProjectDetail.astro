@@ -1,0 +1,1033 @@
+---
+import type { ProjectDetailContent } from "@/data/projectDetails";
+
+interface Props {
+	project: ProjectDetailContent;
+}
+
+const { project } = Astro.props;
+
+const sectionOrder = ["problem", "howItWorks", "features", "owned", "challenges", "next"] as const;
+type SectionKey = (typeof sectionOrder)[number];
+
+const present: SectionKey[] = sectionOrder.filter((key) => {
+	if (key === "problem") return project.problem?.length;
+	if (key === "howItWorks") return !!project.howItWorks;
+	if (key === "features") return project.features?.length;
+	if (key === "owned") return project.owned?.length;
+	if (key === "challenges") return !!project.challenges;
+	if (key === "next") return project.next?.length;
+	return false;
+});
+
+const sectionNumber = (key: SectionKey) => String(present.indexOf(key) + 1).padStart(2, "0");
+const sectionTitle: Record<SectionKey, string> = {
+	problem: "THE PROBLEM",
+	howItWorks: "HOW IT WORKS",
+	features: "KEY FEATURES",
+	owned: "WHAT I OWNED",
+	challenges: "THE HARD PART",
+	next: "WHAT'S NEXT",
+};
+const tightHeading: Record<SectionKey, boolean> = {
+	problem: false,
+	howItWorks: true,
+	features: true,
+	owned: true,
+	challenges: true,
+	next: false,
+};
+
+---
+
+<div class="pd-container">
+	<div class="pd-wrapper">
+		<div class="pd-breadcrumb">
+			<a href="/#works">← ALL PROJECTS</a>
+			<span class="sep">·</span>
+			<span class="current">{project.index} · {project.title.toUpperCase()}</span>
+		</div>
+
+		<div class="pd-title-block">
+			<p class="pd-eyebrow">{project.eyebrow}</p>
+			<h1 class="pd-title">{project.title}<span class="period">.</span></h1>
+			<p class="pd-lede">{project.lede}</p>
+		</div>
+
+		<div class="pd-grid">
+			<div class="pd-left">
+				{
+					present.includes("problem") && (
+						<div class="pd-section">
+							<div class:list={["pd-section-heading", { tight: tightHeading.problem }]}>
+								{sectionNumber("problem")} · {sectionTitle.problem}
+							</div>
+							{project.problem.map((p) => (
+								<p class="pd-body-text">{p}</p>
+							))}
+						</div>
+					)
+				}
+				{
+					present.includes("howItWorks") && project.howItWorks && (
+						<div class="pd-section">
+							<div class:list={["pd-section-heading", { tight: tightHeading.howItWorks }]}>
+								{sectionNumber("howItWorks")} · {sectionTitle.howItWorks}
+							</div>
+							{project.howItWorks.intro && <p class="pd-howitworks-intro">{project.howItWorks.intro}</p>}
+							{project.howItWorks.agents.map((a) => (
+								<div class="pd-agent-row">
+									<div class="pd-agent-head">
+										<span class="pd-agent-name">{a.name}</span>
+										<span class="pd-agent-model">{a.model}</span>
+									</div>
+									<p class="pd-agent-desc">{a.role}</p>
+								</div>
+							))}
+						</div>
+					)
+				}
+
+				{
+					present.includes("features") && (
+						<div class="pd-section">
+							<div class:list={["pd-section-heading", { tight: tightHeading.features }]}>
+								{sectionNumber("features")} · {sectionTitle.features}
+							</div>
+							{project.features.map((f, i) => (
+								<div class="pd-feature-row">
+									<span class="pd-feature-num">{String(i + 1).padStart(2, "0")}</span>
+									<div>
+										<h4 class="pd-feature-title">{f.title}</h4>
+										<p class="pd-feature-body">{f.body}</p>
+										{f.sub && (
+											<div class="pd-feature-sub-list">
+												{f.sub.map((s) => (
+													<div class="pd-feature-sub-item">
+														<span class="arrow">→</span>
+														<span>
+															<strong>{s.name}</strong> — {s.desc}
+														</span>
+													</div>
+												))}
+											</div>
+										)}
+									</div>
+								</div>
+							))}
+						</div>
+					)
+				}
+
+				{
+					present.includes("owned") && (
+						<div class="pd-section">
+							<div class:list={["pd-section-heading", { tight: tightHeading.owned }]}>
+								{sectionNumber("owned")} · {sectionTitle.owned}
+							</div>
+							<div class="pd-bullet-list">
+								{project.owned.map((item) => (
+									<div class="pd-bullet-item">
+										<span class="dot" />
+										<p set:html={item} />
+									</div>
+								))}
+							</div>
+						</div>
+					)
+				}
+
+				{
+					present.includes("challenges") && project.challenges && (
+						<div class="pd-section">
+							<div class:list={["pd-section-heading", { tight: tightHeading.challenges }]}>
+								{sectionNumber("challenges")} · {sectionTitle.challenges}
+							</div>
+							{project.challenges.intro && <p class="pd-body-text">{project.challenges.intro}</p>}
+							<div class="pd-challenge-list">
+								{project.challenges.cards.map((c) => (
+									<div class="pd-challenge-card">
+										<div class="pd-challenge-head">
+											<h4>{c.title}</h4>
+											<span class="credit">{c.credit}</span>
+										</div>
+										{c.paras.map((p) => (
+											<p>{p}</p>
+										))}
+									</div>
+								))}
+							</div>
+						</div>
+					)
+				}
+
+				{
+					present.includes("next") && (
+						<div class="pd-section">
+							<div class:list={["pd-section-heading", { tight: tightHeading.next }]}>
+								{sectionNumber("next")} · {sectionTitle.next}
+							</div>
+							{project.next?.map((p) => <p class="pd-body-text" set:html={p} />)}
+						</div>
+					)
+				}
+			</div>
+
+			<aside class="pd-rail">
+				{
+					project.images.length > 0 && (
+						<div class="pd-rail-images">
+							{project.images.map((img) => (
+								<figure class="pd-figure">
+									<button
+										type="button"
+										class="pd-figure-box"
+										data-lightbox-src={img.src}
+										data-lightbox-alt={img.alt}
+										data-lightbox-caption={img.caption}
+										aria-label={`Open larger image: ${img.caption}`}
+									>
+										<img src={img.src} alt={img.alt} loading="lazy" />
+									</button>
+									<figcaption>{img.caption}</figcaption>
+								</figure>
+							))}
+						</div>
+					)
+				}
+
+				<div class="pd-stack-block">
+					<h3>TECH STACK</h3>
+					{project.stack.map((group) => (
+						<div class="pd-stack-group">
+							<p class="pd-stack-label">{group.label}</p>
+							<div class="pd-stack-tags">
+								{group.items.map((item) => (
+									<span class="pd-tag">{item}</span>
+								))}
+							</div>
+						</div>
+					))}
+					{project.stackAgents && (
+						<div class="pd-stack-group">
+							<p class="pd-stack-label">AI AGENTS · VIA AMAZON BEDROCK</p>
+							<div class="pd-agent-table">
+								{project.stackAgents.map((a) => (
+									<div class="pd-agent-table-row">
+										<span class="role">{a.role}</span>
+										<span class="model">{a.model}</span>
+									</div>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+
+				<div class="pd-cta-list">
+					{project.links.map((l) => (
+						<a
+							href={l.href}
+							class:list={["pd-cta", { primary: l.primary }]}
+							target={l.href.startsWith("http") ? "_blank" : undefined}
+							rel={l.href.startsWith("http") ? "noopener" : undefined}
+						>
+							<span class="pd-cta-label">
+								{
+									(l.label.toLowerCase().includes("github") ||
+										l.label.toLowerCase().includes("git repository")) && (
+										<svg class="pd-github-icon" aria-hidden="true" viewBox="0 0 24 24">
+											<path
+												fill="currentColor"
+												d="M12 2C6.48 2 2 6.58 2 12.25c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.5v-1.74c-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.85.09-.67.35-1.12.63-1.38-2.22-.26-4.55-1.14-4.55-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.94c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92v2.85c0 .28.18.6.69.5A10.1 10.1 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"
+											/>
+										</svg>
+									)
+								}
+								<span>{l.label}</span>
+							</span>
+							<span aria-hidden="true">↗</span>
+						</a>
+					))}
+				</div>
+			</aside>
+		</div>
+
+		{
+			project.note && (
+				<div class="pd-note">
+					<div class="pd-note-inner">
+						<div class="pd-note-head">
+							<span>BUILD NOTE · IN MY OWN WORDS</span>
+							<span class="source">{project.note.source}</span>
+						</div>
+						{project.note.paras.slice(0, 2).map((p) => (
+							<p set:html={p} />
+						))}
+						{project.note.paras.length > 2 && (
+							<div class="pd-note-more" id="pd-note-more">
+								{project.note.paras.slice(2).map((p) => (
+									<p set:html={p} />
+								))}
+							</div>
+						)}
+						<div class="pd-note-actions">
+							{project.note.paras.length > 2 && (
+								<button type="button" id="pd-note-toggle">
+									<span id="pd-note-toggle-label">READ THE FULL NOTE</span>
+									<span aria-hidden="true" id="pd-note-toggle-icon">+</span>
+								</button>
+							)}
+						</div>
+					</div>
+				</div>
+			)
+		}
+
+		<div class="pd-bottom">
+			<a href="/#works">← BACK TO ALL PROJECTS</a>
+		</div>
+	</div>
+</div>
+
+<div class="pd-lightbox" id="pd-lightbox" aria-hidden="true">
+	<button type="button" class="pd-lightbox-backdrop" data-lightbox-close aria-label="Close image viewer"></button>
+	<div class="pd-lightbox-panel" role="dialog" aria-modal="true" aria-label="Project image preview">
+		<button type="button" class="pd-lightbox-close" data-lightbox-close aria-label="Close image viewer">×</button>
+		<img id="pd-lightbox-img" alt="" />
+		<p id="pd-lightbox-caption"></p>
+	</div>
+</div>
+
+<script>
+	const toggle = document.getElementById("pd-note-toggle") as HTMLButtonElement | null;
+	const more = document.getElementById("pd-note-more");
+	const label = document.getElementById("pd-note-toggle-label");
+	const icon = document.getElementById("pd-note-toggle-icon");
+
+	if (toggle && more && label && icon) {
+		toggle.addEventListener("click", () => {
+			const isOpen = more.classList.toggle("is-open");
+			label.textContent = isOpen ? "SHOW LESS" : "READ THE FULL NOTE";
+			icon.textContent = isOpen ? "−" : "+";
+		});
+	}
+
+	const lightbox = document.getElementById("pd-lightbox");
+	const lightboxImg = document.getElementById("pd-lightbox-img") as HTMLImageElement | null;
+	const lightboxCaption = document.getElementById("pd-lightbox-caption");
+	const lightboxButtons = document.querySelectorAll<HTMLButtonElement>("[data-lightbox-src]");
+	const closeButtons = document.querySelectorAll<HTMLButtonElement>("[data-lightbox-close]");
+
+	function closeLightbox() {
+		if (!lightbox || !lightboxImg || !lightboxCaption) return;
+		lightbox.classList.remove("is-open");
+		lightbox.setAttribute("aria-hidden", "true");
+		lightboxImg.removeAttribute("src");
+		lightboxImg.alt = "";
+		lightboxCaption.textContent = "";
+		document.body.classList.remove("pd-lightbox-open");
+	}
+
+	lightboxButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			if (!lightbox || !lightboxImg || !lightboxCaption) return;
+			lightboxImg.src = button.dataset.lightboxSrc || "";
+			lightboxImg.alt = button.dataset.lightboxAlt || "";
+			lightboxCaption.textContent = button.dataset.lightboxCaption || "";
+			lightbox.classList.add("is-open");
+			lightbox.setAttribute("aria-hidden", "false");
+			document.body.classList.add("pd-lightbox-open");
+		});
+	});
+
+	closeButtons.forEach((button) => button.addEventListener("click", closeLightbox));
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") closeLightbox();
+	});
+</script>
+
+<style>
+	.pd-container {
+		max-width: 1080px;
+		margin: 0 auto;
+		padding: 0 48px 128px;
+	}
+
+	.pd-wrapper {
+		margin-top: 88px;
+		padding-top: 40px;
+		border-top: 2px solid var(--body);
+	}
+
+	/* ---------- breadcrumb ---------- */
+
+	.pd-breadcrumb {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		margin-bottom: 40px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 11px;
+		font-weight: 600;
+		color: var(--taupe);
+	}
+
+	.pd-breadcrumb a {
+		color: var(--taupe);
+		text-decoration: none;
+	}
+
+	.pd-breadcrumb .sep {
+		opacity: 0.5;
+	}
+
+	.pd-breadcrumb .current {
+		color: #a85e28;
+	}
+
+	/* ---------- title block ---------- */
+
+	.pd-title-block {
+		max-width: 800px;
+		margin-bottom: 44px;
+	}
+
+	.pd-eyebrow {
+		margin: 0 0 18px;
+		font-family: "JetBrains Mono", monospace;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.09em;
+		color: #a85e28;
+	}
+
+	.pd-title {
+		margin: 0 0 20px;
+		font-family: "Archivo", sans-serif;
+		font-weight: 900;
+		font-size: clamp(40px, 5.2vw, 62px);
+		line-height: 0.94;
+		letter-spacing: -0.04em;
+		color: var(--heading);
+	}
+
+	.pd-title .period {
+		color: #a85e28;
+	}
+
+	.pd-lede {
+		margin: 0;
+		font-family: "Fraunces", serif;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 1.45;
+		color: var(--stone);
+	}
+
+	/* ---------- body grid ---------- */
+
+	.pd-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+		gap: 64px;
+		align-items: start;
+	}
+
+	.pd-left {
+		display: flex;
+		flex-direction: column;
+		gap: 44px;
+		min-width: 0;
+	}
+
+	.pd-section-heading {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: var(--taupe);
+		padding-bottom: 12px;
+		border-bottom: 2px solid #a85e28;
+		margin-bottom: 18px;
+	}
+
+	.pd-section-heading.tight {
+		margin-bottom: 4px;
+	}
+
+	.pd-body-text {
+		margin: 0;
+		font-size: 15.5px;
+		line-height: 1.65;
+		color: var(--body);
+		text-wrap: pretty;
+	}
+
+	.pd-body-text + .pd-body-text {
+		margin-top: 14px;
+	}
+
+	/* ---------- how it works: agent rows ---------- */
+
+	.pd-howitworks-intro {
+		margin: 0 0 4px;
+		padding-bottom: 18px;
+		border-bottom: 1px solid var(--hairline);
+		font-size: 15.5px;
+		line-height: 1.65;
+		color: var(--body);
+	}
+
+	.pd-agent-row {
+		padding: 18px 0;
+		border-top: 1px solid var(--hairline);
+	}
+
+	.pd-agent-head {
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-bottom: 6px;
+	}
+
+	.pd-agent-name {
+		font-family: "Archivo", sans-serif;
+		font-weight: 800;
+		font-size: 17px;
+		letter-spacing: -0.015em;
+		color: var(--ink);
+	}
+
+	.pd-agent-model {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 10px;
+		letter-spacing: 0.05em;
+		color: #a85e28;
+	}
+
+	.pd-agent-desc {
+		margin: 0;
+		font-size: 14.5px;
+		line-height: 1.55;
+		color: var(--body);
+	}
+
+	/* ---------- key features ---------- */
+
+	.pd-feature-row {
+		display: grid;
+		grid-template-columns: 30px 1fr;
+		gap: 16px;
+		padding: 18px 0;
+		border-top: 1px solid var(--hairline);
+	}
+
+	.pd-feature-num {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 11px;
+		color: #a85e28;
+		padding-top: 3px;
+	}
+
+	.pd-feature-title {
+		margin: 0 0 5px;
+		font-family: "Archivo", sans-serif;
+		font-weight: 700;
+		font-size: 16.5px;
+		letter-spacing: -0.012em;
+		color: var(--ink);
+	}
+
+	.pd-feature-body {
+		margin: 0;
+		font-size: 14px;
+		line-height: 1.55;
+		color: var(--body);
+	}
+
+	.pd-feature-sub-list {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-top: 10px;
+	}
+
+	.pd-feature-sub-item {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 9px;
+	}
+
+	.pd-feature-sub-item .arrow {
+		color: #a85e28;
+		font-size: 12px;
+	}
+
+	.pd-feature-sub-item span:last-child {
+		font-size: 13.5px;
+		line-height: 1.5;
+		color: var(--body);
+	}
+
+	.pd-feature-sub-item strong {
+		color: var(--ink);
+	}
+
+	/* ---------- what i owned: bullets ---------- */
+
+	.pd-bullet-list {
+		display: flex;
+		flex-direction: column;
+		gap: 11px;
+	}
+
+	.pd-bullet-item {
+		display: grid;
+		grid-template-columns: 16px 1fr;
+		gap: 12px;
+	}
+
+	.pd-bullet-item .dot {
+		width: 6px;
+		height: 6px;
+		margin-top: 8px;
+		border-radius: 50%;
+		background: #a85e28;
+	}
+
+	.pd-bullet-item p {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--body);
+	}
+
+	.pd-bullet-item :global(strong) {
+		color: var(--ink);
+	}
+
+	/* ---------- the hard part: challenge cards ---------- */
+
+	.pd-challenge-list {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.pd-challenge-card {
+		background: var(--sand);
+		padding: 26px 28px;
+	}
+
+	.pd-challenge-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 16px;
+		margin-bottom: 12px;
+	}
+
+	.pd-challenge-head h4 {
+		margin: 0;
+		font-family: "Archivo", sans-serif;
+		font-weight: 800;
+		font-size: 18px;
+		letter-spacing: -0.015em;
+		color: var(--ink);
+	}
+
+	.pd-challenge-head .credit {
+		flex-shrink: 0;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 10px;
+		letter-spacing: 0.06em;
+		color: #a85e28;
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	.pd-challenge-card p {
+		margin: 0;
+		font-size: 15px;
+		line-height: 1.65;
+		color: var(--body);
+	}
+
+	.pd-challenge-card p + p {
+		margin-top: 12px;
+	}
+
+	/* ---------- images ---------- */
+
+	.pd-rail-images {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.pd-figure {
+		margin: 0;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 9px;
+	}
+
+	.pd-figure-box {
+		display: block;
+		width: 100%;
+		padding: 0;
+		background: transparent;
+		border: 0;
+		overflow: hidden;
+		border-radius: 10px;
+		cursor: zoom-in;
+	}
+
+	.pd-figure-box img {
+		width: 100%;
+		height: auto;
+		display: block;
+		transition: transform 0.18s ease;
+	}
+
+	.pd-figure-box:hover img {
+		transform: scale(1.015);
+	}
+
+	.pd-figure figcaption {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 600;
+		font-size: 9.5px;
+		letter-spacing: 0.05em;
+		color: var(--taupe);
+	}
+
+	/* ---------- right rail ---------- */
+
+	.pd-rail {
+		position: sticky;
+		top: 88px;
+		align-self: start;
+		display: flex;
+		flex-direction: column;
+		gap: 26px;
+	}
+
+	.pd-stack-block {
+		padding-top: 26px;
+		border-top: 1px solid var(--card-line);
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.pd-stack-block > h3 {
+		margin: 0;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 11px;
+		letter-spacing: 0.1em;
+		color: var(--ink);
+	}
+
+	.pd-stack-label {
+		margin: 0 0 10px;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 10px;
+		letter-spacing: 0.1em;
+		color: var(--taupe);
+	}
+
+	.pd-stack-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
+
+	.pd-tag {
+		display: inline-flex;
+		align-items: center;
+		background: var(--sand);
+		color: var(--body);
+		padding: 5px 10px;
+		border-radius: 999px;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 600;
+		font-size: 10px;
+	}
+
+	.pd-agent-table-row {
+		display: grid;
+		grid-template-columns: 76px 1fr;
+		gap: 10px;
+		padding: 7px 0;
+		border-top: 1px solid var(--hairline);
+	}
+
+	.pd-agent-table-row .role {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 10px;
+		color: var(--ink);
+	}
+
+	.pd-agent-table-row .model {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 600;
+		font-size: 10px;
+		line-height: 1.45;
+		color: var(--taupe);
+	}
+
+	.pd-cta-list {
+		display: flex;
+		flex-direction: column;
+		gap: 9px;
+	}
+
+	.pd-cta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 12px;
+		padding: 13px 16px;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 12px;
+		letter-spacing: 0.03em;
+		text-decoration: none;
+		border-radius: 999px;
+		transition:
+			transform 0.18s ease,
+			box-shadow 0.18s ease;
+	}
+
+	.pd-cta.primary {
+		background: #a85e28;
+		color: #fbf8ee;
+		box-shadow: 0 10px 22px rgba(168, 94, 40, 0.18);
+	}
+
+	.pd-cta.primary:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 14px 26px rgba(168, 94, 40, 0.24);
+	}
+
+	.pd-cta:not(.primary) {
+		background: transparent;
+		color: var(--ink);
+		border: 1.5px solid var(--card-line);
+	}
+
+	.pd-cta-label {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.pd-github-icon {
+		width: 17px;
+		height: 17px;
+		flex: 0 0 auto;
+	}
+
+	/* ---------- build note ---------- */
+
+	.pd-note {
+		margin-top: 64px;
+		padding-top: 40px;
+		border-top: 2px solid var(--body);
+	}
+
+	.pd-note-inner {
+		max-width: 720px;
+	}
+
+	.pd-note-head {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-bottom: 20px;
+	}
+
+	.pd-note-head > span:first-child {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 11px;
+		letter-spacing: 0.1em;
+		color: var(--taupe);
+	}
+
+	.pd-note-head .source {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 600;
+		font-size: 10px;
+		color: var(--taupe);
+	}
+
+	.pd-note-inner p {
+		margin: 0 0 15px;
+		font-size: 15px;
+		line-height: 1.72;
+		color: var(--body);
+	}
+
+	.pd-note-inner :global(strong) {
+		color: var(--ink);
+	}
+
+	.pd-note-more {
+		display: none;
+	}
+
+	.pd-note-more.is-open {
+		display: block;
+	}
+
+	.pd-note-actions {
+		display: flex;
+		align-items: center;
+		gap: 18px;
+		margin-top: 10px;
+	}
+
+	.pd-note-actions button {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: transparent;
+		border: 1.5px solid var(--card-line);
+		padding: 12px 20px;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 11.5px;
+		letter-spacing: 0.05em;
+		color: var(--ink);
+		cursor: pointer;
+	}
+
+	.pd-note-actions button span[aria-hidden] {
+		color: #a85e28;
+	}
+
+	/* ---------- lightbox ---------- */
+
+	:global(body.pd-lightbox-open) {
+		overflow: hidden;
+	}
+
+	.pd-lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 32px;
+	}
+
+	.pd-lightbox.is-open {
+		display: flex;
+	}
+
+	.pd-lightbox-backdrop {
+		position: absolute;
+		inset: 0;
+		border: 0;
+		background: rgba(22, 24, 16, 0.78);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		cursor: zoom-out;
+	}
+
+	.pd-lightbox-panel {
+		position: relative;
+		z-index: 1;
+		max-width: min(1180px, 94vw);
+		max-height: 90vh;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.pd-lightbox-panel img {
+		max-width: 100%;
+		max-height: calc(90vh - 48px);
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		display: block;
+		border-radius: 12px;
+		box-shadow: 0 24px 72px rgba(0, 0, 0, 0.34);
+	}
+
+	.pd-lightbox-panel p {
+		margin: 0;
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 11px;
+		letter-spacing: 0.06em;
+		color: #fbf8ee;
+	}
+
+	.pd-lightbox-close {
+		position: absolute;
+		top: -14px;
+		right: -14px;
+		width: 34px;
+		height: 34px;
+		padding: 0;
+		border: 1px solid rgba(251, 248, 238, 0.45);
+		border-radius: 999px;
+		background: #fbf8ee;
+		color: #2e3320;
+		font-size: 22px;
+		line-height: 1;
+		cursor: pointer;
+	}
+
+	/* ---------- bottom ---------- */
+
+	.pd-bottom {
+		margin-top: 56px;
+		padding-top: 24px;
+		border-top: 1px solid var(--card-line);
+	}
+
+	.pd-bottom a {
+		font-family: "JetBrains Mono", monospace;
+		font-weight: 700;
+		font-size: 12px;
+		color: #a85e28;
+		text-decoration: none;
+	}
+
+	@media (max-width: 900px) {
+		.pd-container {
+			padding: 0 24px 96px;
+		}
+		.pd-grid {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+		.pd-rail {
+			position: static;
+		}
+		.pd-lightbox {
+			padding: 18px;
+		}
+		.pd-lightbox-close {
+			top: 8px;
+			right: 8px;
+		}
+	}
+</style>

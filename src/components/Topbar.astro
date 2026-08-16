@@ -1,41 +1,43 @@
 ---
 // Sticky topbar navigation — shows on every page
+const isHome = Astro.url.pathname === "/";
+const hash = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 ---
 
 <header class="topbar" id="topbar">
 	<div class="topbar-inner">
-		<a href="#top" class="brand">JADE LEE<span class="period">.</span></a>
+		<a href={isHome ? "#top" : "/"} class="brand">JADE LEE<span class="period">.</span></a>
 		<div class="nav-right">
 			<nav class="nav-links" aria-label="Primary">
-				<a href="#about"><span class="num">01</span>ABOUT</a>
-				<a href="#works"><span class="num">02</span>PROJECTS</a>
-				<a href="#toolset"><span class="num">03</span>TOOLSET</a>
-				<a href="#history"><span class="num">04</span>THE PATH</a>
-				<a href="#contact"><span class="num">05</span>LET'S CONNECT</a>
+				<a href={hash("about")}><span class="num">01</span>ABOUT</a>
+				<a href={hash("works")}><span class="num">02</span>PROJECTS</a>
+				<a href={hash("toolset")}><span class="num">03</span>TOOLSET</a>
+				<a href={hash("history")}><span class="num">04</span>THE PATH</a>
+				<a href={hash("contact")}><span class="num">05</span>LET'S CONNECT</a>
 			</nav>
 			<div class="theme-switch" id="theme-switch" role="group" aria-label="Theme">
 				<button type="button" class="theme-swatch swatch-light" data-theme-choice="light" aria-label="Light theme">
-					<svg aria-hidden="true" viewBox="0 0 24 24">
-						<circle cx="12" cy="12" r="4"></circle>
-						<path d="M12 2v2"></path>
-						<path d="M12 20v2"></path>
-						<path d="m4.93 4.93 1.41 1.41"></path>
-						<path d="m17.66 17.66 1.41 1.41"></path>
-						<path d="M2 12h2"></path>
-						<path d="M20 12h2"></path>
-						<path d="m6.34 17.66-1.41 1.41"></path>
-						<path d="m19.07 4.93-1.41 1.41"></path>
+					<svg aria-hidden="true" viewBox="0 0 20 20">
+						<circle cx="10" cy="10" r="3.4"></circle>
+						<path d="M10 2.2v1.8"></path>
+						<path d="M10 16v1.8"></path>
+						<path d="M2.2 10h1.8"></path>
+						<path d="M16 10h1.8"></path>
+						<path d="m4.6 4.6 1.3 1.3"></path>
+						<path d="m14.1 14.1 1.3 1.3"></path>
+						<path d="m15.4 4.6-1.3 1.3"></path>
+						<path d="m5.9 14.1-1.3 1.3"></path>
 					</svg>
 				</button>
 				<button type="button" class="theme-swatch swatch-dark" data-theme-choice="dark" aria-label="Dark theme">
-					<svg aria-hidden="true" viewBox="0 0 24 24">
-						<path class="moon-fill" d="M21 14.2A8.6 8.6 0 0 1 9.8 3a8.8 8.8 0 1 0 11.2 11.2Z"></path>
+					<svg aria-hidden="true" viewBox="0 0 20 20">
+						<path d="M17.2 12.1A7.2 7.2 0 0 1 7.9 2.8a7.3 7.3 0 1 0 9.3 9.3Z"></path>
 					</svg>
 				</button>
 				<button type="button" class="theme-swatch swatch-race" data-theme-choice="race" aria-label="Race theme">
-					<svg aria-hidden="true" viewBox="0 0 24 24">
-						<path d="M9.2 8h5.6a4 4 0 0 1 0 8H9.2a4 4 0 0 1 0-8Z"></path>
-						<path d="M9.4 12h5.2"></path>
+					<svg aria-hidden="true" viewBox="0 0 20 20">
+						<circle class="race-half-a" cx="10" cy="10" r="6.5"></circle>
+						<path class="race-half-b" d="M10 3.5a6.5 6.5 0 0 1 0 13z"></path>
 					</svg>
 				</button>
 			</div>
@@ -49,11 +51,11 @@
 </header>
 
 <nav class="mobile-nav" id="mobile-nav" aria-label="Primary mobile">
-	<a href="#about"><span class="num">01</span>ABOUT</a>
-	<a href="#works"><span class="num">02</span>PROJECTS</a>
-	<a href="#toolset"><span class="num">03</span>TOOLSET</a>
-	<a href="#history"><span class="num">04</span>THE PATH</a>
-	<a href="#contact"><span class="num">05</span>LET'S CONNECT</a>
+	<a href={hash("about")}><span class="num">01</span>ABOUT</a>
+	<a href={hash("works")}><span class="num">02</span>PROJECTS</a>
+	<a href={hash("toolset")}><span class="num">03</span>TOOLSET</a>
+	<a href={hash("history")}><span class="num">04</span>THE PATH</a>
+	<a href={hash("contact")}><span class="num">05</span>LET'S CONNECT</a>
 </nav>
 
 <script>
@@ -134,9 +136,9 @@
 
 	.brand {
 		font-family: "Archivo", sans-serif;
-		font-size: 19px;
-		font-weight: 800;
-		letter-spacing: -0.01em;
+		font-size: 18px;
+		font-weight: 600;
+		letter-spacing: 0;
 		color: var(--heading);
 		text-decoration: none;
 		white-space: nowrap;
@@ -194,11 +196,12 @@
 	.theme-switch {
 		display: flex;
 		align-items: center;
-		gap: 18px;
-		margin-left: 18px;
-		padding: 0;
+		gap: 2px;
+		margin-left: 16px;
+		padding: 3px;
 		flex-shrink: 0;
-		border: none;
+		border: 1px solid var(--card-line);
+		border-radius: 999px;
 	}
 
 	.theme-swatch {
@@ -213,47 +216,47 @@
 		background: transparent;
 		color: var(--taupe);
 		cursor: pointer;
-		opacity: 0.72;
+		opacity: 0.6;
 		transition:
 			color 0.18s ease,
 			opacity 0.18s ease,
-			transform 0.18s ease;
+			background 0.18s ease;
 	}
 
 	.theme-swatch svg {
-		width: 24px;
-		height: 24px;
+		width: 15px;
+		height: 15px;
 		fill: none;
 		stroke: currentColor;
-		stroke-width: 2.4;
+		stroke-width: 1.6;
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		display: block;
 	}
 
-	.swatch-light svg {
-		color: var(--ink);
-	}
-
 	.swatch-dark svg {
-		color: #a79d83;
-	}
-
-	.swatch-dark .moon-fill {
 		fill: currentColor;
 		stroke: none;
 	}
 
-	.swatch-race svg {
-		color: #a79d83;
-		stroke-width: 2.8;
+	.race-half-a {
+		fill: #7e5cb0;
 	}
 
-	.theme-swatch:hover,
+	.race-half-b {
+		fill: #117e76;
+	}
+
+	.theme-swatch:hover {
+		color: var(--ink);
+		opacity: 0.85;
+		background: var(--sand);
+	}
+
 	.theme-swatch.is-active {
 		color: var(--ink);
 		opacity: 1;
-		transform: translateY(-1px);
+		background: var(--sand);
 	}
 
 	/* ---------- mobile menu toggle + panel ---------- */
