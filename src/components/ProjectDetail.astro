@@ -383,7 +383,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 	}
 
 	.pd-breadcrumb .current {
-		color: #a85e28;
+		color: var(--accent-mark);
 	}
 
 	/* ---------- title block ---------- */
@@ -399,7 +399,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		font-size: 11px;
 		font-weight: 700;
 		letter-spacing: 0.09em;
-		color: #a85e28;
+		color: var(--accent-mark);
 	}
 
 	.pd-title {
@@ -413,7 +413,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 	}
 
 	.pd-title .period {
-		color: #a85e28;
+		color: var(--accent-mark);
 	}
 
 	.pd-lede {
@@ -448,7 +448,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		letter-spacing: 0.1em;
 		color: var(--taupe);
 		padding-bottom: 12px;
-		border-bottom: 2px solid #a85e28;
+		border-bottom: 2px solid var(--accent-mark);
 		margin-bottom: 18px;
 	}
 
@@ -481,6 +481,13 @@ const tightHeading: Record<SectionKey, boolean> = {
 
 	.pd-agent-row {
 		padding: 18px 0;
+	}
+
+	/* border goes between consecutive rows only — :first-of-type doesn't
+	   work here since the section heading div is also a <div> and claims
+	   that slot, so :not(:first-of-type) matched every row including the
+	   real first one */
+	.pd-agent-row + .pd-agent-row {
 		border-top: 1px solid var(--hairline);
 	}
 
@@ -505,7 +512,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		font-weight: 700;
 		font-size: 10px;
 		letter-spacing: 0.05em;
-		color: #a85e28;
+		color: var(--accent-mark);
 	}
 
 	.pd-agent-desc {
@@ -522,6 +529,9 @@ const tightHeading: Record<SectionKey, boolean> = {
 		grid-template-columns: 30px 1fr;
 		gap: 16px;
 		padding: 18px 0;
+	}
+
+	.pd-feature-row + .pd-feature-row {
 		border-top: 1px solid var(--hairline);
 	}
 
@@ -529,7 +539,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 700;
 		font-size: 11px;
-		color: #a85e28;
+		color: var(--accent-mark);
 		padding-top: 3px;
 	}
 
@@ -563,7 +573,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 	}
 
 	.pd-feature-sub-item .arrow {
-		color: #a85e28;
+		color: var(--accent-mark);
 		font-size: 12px;
 	}
 
@@ -596,7 +606,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		height: 6px;
 		margin-top: 8px;
 		border-radius: 50%;
-		background: #a85e28;
+		background: var(--accent-mark);
 	}
 
 	.pd-bullet-item p {
@@ -646,7 +656,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		font-weight: 700;
 		font-size: 10px;
 		letter-spacing: 0.06em;
-		color: #a85e28;
+		color: var(--accent-mark);
 		text-align: right;
 		white-space: nowrap;
 	}
@@ -768,6 +778,9 @@ const tightHeading: Record<SectionKey, boolean> = {
 		grid-template-columns: 76px 1fr;
 		gap: 10px;
 		padding: 7px 0;
+	}
+
+	.pd-agent-table-row + .pd-agent-table-row {
 		border-top: 1px solid var(--hairline);
 	}
 
@@ -810,8 +823,8 @@ const tightHeading: Record<SectionKey, boolean> = {
 	}
 
 	.pd-cta.primary {
-		background: #a85e28;
-		color: #fbf8ee;
+		background: var(--accent);
+		color: var(--on-accent);
 		box-shadow: 0 10px 22px rgba(168, 94, 40, 0.18);
 	}
 
@@ -916,7 +929,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 	}
 
 	.pd-note-actions button span[aria-hidden] {
-		color: #a85e28;
+		color: var(--accent-mark);
 	}
 
 	/* ---------- lightbox ---------- */
@@ -1007,7 +1020,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 700;
 		font-size: 12px;
-		color: #a85e28;
+		color: var(--accent-mark);
 		text-decoration: none;
 	}
 
@@ -1028,6 +1041,23 @@ const tightHeading: Record<SectionKey, boolean> = {
 		.pd-lightbox-close {
 			top: 8px;
 			right: 8px;
+		}
+		.pd-cta {
+			padding: 14px 16px;
+			min-height: 44px;
+			box-sizing: border-box;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.pd-container {
+			padding: 0 20px 72px;
+		}
+		.pd-wrapper {
+			margin-top: 64px;
+		}
+		.pd-breadcrumb {
+			flex-wrap: wrap;
 		}
 	}
 </style>

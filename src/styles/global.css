@@ -140,11 +140,11 @@
 	--greige: #262c1d;
 	--field: #171b12;
 	--ink: #f4f1e4;
-	--body: #dcdcc6;
-	--heading: #dcdcc6;
-	--taupe: #a5a888;
-	--taupe-dim: #a9ac86;
-	--stone: #bfbfa8;
+	--body: #efece0;
+	--heading: #efece0;
+	--taupe: #d3d1c0;
+	--taupe-dim: #d6d4c2;
+	--stone: #dedbc9;
 	--hairline: #3a4029;
 	--rule: #3d4429;
 	--rule-sand: #3d4429;
@@ -152,12 +152,12 @@
 	--nav-bg: rgba(31, 36, 24, 0.86);
 
 	--accent: #a85e28;
-	--accent-mark: #a85e28;
+	--accent-mark: #dd8850;
 	--accent-2: #c9a344;
 
 	--band: #3c4326;
 	--band-text: #e2e0cd;
-	--band-label: #a9ac86;
+	--band-label: #b6b995;
 	--band-now: #e8b95c;
 	--panel: #2e3320;
 
@@ -171,11 +171,11 @@
 	--greige: #ddebe7;
 	--field: #fdf6e8;
 	--ink: #123f3b;
-	--body: #137f76;
+	--body: #2c3b39; /* near-neutral body copy — desaturated so it doesn't compete with the heading for color weight */
 	--heading: #7e5cb0;
 	--taupe: #6e6480;
 	--taupe-dim: #4a6560;
-	--stone: #137f76;
+	--stone: #3d5450; /* Fraunces lede */
 	--hairline: #e6d8c2;
 	--rule: #bfd4cf;
 	--rule-sand: #e6d8c2;

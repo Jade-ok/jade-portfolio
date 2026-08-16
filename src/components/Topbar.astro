@@ -343,6 +343,26 @@ const hash = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 		}
 		.menu-toggle {
 			display: flex;
+			width: 44px;
+			height: 44px;
+		}
+		.theme-switch {
+			padding: 4px;
+		}
+		.theme-swatch {
+			width: 36px;
+			height: 36px;
+		}
+		.mobile-nav a {
+			padding: 16px 24px;
+			min-height: 44px;
+			box-sizing: border-box;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.topbar-inner {
+			padding: 0 20px;
 		}
 	}
 </style>

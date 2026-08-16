@@ -126,7 +126,7 @@ const standard = projects.filter((p) => !p.featured);
 	.eyebrow .rule {
 		width: 32px;
 		height: 2px;
-		background: var(--accent-2);
+		background: var(--accent-mark);
 	}
 
 	.heading {
@@ -140,7 +140,7 @@ const standard = projects.filter((p) => !p.featured);
 	}
 
 	.heading .period {
-		color: var(--accent-2);
+		color: var(--accent-mark);
 	}
 
 	.count {
@@ -182,14 +182,12 @@ const standard = projects.filter((p) => !p.featured);
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background: color-mix(in srgb, var(--panel) 88%, black);
+		background: var(--sand);
 		font-family: "JetBrains Mono", monospace;
 		font-size: 9px;
 		font-weight: 700;
 		letter-spacing: 0.08em;
-		/* fixed literal, not var(--paper) — --panel stays dark in every
-		   theme (including dark mode, where --paper itself flips dark) */
-		color: rgba(251, 248, 238, 0.45);
+		color: var(--taupe);
 		text-align: center;
 		padding: 10px;
 	}
@@ -292,8 +290,16 @@ const standard = projects.filter((p) => !p.featured);
 		padding: 5px 11px;
 		font-size: 9.5px;
 		letter-spacing: 0.03em;
+		/* filled surface — stays on --accent (not --accent-mark) so dark
+		   mode's brightened mark color never lands under the cream text
+		   and erodes its contrast; race explicitly wants the brighter
+		   coral fill here, so it gets its own override below */
 		background: var(--accent);
 		color: var(--on-accent);
+	}
+
+	:global([data-jl-theme="race"]) .badge.rust {
+		background: var(--accent-mark);
 	}
 
 	.meta-row {
@@ -397,8 +403,15 @@ const standard = projects.filter((p) => !p.featured);
 		font-family: "JetBrains Mono", monospace;
 		font-size: 10.5px;
 		font-weight: 600;
-		color: var(--accent);
+		color: var(--accent-mark);
 		white-space: nowrap;
+	}
+
+	/* race keeps tag-chip text on its structural teal, distinct from --body's
+	   desaturated paragraph color (see global.css race token comment) */
+	:global([data-jl-theme="race"]) .featured-card .pill,
+	:global([data-jl-theme="race"]) .card .pill {
+		color: #137f76;
 	}
 
 	@media (max-width: 900px) {
@@ -410,6 +423,22 @@ const standard = projects.filter((p) => !p.featured);
 		}
 		.grid {
 			grid-template-columns: 1fr;
+		}
+		.heading {
+			font-size: clamp(44px, 12vw, 88px);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.works {
+			padding: 96px 20px;
+		}
+		.header-row {
+			margin-bottom: 48px;
+		}
+		.count,
+		.meta-row.nowrap {
+			white-space: normal;
 		}
 	}
 </style>

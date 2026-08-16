@@ -103,7 +103,7 @@ const categories = [
 	.eyebrow .rule {
 		width: 32px;
 		height: 2px;
-		background: var(--accent-2);
+		background: var(--accent-mark);
 	}
 
 	.heading {
@@ -117,7 +117,7 @@ const categories = [
 	}
 
 	.heading .period {
-		color: var(--accent-2);
+		color: var(--accent-mark);
 	}
 
 	.grid {
@@ -131,7 +131,7 @@ const categories = [
 		justify-content: space-between;
 		align-items: baseline;
 		padding-bottom: 14px;
-		border-bottom: 1px solid var(--rule);
+		border-bottom: 2px solid #117e76;
 		font-family: "JetBrains Mono", monospace;
 		font-size: 12px;
 		font-weight: 700;
@@ -170,11 +170,21 @@ const categories = [
 			grid-template-columns: repeat(2, 1fr);
 			gap: 48px;
 		}
+		.heading {
+			font-size: clamp(44px, 12vw, 88px);
+		}
 	}
 
-	@media (max-width: 560px) {
+	@media (max-width: 600px) {
+		.container {
+			padding: 64px 20px;
+		}
+		.heading {
+			margin-bottom: 40px;
+		}
 		.grid {
 			grid-template-columns: 1fr;
+			gap: 40px;
 		}
 	}
 </style>

@@ -99,7 +99,7 @@ const mostRecentYear = Math.max(...timeline.map((t) => t.year));
 	.eyebrow .rule {
 		width: 32px;
 		height: 2px;
-		background: var(--accent-2);
+		background: var(--accent-mark);
 	}
 
 	.heading {
@@ -113,7 +113,7 @@ const mostRecentYear = Math.max(...timeline.map((t) => t.year));
 	}
 
 	.heading .period {
-		color: var(--accent-2);
+		color: var(--accent-mark);
 	}
 
 	.timeline {
@@ -180,13 +180,39 @@ const mostRecentYear = Math.max(...timeline.map((t) => t.year));
 		text-align: right;
 	}
 
+	@media (max-width: 900px) {
+		.heading {
+			font-size: clamp(44px, 12vw, 88px);
+		}
+	}
+
 	@media (max-width: 768px) {
 		.tl-row {
-			grid-template-columns: 1fr;
-			gap: 8px;
+			display: grid;
+			grid-template-columns: 1fr auto;
+			grid-template-areas:
+				"year location"
+				"content content";
+			gap: 6px 12px;
+		}
+		.tl-year {
+			grid-area: year;
 		}
 		.tl-location {
-			text-align: left;
+			grid-area: location;
+			text-align: right;
+		}
+		.tl-content {
+			grid-area: content;
+		}
+	}
+
+	@media (max-width: 600px) {
+		.container {
+			padding: 64px 20px;
+		}
+		.heading {
+			margin-bottom: 40px;
 		}
 	}
 </style>

@@ -34,7 +34,7 @@ const links = [
 			HEY - I'D LOVE<br />
 			TO CONNECT<span class="period">.</span>
 		</h2>
-		<p class="lede">Internships, voice/AI side projects, or coffee in Vancouver - the box below reaches me directly.</p>
+		<p class="lede">Internships, interesting projects, or coffee in Vancouver - the box below reaches me directly.</p>
 
 		<div class="grid">
 			<form class="form" id="contact-form">
@@ -171,7 +171,7 @@ const links = [
 	.connect {
 		background: var(--greige);
 		color: var(--ink);
-		padding: 120px 0 56px;
+		padding: 105px 0 48px;
 		border-top: 1px solid var(--rule);
 		scroll-margin-top: -20px;
 	}
@@ -191,34 +191,34 @@ const links = [
 		font-weight: 600;
 		letter-spacing: 0.06em;
 		color: var(--taupe-dim);
-		margin-bottom: 28px;
+		margin-bottom: 22px;
 	}
 
 	.eyebrow .rule {
 		width: 32px;
 		height: 2px;
-		background: var(--accent-2);
+		background: var(--accent-mark);
 	}
 
 	.heading {
-		margin: 0 0 20px;
+		margin: 0 0 16px;
 		font-family: "Archivo", sans-serif;
 		font-weight: 900;
-		font-size: clamp(56px, 8vw, 96px);
+		font-size: clamp(48px, 7vw, 84px);
 		line-height: 0.88;
 		letter-spacing: -0.045em;
 		color: var(--heading);
 	}
 
 	.heading .period {
-		color: var(--accent-2);
+		color: var(--accent-mark);
 	}
 
 	.lede {
-		margin: 0 0 56px;
-		max-width: 520px;
+		margin: 0 0 48px;
+		max-width: 460px;
 		font-family: "Fraunces", serif;
-		font-size: 20px;
+		font-size: 17px;
 		font-weight: 400;
 		line-height: 1.45;
 		color: var(--stone);
@@ -228,7 +228,7 @@ const links = [
 	.grid {
 		display: grid;
 		grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-		gap: 64px;
+		gap: 52px;
 		align-items: start;
 	}
 
@@ -238,25 +238,43 @@ const links = [
 		}
 	}
 
+	@media (max-width: 600px) {
+		.container {
+			padding: 0 20px;
+		}
+		.connect {
+			padding: 80px 0 40px;
+		}
+		.form .row {
+			grid-template-columns: 1fr;
+		}
+		.link-sub {
+			white-space: normal;
+		}
+		.bottom-bar {
+			margin-top: 64px;
+		}
+	}
+
 	/* ---------- form ---------- */
 
 	.form {
 		display: flex;
 		flex-direction: column;
-		gap: 18px;
+		gap: 16px;
 	}
 
 	.form .row {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		gap: 14px;
+		gap: 12px;
 	}
 
 	.form label {
 		display: block;
-		margin-bottom: 8px;
+		margin-bottom: 7px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 10px;
+		font-size: 9px;
 		font-weight: 700;
 		letter-spacing: 0.1em;
 		color: var(--taupe-dim);
@@ -270,9 +288,9 @@ const links = [
 		border: 1px solid var(--rule);
 		border-radius: 0;
 		color: var(--ink);
-		padding: 15px 16px;
+		padding: 13px 14px;
 		font-family: "Archivo", sans-serif;
-		font-size: 15px;
+		font-size: 14px;
 		outline: none;
 	}
 
@@ -287,14 +305,14 @@ const links = [
 		align-self: flex-start;
 		display: inline-flex;
 		align-items: center;
-		gap: 10px;
+		gap: 8px;
 		background: var(--accent);
 		color: var(--on-accent);
 		border: none;
 		border-radius: 0;
-		padding: 17px 34px;
+		padding: 14px 28px;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 13px;
+		font-size: 12px;
 		font-weight: 700;
 		letter-spacing: 0.04em;
 		cursor: pointer;
@@ -308,7 +326,7 @@ const links = [
 	.form-status {
 		margin: 0;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 11.5px;
+		font-size: 10.5px;
 		font-weight: 600;
 		color: var(--body);
 		min-height: 1.4em;
@@ -332,16 +350,16 @@ const links = [
 	.link-row {
 		display: flex;
 		align-items: center;
-		gap: 14px;
-		padding: 16px 0;
+		gap: 12px;
+		padding: 13px 0;
 		border-bottom: 1px solid var(--rule);
 		color: var(--ink);
 		text-decoration: none;
 	}
 
 	.link-row .icon {
-		width: 19px;
-		height: 19px;
+		width: 16px;
+		height: 16px;
 		flex-shrink: 0;
 		color: var(--accent);
 	}
@@ -354,7 +372,7 @@ const links = [
 
 	.link-name {
 		font-family: "Archivo", sans-serif;
-		font-size: 16px;
+		font-size: 14px;
 		font-weight: 700;
 		letter-spacing: -0.01em;
 		color: var(--ink);
@@ -362,7 +380,7 @@ const links = [
 
 	.link-sub {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 10.5px;
+		font-size: 9.5px;
 		font-weight: 600;
 		letter-spacing: 0.04em;
 		color: var(--taupe-dim);
@@ -372,18 +390,18 @@ const links = [
 	.link-arrow {
 		margin-left: auto;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 14px;
+		font-size: 12px;
 		color: var(--accent-mark);
 	}
 
 	.email-option {
 		position: relative;
-		margin-top: 22px;
+		margin-top: 18px;
 	}
 
 	.email-label {
 		font-family: "JetBrains Mono", monospace;
-		font-size: 11px;
+		font-size: 10px;
 		font-weight: 600;
 		letter-spacing: 0.05em;
 		line-height: 1.8;
@@ -396,7 +414,7 @@ const links = [
 		border: none;
 		padding: 0;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 13px;
+		font-size: 12px;
 		font-weight: 700;
 		color: var(--accent);
 		text-decoration: none;
@@ -407,11 +425,11 @@ const links = [
 		position: absolute;
 		top: calc(100% + 8px);
 		left: 0;
-		padding: 6px 12px;
+		padding: 5px 10px;
 		background: var(--accent-2);
 		color: var(--on-accent-2);
 		font-family: "JetBrains Mono", monospace;
-		font-size: 10px;
+		font-size: 9px;
 		font-weight: 700;
 		letter-spacing: 0.08em;
 		border-radius: 999px;
@@ -431,8 +449,8 @@ const links = [
 	/* ---------- bottom bar ---------- */
 
 	.bottom-bar {
-		margin-top: 104px;
-		padding-top: 24px;
+		margin-top: 88px;
+		padding-top: 20px;
 		border-top: 1px solid var(--rule);
 		display: flex;
 		justify-content: space-between;
@@ -440,7 +458,7 @@ const links = [
 		gap: 20px;
 		flex-wrap: wrap;
 		font-family: "JetBrains Mono", monospace;
-		font-size: 11px;
+		font-size: 10px;
 		font-weight: 600;
 		color: var(--taupe-dim);
 	}
@@ -448,12 +466,12 @@ const links = [
 	.status {
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		gap: 7px;
 	}
 
 	.status-dot {
-		width: 8px;
-		height: 8px;
+		width: 7px;
+		height: 7px;
 		border-radius: 50%;
 		background: var(--accent-mark);
 	}

@@ -183,6 +183,7 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 
 		links: [
 			{ label: "Git Repository", href: "https://github.com/Jade-ok/CIC_mock-interview-coach", primary: true },
+			{ label: "Live Demo", href: "https://main.dvppliwnm6u9g.amplifyapp.com/" },
 		],
 
 		note: {

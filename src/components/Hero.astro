@@ -63,7 +63,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 				<div class="subtitle">Computer Science student <span class="rust">@ UBC</span></div>
 
-				<p class="interests-line">NPO volunteer &nbsp;·&nbsp; Career pivoter &nbsp;·&nbsp; Runner &nbsp;·&nbsp; Perpetual learner</p>
+				<p class="interests-line">NPO volunteer <span class="dot">·</span> Career pivoter <span class="dot">·</span> Runner <span class="dot">·</span> Perpetual learner</p>
 
 				<div class="meta-row">
 					<span class="meta-item">BCS · 4TH YEAR · VANCOUVER, CA</span>
@@ -75,8 +75,8 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 				</div>
 
 				<p class="tagline">
-					Recent interests include cloud infrastructure, multi-agent systems, security, and networks -
-					<em>so many things to learn!</em>
+					Recent interests include cloud infrastructure, multi-agent systems,<br />
+					security, and networks - <em>so many things to learn!</em>
 				</p>
 
 				<div class="cta-row">
@@ -179,8 +179,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 	/* dark theme's --ink flips light (for legibility on dark page backgrounds
 	   elsewhere), which would be unreadable on this always-light scrim — so
-	   dark mode alone keeps a fixed dark literal here */
-	[data-jl-theme="dark"] .overlay {
+	   dark mode alone keeps a fixed dark literal here.
+	   :global() is required — data-jl-theme lives on <html>, outside this
+	   component's scope, so Astro's scoping attribute would otherwise get
+	   appended to it and the selector would never match anything. */
+	:global([data-jl-theme="dark"]) .overlay {
 		color: #2b3218;
 	}
 
@@ -210,6 +213,14 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		inset: 0;
 		border-radius: 50%;
 		background: var(--accent-mark);
+	}
+
+	/* dark theme brightens --accent-mark for legibility on the dark page bg,
+	   but this dot always sits on the overlay's fixed-light scrim, so it
+	   should stay pinned to the light-optimized (darker) literal instead */
+	:global([data-jl-theme="dark"]) .live-ring,
+	:global([data-jl-theme="dark"]) .live-pulse {
+		background: #a85e28;
 	}
 
 	.live-ring {
@@ -260,10 +271,23 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		color: var(--heading);
 	}
 
+	/* dark theme's --heading flips light (for legibility on dark page
+	   backgrounds elsewhere), which disappears against this always-light
+	   scrim — same fix as .overlay above. */
+	:global([data-jl-theme="dark"]) .running-total {
+		color: #2b3218;
+	}
+
 	.running-total span {
 		font-size: 0.34em;
 		margin-left: 3px;
-		color: var(--accent);
+		color: var(--accent-mark);
+	}
+
+	/* same reasoning as .live-ring/.live-pulse above — "km" sits on the
+	   fixed-light scrim, not the dark page bg */
+	:global([data-jl-theme="dark"]) .running-total span {
+		color: #a85e28;
 	}
 
 	.pace {
@@ -291,7 +315,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	}
 
 	.caption-time {
-		color: var(--accent);
+		color: var(--accent-mark);
 	}
 
 	@keyframes livePulse {
@@ -379,7 +403,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	}
 
 	.subtitle .rust {
-		color: var(--accent);
+		color: var(--accent-mark);
 	}
 
 	.interests-line {
@@ -388,7 +412,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		font-weight: 500;
 		font-size: clamp(13px, min(1.15vw, 1.9vh), 15px);
 		letter-spacing: -0.005em;
-		color: var(--taupe);
+		color: var(--ink);
+	}
+
+	.interests-line .dot {
+		color: var(--accent-mark);
 	}
 
 	.meta-row {
@@ -418,7 +446,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		color: var(--accent);
+		color: var(--accent-mark);
 		font-weight: 600;
 		white-space: nowrap;
 	}
@@ -443,7 +471,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 	.tagline em {
 		font-style: italic;
-		color: var(--accent);
+		color: var(--accent-mark);
 	}
 
 	.cta-row {
@@ -478,6 +506,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		background: transparent;
 		color: var(--ink);
 		border: 1.5px solid var(--hairline);
+	}
+
+	:global([data-jl-theme="race"]) .btn.secondary {
+		color: #137f76;
+		border-color: #137f76;
 	}
 
 	/* ---------- before / now / next band ---------- */
@@ -540,5 +573,67 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 	.band-body.now {
 		font-weight: 500;
+	}
+
+	/* ---------- mobile ---------- */
+
+	@media (max-width: 900px) {
+		.about {
+			height: auto;
+			overflow: visible;
+		}
+
+		.top {
+			padding: 40px 0;
+		}
+
+		.container {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.photo-col {
+			width: min(320px, 70vw);
+			margin: 0 auto;
+		}
+
+		.band-inner {
+			grid-template-columns: 1fr;
+			gap: 24px;
+		}
+
+		.band-inner > div:nth-child(1) {
+			padding: 0;
+		}
+
+		.band-inner > div:nth-child(2),
+		.band-inner > div:nth-child(3) {
+			padding: 20px 0 0;
+			border-left: none;
+			border-top: 1px solid rgba(226, 224, 205, 0.2);
+		}
+	}
+
+	@media (max-width: 600px) {
+		.container {
+			padding: 0 20px;
+		}
+
+		.band-inner {
+			padding: 24px 20px;
+		}
+
+		.meta-item {
+			white-space: normal;
+		}
+
+		.meta-row {
+			row-gap: 8px;
+		}
+
+		.btn {
+			min-height: 44px;
+			box-sizing: border-box;
+		}
 	}
 </style>
