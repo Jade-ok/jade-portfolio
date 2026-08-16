@@ -63,18 +63,20 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 				<div class="subtitle">Computer Science student <span class="rust">@ UBC</span></div>
 
+				<p class="interests-line">NPO volunteer &nbsp;·&nbsp; Career pivoter &nbsp;·&nbsp; Runner &nbsp;·&nbsp; Perpetual learner</p>
+
 				<div class="meta-row">
 					<span class="meta-item">BCS · 4TH YEAR · VANCOUVER, CA</span>
 					<span class="divider"></span>
 					<span class="available">
 						<span class="available-dot"></span>
-						AVAILABLE SUMMER 2026
+						AVAILABLE 2026 · 2027
 					</span>
 				</div>
 
 				<p class="tagline">
-					Turning <em>messy human input</em> into structured, useful software — with voice, Chrome, and
-					databases.
+					Recent interests include cloud infrastructure, multi-agent systems, security, and networks —
+					<em>so many things to learn!</em>
 				</p>
 
 				<div class="cta-row">
@@ -93,11 +95,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 			</div>
 			<div>
 				<div class="band-label mustard">02 — NOW</div>
-				<div class="band-body now">Building voice AI tools &amp; shipping side projects to real users.</div>
+				<div class="band-body now">Architecting a reliable, multi-agent AI scouting assistant.</div>
 			</div>
 			<div>
 				<div class="band-label sage">03 — NEXT</div>
-				<div class="band-body dim">Summer 2026 backend, cloud, or fullstack SWE internships.</div>
+				<div class="band-body dim">Manifesting a Backend, Cloud, or Full-stack internship.</div>
 			</div>
 		</div>
 	</div>
@@ -135,7 +137,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 	/* ---------- photo column ---------- */
 
 	.photo-col {
-		width: calc(min(50vh, 540px) * 0.5625);
+		width: calc(min(53vh, 565px) * 0.5625);
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
@@ -379,6 +381,15 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 	.subtitle .rust {
 		color: var(--rust);
+	}
+
+	.interests-line {
+		margin: clamp(8px, 1.4vh, 12px) 0 0;
+		font-family: "Archivo", sans-serif;
+		font-weight: 500;
+		font-size: clamp(13px, min(1.15vw, 1.9vh), 15px);
+		letter-spacing: -0.005em;
+		color: var(--taupe);
 	}
 
 	.meta-row {
