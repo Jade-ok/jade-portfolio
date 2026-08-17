@@ -29,7 +29,7 @@ export const projects: Project[] = [
 		meta: "Hackathon · 2026",
 		desc: "Speech-to-speech interview practice powered by Amazon Nova 2 Sonic, built in a team of five. Proposed a three-agent architecture and owned the Evaluator - prompt, schema, and scoring logic - as an AWS Lambda service on Bedrock.",
 		tech: ["Bedrock", "AWS Lambda", "FastAPI", "React"],
-		coverImage: "/project-img/ai-mock-interview-coach.png",
+		coverImage: "/project-img/mock-interview-coach/thumbnail.png",
 		featured: true,
 		href: "/projects/ai-mock-interview-coach",
 		detail: {
@@ -110,7 +110,7 @@ export const projects: Project[] = [
 		meta: "Side · 2025-",
 		desc: "Chrome extension exporting PrairieTest exam schedules to Google Calendar and ICS.",
 		tech: ["Chrome Ext", "OAuth 2.0"],
-		coverImage: "/project-img/prairiecalendar.png",
+		coverImage: "/project-img/prairiecalendar-img/thumbnail.png",
 		href: "/projects/prairiecalendar",
 		detail: {
 			kicker: "Side Project · Live in the Chrome Web Store · 2025-",
@@ -149,6 +149,7 @@ export const projects: Project[] = [
 		meta: "Academic · 2026",
 		desc: "3NF-normalized schema of 20+ tables with Node.js/Oracle REST endpoints.",
 		tech: ["Oracle", "Node.js"],
+		coverImage: "/project-img/smart-home-database/er-diagram.png",
 		href: "/projects/smart-home-database",
 		detail: {
 			kicker: "Academic Project · 2026",
