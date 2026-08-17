@@ -58,7 +58,7 @@ const standard = projects.filter((p) => !p.featured);
 		<div class="grid">
 			{
 				standard.map((p) => (
-					<a class="card" href={p.href}>
+					<a class="card" data-project={p.slug} href={p.href}>
 						<div class="media">
 							{
 								p.coverImage ? (
@@ -347,6 +347,15 @@ const standard = projects.filter((p) => !p.featured);
 	.card .media {
 		position: relative;
 		aspect-ratio: 16 / 10;
+	}
+
+	.card[data-project="smart-home-database"] .media {
+		overflow: hidden;
+	}
+
+	.card[data-project="smart-home-database"] .media img {
+		object-fit: cover;
+		object-position: top center;
 	}
 
 	.card .body {

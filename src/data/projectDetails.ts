@@ -307,7 +307,14 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 			"Built the <strong>Node.js REST API</strong> and query layer, including relational-division queries.",
 		],
 
-		images: [],
+		images: [
+			{
+				src: "/project-img/smart-home-database/er-diagram.png",
+				alt: "Entity relationship diagram for the Smart Home Database schema",
+				caption: "ER diagram",
+				after: "problem",
+			},
+		],
 
 		stack: [{ label: "STACK", items: ["Oracle Database", "Node.js", "REST APIs"] }],
 
