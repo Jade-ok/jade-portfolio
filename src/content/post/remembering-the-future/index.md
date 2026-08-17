@@ -1,8 +1,13 @@
 ---
-title: "[Movie Review] Arrival, and Ted Chiang's Story of Your Life"
+title: "Arrival, and Ted Chiang's Story of Your Life"
 description: "Seeing the past, present, and future simultaneously. Thoughts on Arrival and Ted Chiang's Story of Your Life."
 publishDate: "2026-07-15"
 tags: ["film", "sci-fi", "ted-chiang", "arrival"]
+category: "Film"
+coverImage:
+  src: "./arrival.jpg"
+  alt: "Arrival (2016) film still"
+heroCaption: "Villeneuve, 2016"
 ---
 
 ## Seeing the Past, Present, and Future Simultaneously

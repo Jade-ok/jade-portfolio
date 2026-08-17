@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #FFFFFF; }
+  * { box-sizing: border-box; }
+  a { color: #14140F; text-decoration: none; }
+  a:hover { color: #6E6A3E; }
+  ::selection { background: #14140F; color: #FFFFFF; }
+</style>
+</helmet>
+
+<div style="background:transparent;color:#14140F;font-family:Archivo,Helvetica,Arial,sans-serif;min-height:100vh;max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,64px)">
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 28px;borderBottom:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase">
+    <div style="display:flex;align-items:center;gap:14px;cursor:pointer" onClick="{{ goIndex }}">
+      <div style="width:14px;height:14px;background:#14140F"></div>
+      <span style="font-weight:700">Jade Lee</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:22px">
+      <span style="cursor:pointer;borderBottom:1px solid #14140F" onClick="{{ goIndex }}">Blog</span>
+      <span style="cursor:pointer;color:#5B5B52">Notes</span>
+      <span style="cursor:pointer;color:#5B5B52">About</span>
+      <span style="color:#5B5B52">Search</span>
+    </div>
+  </div>
+
+  <sc-if value="{{ isIndex }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="padding:10px 24px 0;container-type:inline-size">
+        <div style="font-family:Archivo,Helvetica,sans-serif;font-weight:800;font-size:min(19cqw,190px);line-height:0.9;white-space:nowrap;overflow:hidden;letter-spacing:-0.045em;margin:0">LOGBOOK</div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;padding:18px 0 20px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#5B5B52">
+          <span>Films, books, and things that stayed</span>
+          <span>Est. 2026 — Seoul</span>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;borderTop:1px solid rgba(20,20,15,0.35);borderBottom:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase">
+        <span style="font-weight:700">Categories</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+            <span style="padding:6px 14px;border:1px solid rgba(20,20,15,0.4);border-radius:999px;cursor:pointer;background:{{ cat.bg }};color:{{ cat.fg }}" onClick="{{ cat.onClick }}">{{ cat.label }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;gridTemplateColumns:{{ gridCols }};borderBottom:1px solid rgba(20,20,15,0.35);borderLeft:1px solid rgba(20,20,15,0.35)">
+        <sc-for list="{{ visiblePosts }}" as="post" hint-placeholder-count="3">
+          <article style="padding:20px 22px 26px;borderRight:1px solid rgba(20,20,15,0.35);display:flex;flex-direction:column;gap:16px;cursor:pointer;background:transparent" style-hover="background:#F4F4F1" onClick="{{ post.onClick }}">
+            <div style="display:flex;align-items:center;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:#5B5B52">
+              <span>{{ post.date }}</span>
+              <span style="padding:4px 10px;border:1px solid rgba(20,20,15,0.4);border-radius:999px;color:#14140F">{{ post.category }}</span>
+            </div>
+            <div style="aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#EAEAE6 0 6px,#F6F6F3 6px 12px);border:1px solid rgba(20,20,15,0.25);display:flex;align-items:flex-end;padding:10px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:#5B5B52;background:#FFFFFF;padding:3px 6px">{{ post.imageLabel }}</span>
+            </div>
+            <h2 style="margin:0;font-size:26px;line-height:1.12;letter-spacing:-0.02em;font-weight:700;text-wrap:pretty">{{ post.title }}</h2>
+            <sc-if value="{{ showExcerpts }}" hint-placeholder-val="{{ true }}">
+              <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.75;color:#3D3D35;text-wrap:pretty">{{ post.excerpt }}</p>
+            </sc-if>
+            <div style="margin-top:auto;padding-top:12px;display:flex;gap:26px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:#5B5B52">
+              <span><b style="color:#14140F">Text</b> Jade Lee</span>
+              <span><b style="color:#14140F">Read</b> {{ post.readTime }}</span>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:64px 24px;borderBottom:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#5B5B52">{{ emptyLine }}</div>
+      </sc-if>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:18px 24px;borderBottom:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase">
+        <span style="font-weight:700;margin-right:10px">Tags</span>
+        <sc-for list="{{ tags }}" as="tag" hint-placeholder-count="6">
+          <span style="color:#5B5B52;cursor:pointer" style-hover="color:#14140F">#{{ tag }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ isPost }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#DBDBD5">
+      <div style="display:grid;gridTemplateColumns:1fr auto;borderBottom:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.08em">
+        <div style="padding:14px 24px;display:flex;gap:10px;align-items:center;color:#5B5B52">
+          <span style="cursor:pointer;borderBottom:1px solid #14140F;color:#14140F" onClick="{{ goIndex }}">Logbook</span>
+          <span>›</span>
+          <span style="borderBottom:1px solid #14140F;color:#14140F">{{ active.category }}</span>
+          <span>›</span>
+          <span>{{ active.shortTitle }}</span>
+        </div>
+        <div style="padding:14px 24px;borderLeft:1px solid rgba(20,20,15,0.35);text-transform:uppercase;letter-spacing:0.12em">{{ active.date }}</div>
+      </div>
+
+      <div style="display:grid;gridTemplateColumns:{{ postCols }};align-items:start">
+        <div style="padding:28px 24px;borderRight:1px solid rgba(20,20,15,0.35);position:sticky;top:0;max-height:100vh;display:flex;flex-direction:column">
+          <div style="aspect-ratio:3/4;flex:1 1 auto;min-height:0;max-height:calc(100vh - 120px);background:repeating-linear-gradient(135deg,#CFCFC8 0 7px,#DEDED8 7px 14px);border:1px solid rgba(20,20,15,0.25);display:flex;align-items:flex-end;padding:14px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#5B5B52;background:#DBDBD5;padding:4px 8px">{{ active.imageLabel }}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:#5B5B52">
+            <span>Fig. 01</span>
+            <span>{{ active.caption }}</span>
+          </div>
+        </div>
+
+        <div style="padding:28px 34px 80px;max-width:760px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#5B5B52;margin-bottom:14px">{{ active.category }} — {{ active.readTime }}</div>
+          <h1 style="margin:0 0 22px;font-size:clamp(34px,4.6vw,60px);line-height:1.02;letter-spacing:-0.035em;font-weight:800;text-wrap:pretty">{{ active.title }}</h1>
+          <p style="margin:0 0 30px;font-size:19px;line-height:1.55;font-weight:500;color:#2A2A22;text-wrap:pretty">{{ active.lede }}</p>
+          <div style="height:1px;background:rgba(20,20,15,0.35);margin-bottom:30px"></div>
+          <sc-for list="{{ active.body }}" as="para" hint-placeholder-count="5">
+            <p style="margin:0 0 22px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.95;color:#25251E;text-wrap:pretty">{{ para }}</p>
+          </sc-for>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;padding-top:20px;borderTop:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#5B5B52">
+            <sc-for list="{{ active.tags }}" as="tag" hint-placeholder-count="3">
+              <span style="padding:5px 12px;border:1px solid rgba(20,20,15,0.35);border-radius:999px">#{{ tag }}</span>
+            </sc-for>
+          </div>
+          <div style="margin-top:34px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;borderBottom:1px solid #14140F;display:inline-block" onClick="{{ goIndex }}">← Back to logbook</div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 24px;borderTop:1px solid rgba(20,20,15,0.35);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#5B5B52">
+    <span>© Jade Lee 2026</span>
+    <div style="display:flex;gap:20px">
+      <span style="cursor:pointer;color:#14140F" onClick="{{ goIndex }}">Blog</span>
+      <span style="cursor:pointer">Notes</span>
+      <span style="cursor:pointer">About</span>
+      <span style="cursor:pointer">RSS</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;columns&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[2,3,4],&quot;default&quot;:3,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showExcerpts&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;imagePanelWidth&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:44,&quot;min&quot;:30,&quot;max&quot;:60,&quot;step&quot;:2,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Post page&quot;}}">
+class Component extends DCLogic {
+  state = { view: 'index', activeId: 'arrival', filter: 'All' };
+
+  syncPageBg() {
+    const bg = this.state.view === 'post' ? '#DBDBD5' : '#FFFFFF';
+    document.documentElement.style.background = bg;
+    document.body.style.background = bg;
+  }
+  componentDidMount() { this.syncPageBg(); }
+  componentDidUpdate() { this.syncPageBg(); }
+
+  posts() {
+    return [
+      {
+        id: 'arrival', category: 'Film', date: 'Jul 15, 2026', readTime: '9 min',
+        title: 'Arrival, and Ted Chiang’s Story of Your Life',
+        shortTitle: 'Arrival',
+        imageLabel: 'still / poster 1:1',
+        caption: 'Villeneuve, 2016',
+        excerpt: 'A film about language that is really a film about grief — and a story whose grammar carries its whole argument.',
+        lede: 'Villeneuve keeps the aliens at arm’s length so the real strangeness can happen inside a sentence.',
+        tags: ['film', 'sci-fi', 'ted-chiang', 'arrival'],
+        body: [
+          'The novella opens in a tense that English does not really have. Chiang writes toward a daughter who is at once unborn and already gone, and the effect is not a trick — it is the thesis. Learning Heptapod B means learning to hold beginning and end in the same breath. The prose asks you to do it before it explains why.',
+          'The film has to solve this differently. Cinema is relentlessly present tense: whatever is on screen is happening now. So Villeneuve borrows the language of memory — soft focus, lake light, a house with too many windows — and lets us misfile the future as the past for two hours. When the misfiling is corrected, it lands as a physical drop rather than an idea.',
+          'What survives the adaptation intact is the ethics. Louise is given a complete view and chooses the painful version anyway, not out of fatalism but because a life is not a problem to be optimized. That is a harder position than it looks, and both versions refuse to soften it.',
+          'What is lost is the mathematics. Chiang spends real pages on Fermat’s principle of least time, on the difference between describing a path step by step and knowing it whole. The film gestures at this once and moves on. It is the right cut for pacing and still the thing I miss most.',
+          'I rewatched it after reading the story again, which is the wrong order and the better one. Knowing the ending changes nothing about the ending. That, in the end, is the point.'
+        ]
+      },
+      {
+        id: 'monster', category: 'Film', date: 'Jul 1, 2026', readTime: '7 min',
+        title: 'Monster by Kore-eda Hirokazu (with Preyas)',
+        shortTitle: 'Monster',
+        imageLabel: 'still / poster 1:1',
+        caption: 'Kore-eda, 2023',
+        excerpt: 'Three passes over the same week. Each one makes the previous version of you the unreliable one.',
+        lede: 'The structure is not a puzzle box. It is a test of how quickly we assign blame with partial information.',
+        tags: ['film', 'kore-eda hirokazu', 'monster'],
+        body: [
+          'Kore-eda gives us the mother’s week first, and it is airtight: a bruise, a defensive school, a teacher who will not answer. By the end of the first movement you have a verdict. The second movement does not contradict the facts. It only adds the ones you were never shown.',
+          'Preyas argued that the film is about institutions, and the school scenes support that — the choreographed apologies, the administrative calm that costs nothing and repairs nothing. I think it is smaller and crueler than that: it is about how adults narrate children.',
+          'The third pass belongs to the boys, and the register changes entirely. Sound drops out, weather takes over, and the film finally stops explaining. Whatever the last scene means, it is the only part of the movie no adult gets to interpret.'
+        ]
+      },
+      {
+        id: 'wedonotpart', category: 'Book', date: 'May 5, 2026', readTime: '6 min',
+        title: 'We Do Not Part by Han Kang',
+        shortTitle: 'We Do Not Part',
+        imageLabel: 'book cover 1:1',
+        caption: 'Han Kang, 2021',
+        excerpt: 'Snow as an archive. A novel that keeps its violence at the level of weather until you cannot ignore it.',
+        lede: 'Han Kang writes history the way cold works — slowly, from the extremities inward.',
+        tags: ['book', 'han kang'],
+        body: [
+          'The novel begins with a favor between friends and a bird that may not survive the trip. It stays at that domestic scale for a long time, which is exactly how it earns the later chapters. Nothing is announced as historical.',
+          'Snow does the structural work. It falls on the present and on 1948 without distinguishing between them, and the refusal to distinguish is the argument: a massacre is not a closed event, it is a climate the survivors keep living in.',
+          'What stays with me is how physical the memory work is — hands, sleep, the effort of standing. The dead are not symbols here. They are people someone is still carrying, and the title is less a statement than an insistence.'
+        ]
+      }
+    ];
+  }
+
+  renderVals() {
+    const cols = this.props.columns ?? 3;
+    const showExcerpts = this.props.showExcerpts ?? true;
+    const stickyImage = this.props.imagePanelWidth ?? 44;
+    const all = this.posts();
+    const filter = this.state.filter;
+    const visible = filter === 'All' ? all : all.filter(p => p.category === filter);
+    const goPost = id => () => this.setState({ view: 'post', activeId: id });
+    const cats = ['All', 'Film', 'Book', 'Dev', 'Notes'].map(label => ({
+      label,
+      bg: label === filter ? '#14140F' : 'transparent',
+      fg: label === filter ? '#DBDBD5' : '#14140F',
+      onClick: () => this.setState({ filter: label })
+    }));
+    const active = all.find(p => p.id === this.state.activeId) || all[0];
+    return {
+      isIndex: this.state.view === 'index',
+      isPost: this.state.view === 'post',
+      goIndex: () => this.setState({ view: 'index' }),
+      categories: cats,
+      showExcerpts,
+      gridCols: `repeat(${cols}, minmax(0, 1fr))`,
+      postCols: `${stickyImage}% 1fr`,
+      visiblePosts: visible.map(p => ({ ...p, onClick: goPost(p.id) })),
+      isEmpty: visible.length === 0,
+      emptyLine: `No ${filter.toLowerCase()} entries yet — coming soon.`,
+      tags: ['film', 'sci-fi', 'ted-chiang', 'arrival', 'movie review', 'kore-eda hirokazu', 'monster', 'han kang'],
+      active
+    };
+  }
+}
+</script>
+</body>
+</html>

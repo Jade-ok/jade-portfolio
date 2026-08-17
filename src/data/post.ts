@@ -1,9 +1,11 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 
-/** filter out draft posts based on the environment */
+/** Filter out draft/private posts everywhere, including local dev pages.
+ *  Keep those files in VS Code only; they should not get routes, RSS, tags, or search entries.
+ */
 export async function getAllPosts(): Promise<CollectionEntry<"post">[]> {
 	return await getCollection("post", ({ data }) => {
-		return import.meta.env.PROD ? !data.draft : true;
+		return !data.draft && !data.isPrivate;
 	});
 }
 

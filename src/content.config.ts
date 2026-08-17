@@ -35,6 +35,13 @@ const post = defineCollection({
 				.optional()
 				.transform((str) => (str ? new Date(str) : undefined)),
 			pinned: z.boolean().default(false),
+			category: z.enum(["Film", "Book", "Dev", "Notes"]).default("Notes"),
+			/** intro paragraph shown on the post detail page; falls back to `description` */
+			lede: z.string().optional(),
+			/** credit line under the hero image, e.g. "Villeneuve, 2016" */
+			heroCaption: z.string().optional(),
+			/** owner-only post: excluded from the production build (RSS/sitemap/static routes) entirely */
+			isPrivate: z.boolean().default(false),
 		}),
 });
 

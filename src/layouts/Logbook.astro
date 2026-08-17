@@ -1,0 +1,63 @@
+---
+import Analytics from "@vercel/analytics/astro";
+import BaseHead from "@/components/BaseHead.astro";
+import LogbookFooter from "@/components/logbook/LogbookFooter.astro";
+import LogbookHeader from "@/components/logbook/LogbookHeader.astro";
+import SkipLink from "@/components/SkipLink.astro";
+import { siteConfig } from "@/site.config";
+import type { SiteMeta } from "@/types";
+import "@/styles/logbook.css";
+
+interface Props {
+	meta: SiteMeta;
+	variant?: "index" | "detail";
+}
+
+const {
+	meta: { articleDate, description = siteConfig.description, ogImage, title },
+	variant = "index",
+} = Astro.props;
+---
+
+<html lang={siteConfig.lang}>
+	<head>
+		<BaseHead articleDate={articleDate} description={description} ogImage={ogImage} title={title} />
+		<script is:inline>
+			const darkPref = window.matchMedia("(prefers-color-scheme: dark)");
+
+			function getLogbookTheme() {
+				const saved = typeof localStorage !== "undefined" && localStorage.getItem("jl-theme");
+				if (saved === "dark") return "dark";
+				if (saved === "light" || saved === "race") return "light";
+				return darkPref.matches ? "dark" : "light";
+			}
+
+			function setLogbookTheme(theme) {
+				const nextTheme = theme === "dark" ? "dark" : "light";
+				document.documentElement.setAttribute("data-lb-theme", nextTheme);
+				document.documentElement.setAttribute("data-theme", nextTheme);
+			}
+
+			setLogbookTheme(getLogbookTheme());
+
+			document.addEventListener("astro:after-swap", () => setLogbookTheme(getLogbookTheme()));
+		</script>
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Archivo:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class:list={["logbook-page", variant === "detail" && "is-detail"]}>
+		<SkipLink />
+		<div class="lb-frame">
+			<LogbookHeader />
+			<main id="main">
+				<slot />
+			</main>
+			<LogbookFooter />
+		</div>
+		<Analytics />
+	</body>
+</html>

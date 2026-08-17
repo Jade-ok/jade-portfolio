@@ -1,8 +1,10 @@
 ---
-title: "[Book Review] We Do Not Part by Han Kang"
+title: "We Do Not Part by Han Kang"
 description: "A reflection on memory, mourning, and the work of refusing to forget — through 작별하지 않는다 (2021)."
 publishDate: "2026-05-05"
 tags: ["book review", "han kang", "korean literature", "nobel prize", "essay"]
+category: "Book"
+heroCaption: "Han Kang, 2021"
 ---
 
 > Everyone makes an effort, of course, and so do writers. But Han Kang puts every ounce of her life into it, every single time.

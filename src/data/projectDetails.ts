@@ -318,7 +318,7 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 
 		stack: [{ label: "STACK", items: ["Oracle Database", "Node.js", "REST APIs"] }],
 
-		links: [{ label: "Git Repository", href: "https://github.com/Jade-ok", primary: true }],
+		links: [],
 	},
 };
 

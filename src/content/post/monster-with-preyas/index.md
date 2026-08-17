@@ -1,8 +1,13 @@
 ---
-title: "[Movie Review] Monster by Kore-eda Hirokazu (with Preyas)"
+title: "Monster by Kore-eda Hirokazu (with Preyas)"
 description: "I recommended Monster to a friend. He left comments as he watched, I started replying, and it turned into an essay."
 publishDate: "2026-07-01"
 tags: ["movie review", "film", "kore-eda hirokazu", "monster"]
+category: "Film"
+coverImage:
+  src: "./monster_poster.jpeg"
+  alt: "Monster (2023) poster"
+heroCaption: "Kore-eda Hirokazu, 2023"
 ---
 
 A while ago I recommended _Monster_ (2023, dir. Kore-eda Hirokazu) to my friend Preyas. He watched it and left comments the whole way through, and his reactions were so fun that I couldn't stop replying to them one by one. Before I knew it, our back-and-forth had turned into this. Here it is, mostly untouched: his live reactions, my replies underneath, and the little side conversations we ended up having in the margins.

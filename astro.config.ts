@@ -14,6 +14,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeUnwrapImages from "rehype-unwrap-images";
 // Remark plugins
 import remarkDirective from "remark-directive"; /* Handle ::: directives as nodes */
+import { rehypePostFigures } from "./src/plugins/rehype-post-figures";
 import { remarkAdmonitions } from "./src/plugins/remark-admonitions"; /* Add admonitions */
 import { remarkGithubCard } from "./src/plugins/remark-github-card";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time";
@@ -78,6 +79,7 @@ export default defineConfig({
 				},
 			],
 			rehypeUnwrapImages,
+			rehypePostFigures,
 		],
 		remarkPlugins: [remarkReadingTime, remarkDirective, remarkGithubCard, remarkAdmonitions],
 		remarkRehype: {

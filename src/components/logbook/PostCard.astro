@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { getFormattedDate } from "@/utils/date";
+
+interface Props {
+	post: CollectionEntry<"post">;
+	readingTime: string;
+	entryNumber: string;
+}
+
+const { entryNumber, post, readingTime } = Astro.props;
+const { category, coverImage, description, isPrivate, publishDate, title } = post.data;
+const placeholderLabel = category === "Book" ? "book cover 1:1" : "still / poster 1:1";
+---
+
+<a
+	class:list={["lb-card", isPrivate && "is-private"]}
+	data-category={category}
+	data-private={isPrivate}
+	href={`/posts/${post.id}/`}
+>
+	<div class="lb-card-meta lb-mono">
+		<span>{getFormattedDate(publishDate)}</span>
+		{
+			isPrivate ? (
+				<span class="lb-chip is-private-badge">Private</span>
+			) : (
+				<span class="lb-chip">{category}</span>
+			)
+		}
+	</div>
+	<div class:list={["lb-card-image", !coverImage && "is-placeholder", isPrivate && "is-private"]}>
+		{
+			coverImage ? (
+				<Image alt={coverImage.alt} height={600} src={coverImage.src} width={600} />
+			) : (
+				<span class="lb-image-label lb-mono">{placeholderLabel}</span>
+			)
+		}
+	</div>
+	<h2 class="lb-card-title">{title}</h2>
+	<p class="lb-card-excerpt lb-mono">{description}</p>
+	<div class="lb-card-footer lb-mono">
+		<span><b>No.</b> {entryNumber}</span>
+		<span><b>Read</b> {readingTime}</span>
+	</div>
+</a>

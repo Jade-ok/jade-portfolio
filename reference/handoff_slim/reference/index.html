@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;background:#FFFFFF;}
+  *{box-sizing:border-box}
+  a{color:#14140F;text-decoration:none}a:hover{color:#6E6A3E}
+  .frame{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,64px);color:#14140F;font-family:Archivo,Helvetica,Arial,sans-serif;min-height:100vh}
+  .rule{border-bottom:1px solid rgba(20,20,15,.35)}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 28px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .nav{display:flex;gap:22px}.muted{color:#5B5B52}
+  .chip{padding:6px 14px;border:1px solid rgba(20,20,15,.4);border-radius:999px}
+  .chip.on{background:#14140F;color:#FFF}
+  .chip.owner{border-style:dashed;border-color:rgba(20,20,15,.55);margin-right:6px}
+  .fig{border:1px solid rgba(20,20,15,.25);display:flex;align-items:flex-end;padding:14px}
+  .figcap{display:flex;justify-content:space-between;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#5B5B52}
+</style></head><body>
+<div class="frame">
+<div class="bar rule mono">
+  <div style="display:flex;align-items:center;gap:14px"><div style="width:14px;height:14px;background:#14140F"></div><span style="font-weight:700">Jade Lee</span></div>
+  <div class="nav"><a href="index.html" style="border-bottom:1px solid #14140F">Blog</a><span class="muted">Notes</span><span class="muted">About</span><span class="muted">Search</span></div>
+</div>
+  <div style="padding:10px 24px 0;container-type:inline-size">
+    <div style="font-weight:800;font-size:min(19cqw,190px);line-height:.9;white-space:nowrap;overflow:hidden;letter-spacing:-.045em">LOGBOOK</div>
+    <div class="mono" style="display:flex;justify-content:space-between;padding:18px 0 20px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5B5B52">
+      <span>Films, books, and things that stayed</span><span>Est. 2026 — Seoul</span>
+    </div>
+  </div>
+  <div class="mono rule" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 24px;border-top:1px solid rgba(20,20,15,.35);font-size:11px;letter-spacing:.12em;text-transform:uppercase">
+    <span style="font-weight:700">Categories</span>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <span class="chip owner on" title="owner only">Private 1 — shown</span>
+      <span class="chip on">All</span><span class="chip">Film</span><span class="chip">Book</span><span class="chip">Dev</span><span class="chip">Notes</span>
+    </div>
+  </div>
+  <div class="rule" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-left:1px solid rgba(20,20,15,.35)">
+      <article style="padding:20px 22px 26px;border-right:1px solid rgba(20,20,15,.35);display:flex;flex-direction:column;gap:16px;background:transparent">
+        <div class="mono" style="display:flex;align-items:center;justify-content:space-between;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#5B5B52">
+          <span>Jul 15, 2026</span>
+          <span class="chip" style="padding:4px 10px;color:#14140F">Film</span>
+        </div>
+        <div style="aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#EAEAE6 0 6px,#F6F6F3 6px 12px);border:1px solid rgba(20,20,15,.25);display:flex;align-items:flex-end;padding:10px">
+          <span class="mono" style="font-size:10px;letter-spacing:.08em;color:#5B5B52;background:#FFF;padding:3px 6px">still / poster 1:1</span>
+        </div>
+        <h2 style="margin:0;font-size:26px;line-height:1.12;letter-spacing:-.02em;font-weight:700"><a href="post.html">Arrival, and Ted Chiang’s Story of Your Life</a></h2>
+        <p class="mono" style="margin:0;font-size:12.5px;line-height:1.75;color:#3D3D35">A film about language that is really a film about grief — and a story whose grammar carries its whole argument.</p>
+        <div class="mono" style="margin-top:auto;padding-top:12px;display:flex;gap:26px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5B5B52">
+          <span><b style="color:#14140F">Text</b> Jade Lee</span><span><b style="color:#14140F">Read</b> 9 min</span>
+        </div>
+      </article>
+      <article style="padding:20px 22px 26px;border-right:1px solid rgba(20,20,15,.35);display:flex;flex-direction:column;gap:16px;background:#F7F7F3">
+        <div class="mono" style="display:flex;align-items:center;justify-content:space-between;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#5B5B52">
+          <span>Jul 1, 2026</span>
+          <span class="chip" style="padding:4px 10px;background:#14140F;color:#FFF">Private</span>
+        </div>
+        <div style="aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#E4E4DE 0 6px,#F1F1EC 6px 12px);border:1px solid rgba(20,20,15,.25);display:flex;align-items:flex-end;padding:10px">
+          <span class="mono" style="font-size:10px;letter-spacing:.08em;color:#5B5B52;background:#FFF;padding:3px 6px">still / poster 1:1</span>
+        </div>
+        <h2 style="margin:0;font-size:26px;line-height:1.12;letter-spacing:-.02em;font-weight:700"><a href="post.html">Monster by Kore-eda Hirokazu (with Preyas)</a></h2>
+        <p class="mono" style="margin:0;font-size:12.5px;line-height:1.75;color:#3D3D35">Three passes over the same week. Each one makes the previous version of you the unreliable one.</p>
+        <div class="mono" style="margin-top:auto;padding-top:12px;display:flex;gap:26px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5B5B52">
+          <span><b style="color:#14140F">Text</b> Jade Lee</span><span><b style="color:#14140F">Read</b> 7 min</span>
+        </div>
+      </article>
+      <article style="padding:20px 22px 26px;border-right:1px solid rgba(20,20,15,.35);display:flex;flex-direction:column;gap:16px;background:transparent">
+        <div class="mono" style="display:flex;align-items:center;justify-content:space-between;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#5B5B52">
+          <span>May 5, 2026</span>
+          <span class="chip" style="padding:4px 10px;color:#14140F">Book</span>
+        </div>
+        <div style="aspect-ratio:1/1;background:repeating-linear-gradient(135deg,#EAEAE6 0 6px,#F6F6F3 6px 12px);border:1px solid rgba(20,20,15,.25);display:flex;align-items:flex-end;padding:10px">
+          <span class="mono" style="font-size:10px;letter-spacing:.08em;color:#5B5B52;background:#FFF;padding:3px 6px">book cover 1:1</span>
+        </div>
+        <h2 style="margin:0;font-size:26px;line-height:1.12;letter-spacing:-.02em;font-weight:700"><a href="post.html">We Do Not Part by Han Kang</a></h2>
+        <p class="mono" style="margin:0;font-size:12.5px;line-height:1.75;color:#3D3D35">Snow as an archive. A novel that keeps its violence at the level of weather until you cannot ignore it.</p>
+        <div class="mono" style="margin-top:auto;padding-top:12px;display:flex;gap:26px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5B5B52">
+          <span><b style="color:#14140F">Text</b> Jade Lee</span><span><b style="color:#14140F">Read</b> 6 min</span>
+        </div>
+      </article>
+  </div>
+  <div class="mono rule" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:18px 24px;font-size:11px;letter-spacing:.1em;text-transform:uppercase">
+    <span style="font-weight:700;margin-right:10px">Tags</span>
+    <span class="muted">#film</span><span class="muted">#sci-fi</span><span class="muted">#ted-chiang</span><span class="muted">#arrival</span><span class="muted">#movie review</span><span class="muted">#kore-eda hirokazu</span><span class="muted">#monster</span><span class="muted">#han kang</span>
+  </div>
+<div class="bar mono muted" style="border-top:1px solid rgba(20,20,15,.35)">
+  <span>© Jade Lee 2026</span>
+  <div class="nav"><a href="index.html">Blog</a><span>Notes</span><span>About</span><span>RSS</span></div>
+</div>
+</div>
+</body></html>

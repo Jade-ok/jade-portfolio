@@ -1,0 +1,132 @@
+---
+import { render } from "astro:content";
+import PostCard from "@/components/logbook/PostCard.astro";
+import { getAllPosts, getUniqueTags } from "@/data/post";
+import LogbookLayout from "@/layouts/Logbook.astro";
+import { collectionDateSort } from "@/utils/date";
+
+const MAX_TAGS = 12;
+const CATEGORIES = ["All", "Film", "Book", "Dev"] as const;
+
+const allPosts = (await getAllPosts()).sort(collectionDateSort);
+const uniqueTags = getUniqueTags(allPosts).slice(0, MAX_TAGS);
+
+const posts = await Promise.all(
+	allPosts.map(async (post) => {
+		const { remarkPluginFrontmatter } = await render(post);
+		const readingTimeText: string = remarkPluginFrontmatter.readingTime;
+		return { post, readingTime: readingTimeText.replace(/ read$/, "") };
+	}),
+);
+
+const meta = {
+	description: "Field notes on code, life, and things worth keeping - Jade Lee's logbook.",
+	title: "Logbook",
+};
+---
+
+<LogbookLayout meta={meta} variant="index">
+	<div class="lb-wordmark-wrap">
+		<h1 class="lb-wordmark">LOGBOOK</h1>
+		<div class="lb-subline lb-mono">
+			<span>Field notes on code, life, and things worth keeping</span>
+			<span>Est. 2026 - Vancouver</span>
+		</div>
+	</div>
+	<div class="lb-categories lb-rule lb-mono">
+		<div aria-label="View mode" class="lb-view-toggle" role="group">
+			<button class="is-on" data-view="grid" type="button">Grid</button>
+			<button data-view="list" type="button">List</button>
+		</div>
+		<div class="lb-categories-pills" id="lb-category-filters">
+			{
+				CATEGORIES.map((cat, i) => (
+					<button class:list={["lb-chip", i === 0 && "is-on"]} data-filter={cat} type="button">
+						{cat}
+					</button>
+				))
+			}
+		</div>
+	</div>
+	<div class="lb-grid lb-rule" id="lb-grid">
+		{
+			posts.map(({ post, readingTime }, index) => (
+				<PostCard
+					entryNumber={String(index + 1).padStart(3, "0")}
+					post={post}
+					readingTime={readingTime}
+				/>
+			))
+		}
+	</div>
+	<p class="lb-empty-row lb-mono" hidden id="lb-empty-row"></p>
+	{
+		!!uniqueTags.length && (
+			<div class="lb-tags-row lb-rule lb-mono">
+				<span class="lb-tags-label">Tags</span>
+				{uniqueTags.map((tag) => (
+					<a class="lb-tag" href={`/tags/${tag}/`}>
+						#{tag}
+					</a>
+				))}
+			</div>
+		)
+	}
+</LogbookLayout>
+
+<script>
+	const grid = document.getElementById("lb-grid");
+	const emptyRow = document.getElementById("lb-empty-row");
+	const filterBar = document.getElementById("lb-category-filters");
+	const viewButtons = document.querySelectorAll<HTMLButtonElement>("[data-view]");
+
+	const VIEW_KEY = "lb-view-mode";
+	let currentCategory = "All";
+	let viewMode = localStorage.getItem(VIEW_KEY) === "list" ? "list" : "grid";
+
+	function applyViewMode() {
+		grid?.classList.toggle("is-list", viewMode === "list");
+		viewButtons.forEach((button) => {
+			button.classList.toggle("is-on", button.dataset.view === viewMode);
+		});
+	}
+
+	function applyFilters() {
+		if (!grid) return;
+		let visible = 0;
+		grid.querySelectorAll<HTMLElement>(".lb-card").forEach((card) => {
+			const categoryMatch = currentCategory === "All" || card.dataset.category === currentCategory;
+			const match = categoryMatch;
+			card.hidden = !match;
+			if (match) visible += 1;
+		});
+
+		if (emptyRow) {
+			emptyRow.hidden = visible !== 0;
+			emptyRow.textContent = `No ${currentCategory.toLowerCase()} entries yet — coming soon.`;
+		}
+	}
+
+	filterBar?.addEventListener("click", (event) => {
+		const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-filter]");
+		if (!button) return;
+		currentCategory = button.dataset.filter ?? "All";
+
+		filterBar.querySelectorAll("[data-filter]").forEach((el) => {
+			el.classList.toggle("is-on", el === button);
+		});
+
+		applyFilters();
+	});
+
+	viewButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			viewMode = button.dataset.view === "list" ? "list" : "grid";
+			localStorage.setItem(VIEW_KEY, viewMode);
+			applyViewMode();
+		});
+	});
+
+	applyViewMode();
+	applyFilters();
+</script>

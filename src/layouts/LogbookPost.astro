@@ -1,0 +1,61 @@
+---
+import { type CollectionEntry, render } from "astro:content";
+import WebMentions from "@/components/blog/webmentions/index.astro";
+import LogbookLayout from "@/layouts/Logbook.astro";
+import { getFormattedDate } from "@/utils/date";
+
+interface Props {
+	post: CollectionEntry<"post">;
+}
+
+const { post } = Astro.props;
+const { category, description, lede, ogImage, publishDate, tags, title } = post.data;
+const { remarkPluginFrontmatter } = await render(post);
+const readingTime: string = remarkPluginFrontmatter.readingTime.replace(/ read$/, "");
+
+const meta = {
+	articleDate: publishDate.toISOString(),
+	description,
+	ogImage: ogImage ?? `/og-image/${post.id}.png`,
+	title,
+};
+---
+
+<LogbookLayout meta={meta} variant="detail">
+	<div class="lb-breadcrumb-bar lb-rule lb-mono">
+		<div class="lb-breadcrumb">
+			<a href="/posts/">Logbook</a>
+			<span aria-hidden="true">›</span>
+			<span class="lb-breadcrumb-current">{category}</span>
+			<span aria-hidden="true">›</span>
+			<span>{title}</span>
+		</div>
+		<div class="lb-breadcrumb-date">{getFormattedDate(publishDate)}</div>
+	</div>
+	<div class="lb-article">
+		<div class="lb-detail-body" data-pagefind-body>
+			<div class="lb-kicker lb-mono">{category} — {readingTime}</div>
+			<h1 class="lb-detail-title">{title}</h1>
+			<p class="lb-lede">{lede ?? description}</p>
+			<hr class="lb-hr" />
+			<div class="lb-prose">
+				<slot />
+				<WebMentions />
+			</div>
+			{
+				!!tags.length && (
+					<div class="lb-detail-tags lb-mono">
+						{tags.map((tag) => (
+							<a class="lb-chip" href={`/tags/${tag}/`}>
+								#{tag}
+							</a>
+						))}
+					</div>
+				)
+			}
+			<div class="lb-back-link lb-mono">
+				<a href="/posts/">← Back to logbook</a>
+			</div>
+		</div>
+	</div>
+</LogbookLayout>

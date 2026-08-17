@@ -1,0 +1,14 @@
+---
+import { siteConfig } from "@/site.config";
+
+const year = new Date().getFullYear();
+---
+
+<div class="lb-bar lb-mono lb-muted lb-footer-bar">
+	<span>© {siteConfig.author} {year}</span>
+	<nav aria-label="Logbook footer navigation" class="lb-nav">
+		<a href="/posts/">Blog</a>
+		<a class="lb-muted" href="/rss.xml">RSS</a>
+		<a class="lb-home-link" href="/">jadelee.dev ↗</a>
+	</nav>
+</div>

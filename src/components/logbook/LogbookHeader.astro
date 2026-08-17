@@ -1,0 +1,49 @@
+---
+import Search from "@/components/Search.astro";
+import { siteConfig } from "@/site.config";
+---
+
+<div class="lb-bar lb-rule lb-mono">
+	<a class="lb-brand" href="/posts/">
+		<span aria-hidden="true" class="lb-mark"></span>
+		<span class="lb-brand-name">{siteConfig.title}</span>
+	</a>
+	<nav aria-label="Logbook navigation" class="lb-nav">
+		<a class="lb-active" href="/posts/">Blog</a>
+		<Search />
+		<button aria-pressed="false" class="lb-theme-button" data-lb-theme-toggle type="button">
+			<span aria-hidden="true" class="lb-theme-mark"></span>
+			<span>Dark</span>
+		</button>
+		<a class="lb-home-pill" href="/">
+			<span>{siteConfig.title.replace(/\s+/g, "").toLowerCase()}.dev</span>
+			<span aria-hidden="true">↗</span>
+		</a>
+	</nav>
+</div>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>("[data-lb-theme-toggle]");
+
+	function readLogbookTheme() {
+		return document.documentElement.getAttribute("data-lb-theme") === "dark" ? "dark" : "light";
+	}
+
+	function applyLogbookTheme(theme: "light" | "dark") {
+		document.documentElement.setAttribute("data-lb-theme", theme);
+		document.documentElement.setAttribute("data-theme", theme);
+		localStorage.setItem("jl-theme", theme);
+		toggle?.setAttribute("aria-pressed", String(theme === "dark"));
+	}
+
+	function syncThemeButton() {
+		toggle?.setAttribute("aria-pressed", String(readLogbookTheme() === "dark"));
+	}
+
+	toggle?.addEventListener("click", () => {
+		applyLogbookTheme(readLogbookTheme() === "dark" ? "light" : "dark");
+	});
+
+	syncThemeButton();
+	document.addEventListener("astro:after-swap", syncThemeButton);
+</script>
