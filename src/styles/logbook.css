@@ -244,10 +244,9 @@ a.lb-muted:hover {
 .lb-wordmark {
 	font-size: min(19cqw, 190px);
 	font-weight: 800;
-	letter-spacing: -0.045em;
+	letter-spacing: 0;
 	line-height: 0.9;
 	margin: 0;
-	overflow: hidden;
 	white-space: nowrap;
 }
 
@@ -895,12 +894,24 @@ a.lb-muted:hover {
 		row-gap: 12px;
 	}
 	.lb-wordmark {
-		font-size: min(22cqw, 96px);
+		font-size: 76px;
 	}
 	.lb-card-title {
 		font-size: 23px;
 	}
 	.lb-grid.is-list .lb-card-title {
 		font-size: 22px;
+	}
+}
+
+@media (max-width: 390px) {
+	.lb-wordmark {
+		font-size: 66px;
+	}
+}
+
+@media (max-width: 340px) {
+	.lb-wordmark {
+		font-size: 58px;
 	}
 }
