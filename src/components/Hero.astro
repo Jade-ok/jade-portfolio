@@ -30,7 +30,12 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 			<div class="photo-col">
 				<div class="photo">
 					<img src="/images/jade-running.jpg" alt="Jade running at sunset in Vancouver" />
-					<div class="overlay" class:list={[{ "is-stale": isStale }]}>
+					<div
+						class="overlay"
+						class:list={[{ "is-stale": isStale }]}
+						data-updated-at={running.updatedAt}
+						id="running-overlay"
+					>
 						<div class="live-row">
 							<span class="live-dot-wrap">
 								<span class="live-ring"></span>
@@ -42,14 +47,23 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 						<div class="running-total">
 							{totalKm.toLocaleString("en-US", { maximumFractionDigits: 1 })}<span>km</span>
 						</div>
-						{averagePace && (
-							<div class="pace">{averagePace} <span>avg /km</span></div>
-						)}
+						{
+							averagePace && (
+								<div class="pace">
+									{averagePace} <span>avg /km</span>
+								</div>
+							)
+						}
 					</div>
 				</div>
 				<div class="caption">
 					<span class="caption-icon">⟳</span>
-					<span>AUTO-SYNCED FROM {running.source.toUpperCase()} · <span class="caption-time">{syncedLabel}</span></span>
+					<span
+						>AUTO-SYNCED FROM {running.source.toUpperCase()} · <span
+							class="caption-time"
+							id="synced-time">{syncedLabel}</span
+						></span
+					>
 				</div>
 			</div>
 
@@ -63,7 +77,11 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 
 				<div class="subtitle">Computer Science student <span class="rust">@ UBC</span></div>
 
-				<p class="interests-line">NPO volunteer <span class="dot">·</span> Career pivoter <span class="dot">·</span> Runner <span class="dot">·</span> Perpetual learner</p>
+				<p class="interests-line">
+					NPO volunteer <span class="dot">·</span> Career pivoter <span class="dot">·</span> Runner <span
+						class="dot">·</span
+					> Perpetual learner
+				</p>
 
 				<div class="meta-row">
 					<span class="meta-item">BCS · 4TH YEAR · VANCOUVER, CA</span>
@@ -91,7 +109,9 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		<div class="band-inner">
 			<div>
 				<div class="band-label sage">01 - BEFORE</div>
-				<div class="band-body dim">Producer &amp; news editor in Korea. Structuring information under deadline.</div>
+				<div class="band-body dim">
+					Producer &amp; news editor in Korea. Structuring information under deadline.
+				</div>
 			</div>
 			<div>
 				<div class="band-label mustard">02 - NOW</div>
@@ -104,6 +124,37 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 		</div>
 	</div>
 </section>
+
+<script>
+	// Keeps the "AUTO-SYNCED ... X AGO" label and the LIVE dot's stale state
+	// ticking in the browser, so the widget doesn't need a rebuild+redeploy
+	// just for the relative time to stay current.
+	function relativeTime(iso: string) {
+		const diffMs = Date.now() - new Date(iso).getTime();
+		const mins = Math.round(diffMs / 60000);
+		if (mins < 1) return "JUST NOW";
+		if (mins < 60) return `${mins}M AGO`;
+		const hours = Math.round(mins / 60);
+		if (hours < 24) return `${hours}H AGO`;
+		const days = Math.round(hours / 24);
+		if (days === 1) return "YESTERDAY";
+		return `${days}D AGO`;
+	}
+
+	function tickSyncedTime() {
+		const overlay = document.getElementById("running-overlay");
+		const timeEl = document.getElementById("synced-time");
+		const updatedAt = overlay?.dataset.updatedAt;
+		if (!overlay || !timeEl || !updatedAt) return;
+
+		timeEl.textContent = relativeTime(updatedAt);
+		const isStale = Date.now() - new Date(updatedAt).getTime() > 24 * 60 * 60 * 1000;
+		overlay.classList.toggle("is-stale", isStale);
+	}
+
+	tickSyncedTime();
+	setInterval(tickSyncedTime, 30_000);
+</script>
 
 <style>
 	.about {
