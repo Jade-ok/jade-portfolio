@@ -8,6 +8,13 @@ const {
   FITNESSSYNCER_REDIRECT_URI = "https://personal.fitnesssyncer.com/",
   RUNNING_BASELINE_TOTAL_KM = "960",
   RUNNING_BASELINE_SYNCED_KM = "122.76",
+  // 나이키런은 연동이 안 되므로, 평균 페이스도 거리처럼 baseline + 신규 러닝 방식으로 계산.
+  // baseline: 나이키런 기준 누적 217회 러닝의 평균 페이스(6.1 = 6:06/km).
+  // baselineSyncedRunCount: baseline을 잡은 시점에 이미 Strava로 동기화되어 있던 러닝 개수(23) —
+  // 이 개수를 넘어서는, 새로 동기화된 러닝만 baseline 평균에 추가로 반영됨.
+  RUNNING_BASELINE_RUN_COUNT = "217",
+  RUNNING_BASELINE_AVERAGE_PACE_MIN_PER_KM = "6.1",
+  RUNNING_BASELINE_SYNCED_RUN_COUNT = "23",
 } = process.env;
 
 if (
@@ -152,10 +159,6 @@ const baselineTotalKm = Number(RUNNING_BASELINE_TOTAL_KM);
 const baselineSyncedKm = Number(RUNNING_BASELINE_SYNCED_KM);
 const syncedKm = Number(totalKm.toFixed(2));
 const sinceBaselineKm = Number((syncedKm - baselineSyncedKm).toFixed(2));
-const averagePaceMinPerKm =
-  totalKm > 0 && totalDurationSeconds > 0
-    ? Number((totalDurationSeconds / 60 / totalKm).toFixed(2))
-    : 0;
 
 if (!Number.isFinite(baselineTotalKm)) {
   throw new Error("RUNNING_BASELINE_TOTAL_KM must be a number.");
@@ -165,13 +168,45 @@ if (!Number.isFinite(baselineSyncedKm)) {
   throw new Error("RUNNING_BASELINE_SYNCED_KM must be a number.");
 }
 
+// 5. 평균 페이스: baseline(나이키런 217회 평균) + baseline 이후 새로 동기화된 러닝만 반영
+const baselineRunCount = Number(RUNNING_BASELINE_RUN_COUNT);
+const baselineAveragePaceMinPerKm = Number(RUNNING_BASELINE_AVERAGE_PACE_MIN_PER_KM);
+const baselineSyncedRunCount = Number(RUNNING_BASELINE_SYNCED_RUN_COUNT);
+
+if (!Number.isFinite(baselineRunCount)) {
+  throw new Error("RUNNING_BASELINE_RUN_COUNT must be a number.");
+}
+
+if (!Number.isFinite(baselineAveragePaceMinPerKm)) {
+  throw new Error("RUNNING_BASELINE_AVERAGE_PACE_MIN_PER_KM must be a number.");
+}
+
+if (!Number.isFinite(baselineSyncedRunCount)) {
+  throw new Error("RUNNING_BASELINE_SYNCED_RUN_COUNT must be a number.");
+}
+
+// baseline을 잡은 시점 이후 새로 동기화된 러닝(최신순으로 맨 앞 N개)만 뽑아서 baseline 평균에 합산
+const runsByDateDesc = [...runs].sort((a, b) => (b.date ?? 0) - (a.date ?? 0));
+const newRunsCount = Math.max(0, runCount - baselineSyncedRunCount);
+const newRuns = runsByDateDesc.slice(0, newRunsCount);
+
+const totalRunCount = baselineRunCount + newRunsCount;
+const weightedPaceSum =
+  baselineAveragePaceMinPerKm * baselineRunCount +
+  newRuns.reduce((sum, run) => sum + run.paceMinPerKm, 0);
+const averagePaceMinPerKm =
+  totalRunCount > 0 ? Number((weightedPaceSum / totalRunCount).toFixed(2)) : 0;
+
 const output = {
   baselineTotalKm,
   baselineSyncedKm,
   syncedKm,
   sinceBaselineKm,
   totalKm: Number((baselineTotalKm + sinceBaselineKm).toFixed(2)),
-  runCount,
+  baselineRunCount,
+  baselineSyncedRunCount,
+  baselineAveragePaceMinPerKm,
+  runCount: totalRunCount,
   averagePaceMinPerKm,
   totalDurationSeconds,
   source: "FitnessSyncer",
@@ -186,7 +221,8 @@ await fs.writeFile(
   JSON.stringify(output, null, 2)
 );
 
-console.log(`Running activities: ${runCount}`);
+console.log(`Strava-synced running activities: ${runCount} (${newRunsCount} new since baseline)`);
+console.log(`Displayed total run count: ${totalRunCount}`);
 console.log(`Synced running distance: ${syncedKm.toFixed(2)} km`);
 console.log(`Average pace: ${averagePaceMinPerKm.toFixed(2)} min/km`);
 console.log(`Displayed total distance: ${output.totalKm.toFixed(2)} km`);

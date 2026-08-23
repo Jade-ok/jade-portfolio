@@ -4,11 +4,14 @@
   "syncedKm": 135.78,
   "sinceBaselineKm": 13.02,
   "totalKm": 973.02,
-  "runCount": 23,
+  "baselineRunCount": 217,
+  "baselineSyncedRunCount": 23,
+  "baselineAveragePaceMinPerKm": 6.1,
+  "runCount": 217,
   "averagePaceMinPerKm": 6.1,
   "totalDurationSeconds": 49711,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-08-23T05:51:39.437Z",
+  "updatedAt": "2026-08-23T23:22:25.169Z",
   "runs": [
     {
       "id": "19858977441",
