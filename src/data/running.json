@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 135.78,
-  "sinceBaselineKm": 13.02,
-  "totalKm": 973.02,
+  "syncedKm": 145.81,
+  "sinceBaselineKm": 23.05,
+  "totalKm": 983.05,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 23,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 217,
+  "runCount": 218,
   "averagePaceMinPerKm": 6.1,
-  "totalDurationSeconds": 49711,
+  "totalDurationSeconds": 53301,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-08-23T23:22:25.169Z",
+  "updatedAt": "2026-08-26T21:24:41.570Z",
   "runs": [
+    {
+      "id": "19911979601",
+      "title": "Nike Run Club: Wednesday Morning Run",
+      "distanceKm": 10.029499996169214,
+      "durationSeconds": 3590,
+      "paceMinPerKm": 5.97,
+      "date": 1787763525000
+    },
     {
       "id": "19858977441",
       "title": "Nike Run Club: Saturday Evening Run",
