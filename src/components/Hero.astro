@@ -45,7 +45,7 @@ const isStale = Date.now() - new Date(running.updatedAt).getTime() > 24 * 60 * 6
 						</div>
 						<div class="running-label">I'M RUNNING · TOTAL</div>
 						<div class="running-total">
-							{totalKm.toLocaleString("en-US", { maximumFractionDigits: 1 })}<span>km</span>
+							{totalKm.toLocaleString("en-US", { maximumFractionDigits: 0 })}<span>km</span>
 						</div>
 						{
 							averagePace && (
