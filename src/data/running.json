@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 149.63,
-  "sinceBaselineKm": 26.87,
-  "totalKm": 986.87,
+  "syncedKm": 163.64,
+  "sinceBaselineKm": 40.88,
+  "totalKm": 1000.88,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 220,
-  "averagePaceMinPerKm": 6.1,
-  "totalDurationSeconds": 54689,
+  "runCount": 221,
+  "averagePaceMinPerKm": 6.11,
+  "totalDurationSeconds": 59906,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-08-29T06:38:12.505Z",
+  "updatedAt": "2026-09-01T05:04:51.280Z",
   "runs": [
+    {
+      "id": "19984393146",
+      "title": "Evening Run",
+      "distanceKm": 14.012099994648052,
+      "durationSeconds": 5217,
+      "paceMinPerKm": 6.21,
+      "date": 1788225525000
+    },
     {
       "id": "19943862523",
       "title": "Nike Run Club: Friday Night Run",
