@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 163.64,
-  "sinceBaselineKm": 40.88,
-  "totalKm": 1000.88,
+  "syncedKm": 170.89,
+  "sinceBaselineKm": 48.13,
+  "totalKm": 1008.13,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 221,
+  "runCount": 222,
   "averagePaceMinPerKm": 6.11,
-  "totalDurationSeconds": 59906,
+  "totalDurationSeconds": 62617,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-09-01T05:04:51.280Z",
+  "updatedAt": "2026-09-05T22:05:04.592Z",
   "runs": [
+    {
+      "id": "20050665159",
+      "title": "Morning Run",
+      "distanceKm": 7.244899997232796,
+      "durationSeconds": 2711,
+      "paceMinPerKm": 6.24,
+      "date": 1788627056000
+    },
     {
       "id": "19984393146",
       "title": "Evening Run",
