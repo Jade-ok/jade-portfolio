@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 181.03,
-  "sinceBaselineKm": 58.27,
-  "totalKm": 1018.27,
+  "syncedKm": 195.25,
+  "sinceBaselineKm": 72.49,
+  "totalKm": 1032.49,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 225,
+  "runCount": 226,
   "averagePaceMinPerKm": 6.1,
-  "totalDurationSeconds": 65976,
+  "totalDurationSeconds": 71135,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-09-10T06:52:53.030Z",
+  "updatedAt": "2026-09-14T03:53:06.844Z",
   "runs": [
+    {
+      "id": "20165391164",
+      "title": "Afternoon Run",
+      "distanceKm": 14.215699994570288,
+      "durationSeconds": 5159,
+      "paceMinPerKm": 6.05,
+      "date": 1789345093000
+    },
     {
       "id": "20111794842",
       "title": "Nike Run Club: Wednesday Night Run",
