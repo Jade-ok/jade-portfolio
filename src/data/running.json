@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 195.25,
-  "sinceBaselineKm": 72.49,
-  "totalKm": 1032.49,
+  "syncedKm": 200.29,
+  "sinceBaselineKm": 77.53,
+  "totalKm": 1037.53,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 226,
+  "runCount": 227,
   "averagePaceMinPerKm": 6.1,
-  "totalDurationSeconds": 71135,
+  "totalDurationSeconds": 72730,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-09-14T03:53:06.844Z",
+  "updatedAt": "2026-09-17T00:41:38.115Z",
   "runs": [
+    {
+      "id": "20196257041",
+      "title": "Night Run",
+      "distanceKm": 5.039199998075268,
+      "durationSeconds": 1595,
+      "paceMinPerKm": 5.28,
+      "date": 1789543957000
+    },
     {
       "id": "20165391164",
       "title": "Afternoon Run",
