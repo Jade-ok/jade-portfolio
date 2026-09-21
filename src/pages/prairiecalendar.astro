@@ -22,7 +22,7 @@ const img = "/project-img/prairiecalendar-img";
 		<FaviconLinks />
 		<meta
 			name="description"
-			content="A Chrome extension that extracts PrairieTest schedules and exports them to your calendar with one click. Built by Team BlueberryPie."
+			content="A Chrome extension that extracts PrairieTest schedules and exports them to your calendar with one click."
 		/>
 		<style>
 			:root {
@@ -75,11 +75,6 @@ const img = "/project-img/prairiecalendar-img";
 				font-size: 1.18rem;
 				color: var(--muted);
 				margin: 0 0 10px;
-			}
-			.byline {
-				font-size: 0.95rem;
-				color: var(--muted);
-				margin: 0 0 28px;
 			}
 			h2 {
 				font-size: 1.2rem;
@@ -176,8 +171,6 @@ const img = "/project-img/prairiecalendar-img";
 				Extracts your PrairieTest schedule and exports it to your calendar with one click. No more
 				manual copying - and no more anxiety about sleeping through a midterm.
 			</p>
-			<p class="byline">Built with 🫐 by Team BlueberryPie (Jena &amp; Jade)</p>
-
 			<a class="cta" href={storeUrl}>Get it on the Chrome Web Store →</a>
 
 			<img
@@ -186,12 +179,12 @@ const img = "/project-img/prairiecalendar-img";
 				alt="PrairieCalendar popup showing a clean list of upcoming exam reservations"
 			/>
 
-			<h2>Why we built this</h2>
+			<h2>Why this exists</h2>
 			<p>
 				Life as a CS student at UBC means constantly checking PrairieTest to book quizzes, examlets,
 				and finals - then manually copying every date into a calendar and double-checking the time
-				and location, because one typo can mean missing an exam. We kept asking the same question:
-				why isn't there just an "Export to Calendar" button? So we built one.
+				and location, because one typo can mean missing an exam. PrairieCalendar adds the missing
+				"Export to Calendar" workflow.
 			</p>
 
 			<h2>What it does</h2>
@@ -201,7 +194,7 @@ const img = "/project-img/prairiecalendar-img";
 				</li>
 				<li>
 					<b>Sleek UI.</b> Shows your full list of reservations in a clean popup with custom icons and
-					our "Deep Blueberry" and "Pie Crust" palette.
+					the "Deep Blueberry" and "Pie Crust" palette.
 				</li>
 				<li>
 					<b>Selective exporting.</b> Pick exactly which events to export with a simple checkbox list.
@@ -234,8 +227,8 @@ const img = "/project-img/prairiecalendar-img";
 				extracts the raw schedule data, <code>parser.js</code> standardizes the formatting, <code
 					>popup.js</code
 				> renders the selectable list, and
-				<code>ics.js</code> generates the calendar file. We wrote custom parsing to handle edge cases,
-				like converting academic term codes (e.g. 2025W2) into accurate calendar years.
+				<code>ics.js</code> generates the calendar file. Custom parsing handles edge cases such as
+				converting academic term codes (e.g. 2025W2) into accurate calendar years.
 			</p>
 
 			<h2>Privacy first</h2>
@@ -257,7 +250,7 @@ const img = "/project-img/prairiecalendar-img";
 
 			<footer>
 				Questions? Contact
-				<a href="mailto:team-blueberrypie@googlegroups.com">team-blueberrypie@googlegroups.com</a>
+				<a href="mailto:jade.jinoklee@gmail.com">jade.jinoklee@gmail.com</a>
 			</footer>
 		</main>
 	</body>

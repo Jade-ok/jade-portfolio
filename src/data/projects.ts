@@ -105,7 +105,7 @@ export const projects: Project[] = [
 		slug: "prairiecalendar",
 		title: "PrairieCalendar",
 		year: "2025-",
-		statusLabel: "Shipped · 29 Users",
+		statusLabel: "Shipped · 48 Users",
 		eyebrow: "Side",
 		meta: "Side · 2025-",
 		desc: "Chrome extension exporting PrairieTest exam schedules to Google Calendar and ICS.",
@@ -114,30 +114,30 @@ export const projects: Project[] = [
 		href: "/projects/prairiecalendar",
 		detail: {
 			kicker: "Side Project · Live in the Chrome Web Store · 2025-",
-			lede: "Chrome Extension exporting PrairieTest exam schedules to Google Calendar & ICS. Live in the Web Store, serving 29 active users.",
+			lede: "Chrome extension exporting booked PrairieTest exams to Google Calendar or an ICS file. Live in the Web Store with 48 users.",
 			stats: [
-				{ label: "My Role", value: "Solo - extension, sync logic, Web Store listing" },
-				{ label: "Users", value: "29" },
+				{ label: "Exports", value: "Google Calendar + ICS" },
+				{ label: "Users", value: "48" },
 				{ label: "Status", value: "Live" },
 			],
 			narrative: [
 				{
 					label: "01 · Problem",
 					title: "Exam schedules trapped in a portal",
-					body: "PrairieTest lists exam times in its own dashboard with no calendar export, so students copy dates by hand and miss updates when a slot changes.",
+					body: "PrairieTest lists confirmed reservations without a calendar export, so students have to copy the date, time, duration, and location by hand.",
 				},
 				{
 					label: "02 · Build",
-					title: "One-click export",
-					body: "A Chrome extension reads the PrairieTest schedule and exports it to Google Calendar via the GCal API, or as a downloadable ICS file for any other calendar app.",
+					title: "Two exports, one event model",
+					body: "The extension reads exact timestamps and timezone data from PrairieTest, then exports the same normalized event through the Google Calendar API or an ICS file.",
 				},
 				{
 					label: "03 · Result",
-					title: "29 active users",
-					body: "Shipped to the Chrome Web Store and in active use by 29 students, with an official endorsement from a UBC facility director in progress.",
+					title: "48 users",
+					body: "Shipped to the Chrome Web Store with 48 users. Eighteen automated tests cover timestamp parsing, ICS generation, and Google export across several timezone settings.",
 				},
 			],
-			links: [{ label: "GitHub ↗", href: "#" }],
+			links: [{ label: "GitHub ↗", href: "https://github.com/Jade-ok/PrairieCalendar" }],
 		},
 	},
 	{

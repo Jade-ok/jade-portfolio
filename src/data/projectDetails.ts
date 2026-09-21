@@ -195,7 +195,7 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 				"I worked mainly on the Evaluator, designing its prompt, output schema, and scoring logic, then implementing it as an AWS Lambda function that invokes the model through Amazon Bedrock. I also built the frontend feedback page. Kiro's spec-driven workflow was a big help throughout.",
 				"After the hackathon, as we kept refining the app, the problem I got most drawn into was turn-taking. The voice model would cut in and grab the turn before the candidate had even finished answering. Lowering the endpointing sensitivity and reshaping the prompt got us closer, but I also learned this is a genuinely hard problem for real-time speech models, and it's still the piece I'm most eager to keep improving.",
 				"Looking further ahead, I want to add a judge agent on the feedback side. Instead of sending the generated feedback straight to the user, a judge would verify it first and send it back for another pass until it meets the bar. That self-correcting, judge-based design is what first got me into multi-agent systems at Hyunuk Lim's workshop, and now I want to apply it here to raise the quality of our feedback reports.",
-				"So grateful to have built this with my amazing teammates Stephanie Xue, Hoonji Choi, Jena Chang, and Jianding Bai. Thank you to our mentors Ayush Srihari, Hrishi Logani, Jovan, and Rajrupa Sanyal, who were supportive every step of the way. Thanks also to our judges Christian Castro, Katja Krohn, Liana Leung, Anjali B., and Scott M., along with the UBC Cloud Innovation Centre × AWS team for creating the space to build and learn.",
+				"So grateful to have built this with my amazing teammates Stephanie Xue, Hoonji Choi, and Jianding Bai. Thank you to our mentors Ayush Srihari, Hrishi Logani, Jovan, and Rajrupa Sanyal, who were supportive every step of the way. Thanks also to our judges Christian Castro, Katja Krohn, Liana Leung, Anjali B., and Scott M., along with the UBC Cloud Innovation Centre × AWS team for creating the space to build and learn.",
 			],
 		},
 	},
@@ -241,24 +241,62 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		index: "/03",
 		eyebrow: "SIDE PROJECT · LIVE IN THE CHROME WEB STORE · 2025 —",
 		title: "PrairieCalendar",
-		lede: "A Chrome extension that exports PrairieTest exam schedules straight to Google Calendar or an ICS file, live in the Web Store with 29 active users.",
+		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 48 users.",
 
 		problem: [
-			"PrairieTest lists exam times in its own dashboard with no calendar export, so students copy dates by hand and miss updates when a slot changes.",
+			"PrairieTest lists confirmed exam reservations in its dashboard without a calendar export. Students have to copy the date, time, duration, and location by hand, where one typo can mean missing an exam.",
+			"PrairieCalendar started with UBC schedules, but the implementation is independent of any one campus, academic term, or timezone. PrairieTest is used by institutions across North America, so the same workflow can serve students beyond UBC.",
 		],
 
 		features: [
 			{
-				title: "One-click export",
-				body: "Reads the PrairieTest schedule and exports it to Google Calendar via the GCal API, or as a downloadable ICS file for any other calendar app.",
+				title: "Selective export",
+				body: "The popup reads confirmed reservations from the PrairieTest Home page. Students can choose individual exams or use Select All before exporting.",
+			},
+			{
+				title: "Google Calendar and ICS",
+				body: "One path signs the student in with Google OAuth and creates events through the Google Calendar API. The other generates an ICS file for Apple Calendar and other calendar apps.",
+			},
+			{
+				title: "Duplicate-safe events",
+				body: "Exporting the same exam again updates the existing Google Calendar event instead of adding another copy.",
+			},
+			{
+				title: "Timezone-safe scheduling",
+				body: "The extension reads PrairieTest's absolute UTC timestamps and timezone data from the page instead of rebuilding times from the text on screen.",
+			},
+			{
+				title: "Local by default",
+				body: "Reservation data stays in the browser through chrome.storage.local. PrairieCalendar has no database, and it only connects to Google when a student chooses Google Calendar export.",
 			},
 		],
 
-		owned: [
-			"Built the <strong>extension</strong>, the <strong>sync logic</strong>, and the Chrome Web Store listing solo.",
-		],
+		owned: [],
 
-		next: ["An official endorsement from a UBC facility director is in progress."],
+		challenges: {
+			cards: [
+				{
+					title: "Keeping exam times correct",
+					credit: "TIMESTAMP PARSING",
+					paras: [
+						"The time shown on screen is not enough to build a reliable calendar event. PrairieCalendar reads the exact instant and timezone published in the PrairieTest page, then calculates the end time from the exam duration.",
+						"If a duration cannot be read, the extension preserves the start time, uses a one-hour fallback, and tells the student to verify the event.",
+					],
+				},
+				{
+					title: "Making both exports agree",
+					credit: "18 AUTOMATED TESTS",
+					paras: [
+						"Google Calendar and ICS have different output paths, but both consume the same normalized event data. That keeps each reservation consistent whichever calendar the student uses.",
+						"Eighteen automated tests cover timestamp parsing, ICS generation, and Google export under several timezone settings.",
+					],
+				},
+			],
+		},
+
+		next: [
+			"PrairieCalendar has been tested at UBC. The next step is validating the campus-independent parser with students at more institutions that use PrairieTest.",
+		],
 
 		images: [
 			{
@@ -267,9 +305,37 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 				caption: "Popup running directly on PrairieTest",
 				after: "problem",
 			},
+			{
+				src: "/project-img/prairiecalendar-img/prairiecalendar-export-guide.png",
+				alt: "PrairieCalendar popup showing Google Calendar and iCalendar export options",
+				caption: "Choose direct Google Calendar export or download an ICS file",
+				after: "features",
+			},
+			{
+				src: "/project-img/prairiecalendar-img/PrairieCalendar_google-calendar-view.png",
+				alt: "PrairieTest exam exported as a Google Calendar event",
+				caption: "A reservation exported to Google Calendar",
+				after: "features",
+			},
+			{
+				src: "/project-img/prairiecalendar-img/PrairieCalendar_icalendar-view.png",
+				alt: "PrairieTest exam imported into Apple Calendar from an ICS file",
+				caption: "The same reservation imported into Apple Calendar",
+				after: "features",
+			},
+			{
+				src: "/project-img/prairiecalendar-img/architecture.png",
+				alt: "PrairieCalendar system architecture from PrairieTest page parsing to Google Calendar and ICS export",
+				caption: "Reservation-to-calendar data flow",
+				after: "challenges",
+			},
 		],
 
-		stack: [{ label: "STACK", items: ["Chrome Extension APIs", "OAuth 2.0", "Google Calendar API"] }],
+		stack: [
+			{ label: "EXTENSION", items: ["Vanilla JavaScript", "Chrome Manifest V3", "HTML", "CSS"] },
+			{ label: "CALENDAR", items: ["Google Calendar API", "Google OAuth 2.0", "iCalendar (.ics)"] },
+			{ label: "DESIGN & QUALITY", items: ["Figma", "18 automated tests"] },
+		],
 
 		links: [
 			{ label: "Git Repository", href: "https://github.com/Jade-ok/PrairieCalendar", primary: true },
