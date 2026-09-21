@@ -4,6 +4,7 @@ export interface ProjectDetailContent {
 	eyebrow: string;
 	title: string;
 	lede: string;
+	metrics?: { value: string; label: string; emphasis?: boolean }[];
 
 	problem: string[];
 	howItWorks?: {
@@ -22,7 +23,7 @@ export interface ProjectDetailContent {
 	};
 	next?: string[];
 
-	images: { src: string; alt: string; caption: string; after: string }[];
+	images: { src: string; alt: string; caption: string; after: string; wide?: boolean }[];
 	stack: { label: string; items: string[] }[];
 	stackAgents?: { role: string; model: string }[];
 	links: { label: string; href: string; primary?: boolean }[];
@@ -242,6 +243,10 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		eyebrow: "SIDE PROJECT · LIVE IN THE CHROME WEB STORE · 2025 —",
 		title: "PrairieCalendar",
 		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 48 users.",
+		metrics: [
+			{ value: "48", label: "USERS", emphasis: true },
+			{ value: "18", label: "AUTOMATED TESTS" },
+		],
 
 		problem: [
 			"PrairieTest lists confirmed exam reservations in its dashboard without a calendar export. Students have to copy the date, time, duration, and location by hand, where one typo can mean missing an exam.",
@@ -328,6 +333,7 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 				alt: "PrairieCalendar system architecture from PrairieTest page parsing to Google Calendar and ICS export",
 				caption: "Reservation-to-calendar data flow",
 				after: "challenges",
+				wide: true,
 			},
 		],
 

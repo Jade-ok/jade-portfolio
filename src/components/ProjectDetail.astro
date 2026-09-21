@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const railImages = project.images.filter((image) => !image.wide);
+const wideImages = project.images.filter((image) => image.wide);
 
 const sectionOrder = ["problem", "howItWorks", "features", "owned", "challenges", "next"] as const;
 type SectionKey = (typeof sectionOrder)[number];
@@ -52,6 +54,18 @@ const tightHeading: Record<SectionKey, boolean> = {
 			<p class="pd-eyebrow">{project.eyebrow}</p>
 			<h1 class="pd-title">{project.title}<span class="period">.</span></h1>
 			<p class="pd-lede">{project.lede}</p>
+			{
+				project.metrics && project.metrics.length > 0 && (
+					<div class="pd-metrics" aria-label="Project highlights">
+						{project.metrics.map((metric) => (
+							<div class:list={["pd-metric", { emphasis: metric.emphasis }]}>
+								<strong>{metric.value}</strong>
+								<span>{metric.label}</span>
+							</div>
+						))}
+					</div>
+				)
+			}
 		</div>
 
 		<div class="pd-grid">
@@ -175,9 +189,9 @@ const tightHeading: Record<SectionKey, boolean> = {
 
 			<aside class="pd-rail">
 				{
-					project.images.length > 0 && (
+					railImages.length > 0 && (
 						<div class="pd-rail-images">
-							{project.images.map((img) => (
+							{railImages.map((img) => (
 								<figure class="pd-figure">
 									<button
 										type="button"
@@ -251,6 +265,28 @@ const tightHeading: Record<SectionKey, boolean> = {
 				</div>
 			</aside>
 		</div>
+
+		{
+			wideImages.length > 0 && (
+				<div class="pd-wide-images">
+					{wideImages.map((img) => (
+						<figure class="pd-figure pd-figure-wide">
+							<button
+								type="button"
+								class="pd-figure-box"
+								data-lightbox-src={img.src}
+								data-lightbox-alt={img.alt}
+								data-lightbox-caption={img.caption}
+								aria-label={`Open larger image: ${img.caption}`}
+							>
+								<img src={img.src} alt={img.alt} loading="lazy" />
+							</button>
+							<figcaption>{img.caption}</figcaption>
+						</figure>
+					))}
+				</div>
+			)
+		}
 
 		{
 			project.note && (
@@ -423,6 +459,56 @@ const tightHeading: Record<SectionKey, boolean> = {
 		font-weight: 400;
 		line-height: 1.45;
 		color: var(--stone);
+	}
+
+	.pd-metrics {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		margin-top: 28px;
+	}
+
+	.pd-metric {
+		display: grid;
+		grid-template-columns: auto auto;
+		align-items: baseline;
+		gap: 10px;
+		min-width: 150px;
+		padding: 15px 18px 14px;
+		border-left: 4px solid var(--accent-mark);
+		background: var(--sand);
+	}
+
+	.pd-metric strong {
+		font-family: "Archivo", sans-serif;
+		font-size: 32px;
+		font-weight: 900;
+		line-height: 1;
+		letter-spacing: -0.035em;
+		color: var(--accent-mark);
+	}
+
+	.pd-metric span {
+		font-family: "JetBrains Mono", monospace;
+		font-size: 11px;
+		font-weight: 700;
+		line-height: 1.25;
+		letter-spacing: 0.07em;
+		color: var(--ink);
+	}
+
+	.pd-metric.emphasis {
+		border-left-color: var(--heading);
+		background: var(--accent);
+	}
+
+	.pd-metric.emphasis strong {
+		font-size: 38px;
+		color: var(--on-accent);
+	}
+
+	.pd-metric.emphasis span {
+		color: var(--on-accent);
 	}
 
 	/* ---------- body grid ---------- */
@@ -713,9 +799,38 @@ const tightHeading: Record<SectionKey, boolean> = {
 	.pd-figure figcaption {
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 600;
-		font-size: 9.5px;
-		letter-spacing: 0.05em;
-		color: var(--taupe);
+		font-size: 13px;
+		line-height: 1.45;
+		letter-spacing: 0.035em;
+		color: var(--body);
+	}
+
+	.pd-wide-images {
+		display: flex;
+		flex-direction: column;
+		gap: 40px;
+		width: min(1280px, calc(100vw - 48px));
+		margin-top: 72px;
+		margin-left: 50%;
+		padding-top: 40px;
+		border-top: 2px solid var(--body);
+		transform: translateX(-50%);
+	}
+
+	.pd-figure-wide {
+		gap: 13px;
+	}
+
+	.pd-figure-wide .pd-figure-box {
+		border: 1px solid var(--card-line);
+		border-radius: 16px;
+		background: var(--sand);
+	}
+
+	.pd-figure-wide figcaption {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--ink);
 	}
 
 	/* ---------- right rail ---------- */
@@ -741,18 +856,18 @@ const tightHeading: Record<SectionKey, boolean> = {
 		margin: 0;
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 700;
-		font-size: 11px;
+		font-size: 13px;
 		letter-spacing: 0.1em;
 		color: var(--ink);
 	}
 
 	.pd-stack-label {
-		margin: 0 0 10px;
+		margin: 0 0 11px;
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 700;
-		font-size: 10px;
-		letter-spacing: 0.1em;
-		color: var(--taupe);
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		color: var(--accent-mark);
 	}
 
 	.pd-stack-tags {
@@ -766,11 +881,11 @@ const tightHeading: Record<SectionKey, boolean> = {
 		align-items: center;
 		background: var(--sand);
 		color: var(--body);
-		padding: 5px 10px;
+		padding: 6px 11px;
 		border-radius: 999px;
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 600;
-		font-size: 10px;
+		font-size: 11px;
 	}
 
 	.pd-agent-table-row {
@@ -787,14 +902,14 @@ const tightHeading: Record<SectionKey, boolean> = {
 	.pd-agent-table-row .role {
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 700;
-		font-size: 10px;
+		font-size: 11px;
 		color: var(--ink);
 	}
 
 	.pd-agent-table-row .model {
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 600;
-		font-size: 10px;
+		font-size: 11px;
 		line-height: 1.45;
 		color: var(--taupe);
 	}
@@ -987,7 +1102,7 @@ const tightHeading: Record<SectionKey, boolean> = {
 		margin: 0;
 		font-family: "JetBrains Mono", monospace;
 		font-weight: 700;
-		font-size: 11px;
+		font-size: 13px;
 		letter-spacing: 0.06em;
 		color: #fbf8ee;
 	}
@@ -1058,6 +1173,14 @@ const tightHeading: Record<SectionKey, boolean> = {
 		}
 		.pd-breadcrumb {
 			flex-wrap: wrap;
+		}
+		.pd-metric {
+			min-width: 0;
+			flex: 1 1 140px;
+		}
+		.pd-wide-images {
+			margin-top: 52px;
+			padding-top: 28px;
 		}
 	}
 </style>
