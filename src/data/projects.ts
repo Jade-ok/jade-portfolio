@@ -28,7 +28,7 @@ export const projects: Project[] = [
 		eyebrow: "Hackathon",
 		meta: "Hackathon · 2026",
 		desc: "Speech-to-speech interview practice powered by Amazon Nova 2 Sonic, built in a team of five. Proposed a three-agent architecture and owned the Evaluator - prompt, schema, and scoring logic - as an AWS Lambda service on Bedrock.",
-		tech: ["Bedrock", "AWS Lambda", "FastAPI", "React"],
+		tech: ["Amazon Bedrock", "AWS Lambda", "AWS CDK", "FastAPI", "React"],
 		coverImage: "/project-img/mock-interview-coach/thumbnail.png",
 		featured: true,
 		href: "/projects/ai-mock-interview-coach",
@@ -71,7 +71,7 @@ export const projects: Project[] = [
 		eyebrow: "Side",
 		meta: "Side · 2026-",
 		desc: "EPL scouting assistant on an Orchestrator-Worker LLM pipeline, with a dual judge layer verifying every number.",
-		tech: ["Gemini", "pandas"],
+		tech: ["Python", "Gemini 2.5 Flash", "SQLite"],
 		href: "/projects/football-scouter",
 		detail: {
 			kicker: "Side Project · In Progress · Jun 2026 -",
@@ -109,7 +109,7 @@ export const projects: Project[] = [
 		eyebrow: "Side",
 		meta: "Side · 2025-",
 		desc: "Chrome extension exporting PrairieTest exam schedules to Google Calendar and ICS.",
-		tech: ["Chrome Ext", "OAuth 2.0"],
+		tech: ["Chrome MV3", "Google Calendar API", "OAuth 2.0"],
 		coverImage: "/project-img/prairiecalendar-img/thumbnail.png",
 		href: "/projects/prairiecalendar",
 		detail: {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
 		eyebrow: "Academic",
 		meta: "Academic · 2026",
 		desc: "3NF-normalized schema of 20+ tables with Node.js/Oracle REST endpoints.",
-		tech: ["Oracle", "Node.js"],
+		tech: ["Oracle", "Node.js", "REST API"],
 		coverImage: "/project-img/smart-home-database/er-diagram.png",
 		href: "/projects/smart-home-database",
 		detail: {
