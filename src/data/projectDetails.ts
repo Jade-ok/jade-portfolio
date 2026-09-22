@@ -357,13 +357,21 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		index: "/04",
 		eyebrow: "ACADEMIC PROJECT · 2026",
 		title: "Smart Home Database",
-		lede: "A 3NF-normalized relational schema across 20+ tables, with Node.js/Oracle REST endpoints supporting CRUD, aggregation, division, and multi-table joins.",
+		lede: "A Node.js/Oracle REST API with SQL injection safeguards and transaction handling, backed by a 3NF-normalized schema across 20+ tables.",
 
 		problem: [
 			"Devices, rooms, residents, schedules, and usage logs all reference each other — a flat schema either duplicates data or can't answer real queries.",
 		],
 
 		features: [
+			{
+				title: "SQL injection prevention",
+				body: "Protected database operations from SQL injection at the REST query layer.",
+			},
+			{
+				title: "Transaction handling",
+				body: "Implemented transactions for database operations that must succeed or fail together.",
+			},
 			{
 				title: "3NF-normalized schema",
 				body: "Designed a 3NF-normalized schema across 20+ tables in Oracle, eliminating the redundancy a flatter design would carry.",
@@ -375,6 +383,8 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		],
 
 		owned: [
+			"Implemented <strong>SQL injection prevention</strong> across database-facing endpoints.",
+			"Added <strong>transaction handling</strong> for operations that must succeed or fail together.",
 			"Designed the full <strong>3NF schema</strong> across 20+ tables.",
 			"Built the <strong>Node.js REST API</strong> and query layer, including relational-division queries.",
 		],
