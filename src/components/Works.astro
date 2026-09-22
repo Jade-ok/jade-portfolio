@@ -175,13 +175,17 @@ const standard = projects.filter((p) => !p.featured);
 		text-decoration: none;
 	}
 
+	/* no aspect-ratio here: the grid stretches this cell to the body's
+	   height, and a preserved ratio then widened the box past its column so
+	   the right edge of the cover was hidden under the body. Letting it fill
+	   the cell keeps the whole image visible — the background matches the
+	   screenshots' own so any letterboxing reads as part of the shot. */
 	.featured-card .media {
 		position: relative;
 		min-width: 0;
-		aspect-ratio: 16 / 10;
 		min-height: 0;
 		overflow: hidden;
-		background: #050605;
+		background: #0a0a0a;
 	}
 
 	.placeholder {
