@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 208.95,
-  "sinceBaselineKm": 86.19,
-  "totalKm": 1046.19,
+  "syncedKm": 214.36,
+  "sinceBaselineKm": 91.6,
+  "totalKm": 1051.6,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 228,
+  "runCount": 229,
   "averagePaceMinPerKm": 6.1,
-  "totalDurationSeconds": 76103,
+  "totalDurationSeconds": 78007,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-09-20T03:56:39.261Z",
+  "updatedAt": "2026-09-25T07:26:53.759Z",
   "runs": [
+    {
+      "id": "20291510057",
+      "title": "Night Run",
+      "distanceKm": 5.409799997933717,
+      "durationSeconds": 1904,
+      "paceMinPerKm": 5.87,
+      "date": 1790137526000
+    },
     {
       "id": "20248498755",
       "title": "Whole Foods Run",
