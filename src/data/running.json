@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 214.36,
-  "sinceBaselineKm": 91.6,
-  "totalKm": 1051.6,
+  "syncedKm": 219.88,
+  "sinceBaselineKm": 97.12,
+  "totalKm": 1057.12,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 229,
+  "runCount": 230,
   "averagePaceMinPerKm": 6.1,
-  "totalDurationSeconds": 78007,
+  "totalDurationSeconds": 79914,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-09-25T07:26:53.759Z",
+  "updatedAt": "2026-09-27T07:05:19.571Z",
   "runs": [
+    {
+      "id": "20345710689",
+      "title": "Night Run",
+      "distanceKm": 5.5210999978912065,
+      "durationSeconds": 1907,
+      "paceMinPerKm": 5.76,
+      "date": 1790487484000
+    },
     {
       "id": "20291510057",
       "title": "Night Run",
