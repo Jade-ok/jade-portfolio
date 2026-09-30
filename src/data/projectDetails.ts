@@ -242,9 +242,9 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		index: "/03",
 		eyebrow: "SIDE PROJECT · LIVE IN THE CHROME WEB STORE · 2025 —",
 		title: "PrairieCalendar",
-		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 48 users.",
+		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 50 users.",
 		metrics: [
-			{ value: "48", label: "USERS", emphasis: true },
+			{ value: "50", label: "USERS", emphasis: true },
 			{ value: "18", label: "AUTOMATED TESTS" },
 		],
 
