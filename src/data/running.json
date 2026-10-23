@@ -1,18 +1,26 @@
 {
   "baselineTotalKm": 960,
   "baselineSyncedKm": 122.76,
-  "syncedKm": 234.49,
-  "sinceBaselineKm": 111.73,
-  "totalKm": 1071.73,
+  "syncedKm": 238.52,
+  "sinceBaselineKm": 115.76,
+  "totalKm": 1075.76,
   "baselineRunCount": 217,
   "baselineSyncedRunCount": 22,
   "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 233,
+  "runCount": 234,
   "averagePaceMinPerKm": 6.09,
-  "totalDurationSeconds": 84747,
+  "totalDurationSeconds": 86359,
   "source": "FitnessSyncer",
-  "updatedAt": "2026-10-16T05:42:02.821Z",
+  "updatedAt": "2026-10-23T06:29:01.751Z",
   "runs": [
+    {
+      "id": "20696220168",
+      "title": "Evening Run",
+      "distanceKm": 4.028099998461459,
+      "durationSeconds": 1612,
+      "paceMinPerKm": 6.67,
+      "date": 1792725843000
+    },
     {
       "id": "20604212700",
       "title": "Nike Run Club: Thursday Night Run",
