@@ -151,7 +151,7 @@ const output = {
 
 await fs.mkdir("src/data", { recursive: true });
 
-await fs.writeFile("src/data/running.json", JSON.stringify(output, null, 2));
+await fs.writeFile("src/data/running.json", JSON.stringify(output, null, "\t"));
 
 console.log(`Strava running activities: ${runCount}`);
 console.log(`Total running distance: ${roundedTotalKm.toFixed(2)} km`);

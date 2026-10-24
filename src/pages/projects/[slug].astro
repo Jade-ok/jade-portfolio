@@ -6,8 +6,8 @@ import JLThemeProvider from "@/components/JLThemeProvider.astro";
 import ProjectDetail from "@/components/ProjectDetail.astro";
 import SiteOverlay from "@/components/SiteOverlay.astro";
 import Topbar from "@/components/Topbar.astro";
-import { getProject, projects } from "@/data/projects";
 import { getProjectDetailContent } from "@/data/projectDetails";
+import { getProject, projects } from "@/data/projects";
 
 export function getStaticPaths() {
 	return projects.map((p) => ({ params: { slug: p.slug } }));

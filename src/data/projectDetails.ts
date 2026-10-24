@@ -183,7 +183,11 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		],
 
 		links: [
-			{ label: "Git Repository", href: "https://github.com/Jade-ok/CIC_mock-interview-coach", primary: true },
+			{
+				label: "Git Repository",
+				href: "https://github.com/Jade-ok/CIC_mock-interview-coach",
+				primary: true,
+			},
 			{ label: "Live Demo", href: "https://main.dvppliwnm6u9g.amplifyapp.com/" },
 		],
 
@@ -228,13 +232,21 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 			"Built the <strong>dual verification layer</strong> — a deterministic numeric checker plus a structured-output LLM judge.",
 		],
 
-		next: ["Currently expanding coverage across EPL player stat questions and hardening the verification layer."],
+		next: [
+			"Currently expanding coverage across EPL player stat questions and hardening the verification layer.",
+		],
 
 		images: [],
 
 		stack: [{ label: "STACK", items: ["Python", "Gemini 2.5 Flash", "SQLite", "pandas"] }],
 
-		links: [{ label: "Git Repository", href: "https://github.com/Jade-ok/AI-Football-Scout", primary: true }],
+		links: [
+			{
+				label: "Git Repository",
+				href: "https://github.com/Jade-ok/AI-Football-Scout",
+				primary: true,
+			},
+		],
 	},
 
 	prairiecalendar: {
@@ -344,7 +356,11 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		],
 
 		links: [
-			{ label: "Git Repository", href: "https://github.com/Jade-ok/PrairieCalendar", primary: true },
+			{
+				label: "Git Repository",
+				href: "https://github.com/Jade-ok/PrairieCalendar",
+				primary: true,
+			},
 			{
 				label: "CHROME WEB STORE",
 				href: "https://chromewebstore.google.com/detail/prairiecalendar/jfgdhmfkgejkgliebffeohcddbohldfk",

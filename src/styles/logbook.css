@@ -289,6 +289,7 @@ a.lb-muted:hover {
 	display: inline-flex;
 	overflow: hidden;
 }
+/* biome-ignore lint/style/noDescendingSpecificity: this button is unrelated to the nav search button */
 .lb-view-toggle button {
 	background: transparent;
 	border: 0;
@@ -348,6 +349,94 @@ a.lb-muted:hover {
 .lb-card.is-private:hover {
 	background: var(--lb-card-hover);
 }
+.lb-card-meta {
+	align-items: center;
+	color: var(--lb-muted);
+	display: flex;
+	font-size: 10.5px;
+	justify-content: space-between;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+.lb-card-meta .lb-chip {
+	color: var(--lb-ink);
+	padding: 4px 10px;
+}
+.lb-card-meta .lb-chip.is-private-badge {
+	background: var(--lb-ink);
+	border-color: var(--lb-ink);
+	color: var(--lb-on-ink);
+}
+
+.lb-card-image {
+	align-items: flex-end;
+	aspect-ratio: 1 / 1;
+	border: 1px solid var(--lb-image-border);
+	display: flex;
+	overflow: hidden;
+	padding: 10px;
+	position: relative;
+}
+.lb-card-image.is-placeholder {
+	background: repeating-linear-gradient(
+		135deg,
+		var(--lb-placeholder-a) 0 6px,
+		var(--lb-placeholder-b) 6px 12px
+	);
+}
+.lb-card-image.is-placeholder.is-private {
+	background: repeating-linear-gradient(
+		135deg,
+		var(--lb-placeholder-private-a) 0 6px,
+		var(--lb-placeholder-private-b) 6px 12px
+	);
+}
+.lb-card-image img {
+	height: 100%;
+	inset: 0;
+	object-fit: cover;
+	position: absolute;
+	width: 100%;
+}
+.lb-image-label {
+	background: var(--lb-image-label-bg);
+	color: var(--lb-muted);
+	font-size: 10px;
+	letter-spacing: 0.08em;
+	padding: 3px 6px;
+	position: relative;
+	z-index: 1;
+}
+
+.lb-card-title {
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: 1.12;
+	margin: 0;
+}
+.lb-card-excerpt {
+	color: var(--lb-body-muted);
+	flex: 1;
+	font-size: 12.5px;
+	line-height: 1.75;
+	margin: 0;
+}
+.lb-card-footer {
+	color: var(--lb-muted);
+	display: flex;
+	font-size: 10.5px;
+	gap: 26px;
+	letter-spacing: 0.08em;
+	margin-top: auto;
+	padding-top: 12px;
+	text-transform: uppercase;
+}
+.lb-card-footer b {
+	color: var(--lb-ink);
+	font-weight: 700;
+}
+
 .lb-grid.is-list .lb-card {
 	align-items: center;
 	border-bottom: 1px solid var(--lb-hairline);
@@ -421,94 +510,6 @@ a.lb-muted:hover {
 		justify-self: start;
 		order: 5;
 	}
-}
-
-.lb-card-meta {
-	align-items: center;
-	color: var(--lb-muted);
-	display: flex;
-	font-size: 10.5px;
-	justify-content: space-between;
-	letter-spacing: 0.1em;
-	text-transform: uppercase;
-}
-.lb-card-meta .lb-chip {
-	color: var(--lb-ink);
-	padding: 4px 10px;
-}
-.lb-card-meta .lb-chip.is-private-badge {
-	background: var(--lb-ink);
-	border-color: var(--lb-ink);
-	color: var(--lb-on-ink);
-}
-
-.lb-card-image {
-	align-items: flex-end;
-	aspect-ratio: 1/1;
-	border: 1px solid var(--lb-image-border);
-	display: flex;
-	overflow: hidden;
-	padding: 10px;
-	position: relative;
-}
-.lb-card-image.is-placeholder {
-	background: repeating-linear-gradient(
-		135deg,
-		var(--lb-placeholder-a) 0 6px,
-		var(--lb-placeholder-b) 6px 12px
-	);
-}
-.lb-card-image.is-placeholder.is-private {
-	background: repeating-linear-gradient(
-		135deg,
-		var(--lb-placeholder-private-a) 0 6px,
-		var(--lb-placeholder-private-b) 6px 12px
-	);
-}
-.lb-card-image img {
-	height: 100%;
-	inset: 0;
-	object-fit: cover;
-	position: absolute;
-	width: 100%;
-}
-.lb-image-label {
-	background: var(--lb-image-label-bg);
-	color: var(--lb-muted);
-	font-size: 10px;
-	letter-spacing: 0.08em;
-	padding: 3px 6px;
-	position: relative;
-	z-index: 1;
-}
-
-.lb-card-title {
-	font-size: 26px;
-	font-weight: 700;
-	letter-spacing: -0.02em;
-	line-height: 1.12;
-	margin: 0;
-}
-.lb-card-excerpt {
-	color: var(--lb-body-muted);
-	flex: 1;
-	font-size: 12.5px;
-	line-height: 1.75;
-	margin: 0;
-}
-.lb-card-footer {
-	color: var(--lb-muted);
-	display: flex;
-	font-size: 10.5px;
-	gap: 26px;
-	letter-spacing: 0.08em;
-	margin-top: auto;
-	padding-top: 12px;
-	text-transform: uppercase;
-}
-.lb-card-footer b {
-	color: var(--lb-ink);
-	font-weight: 700;
 }
 
 .lb-empty-row {
@@ -599,10 +600,10 @@ a.lb-muted:hover {
 	background: var(--lb-detail-bg);
 }
 .lb-fig-hero {
-	aspect-ratio: 16/9;
+	aspect-ratio: 16 / 9;
 }
 .lb-fig-inline {
-	aspect-ratio: 4/3;
+	aspect-ratio: 4 / 3;
 	padding: 12px;
 }
 
