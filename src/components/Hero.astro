@@ -1,7 +1,7 @@
 ---
 import running from "@/data/running.json";
 
-const totalKm = running.totalKm ?? running.baselineTotalKm + running.sinceBaselineKm;
+const totalKm = running.totalKm;
 const averagePace = running.averagePaceMinPerKm
 	? `${Math.floor(running.averagePaceMinPerKm)}:${String(
 			Math.round((running.averagePaceMinPerKm % 1) * 60),

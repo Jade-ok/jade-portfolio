@@ -1,18 +1,19 @@
 {
-  "baselineTotalKm": 960,
-  "baselineSyncedKm": 122.76,
-  "syncedKm": 238.52,
-  "sinceBaselineKm": 115.76,
-  "totalKm": 1075.76,
-  "baselineRunCount": 217,
-  "baselineSyncedRunCount": 22,
-  "baselineAveragePaceMinPerKm": 6.1,
-  "runCount": 234,
-  "averagePaceMinPerKm": 6.09,
-  "totalDurationSeconds": 86359,
-  "source": "FitnessSyncer",
-  "updatedAt": "2026-10-23T06:29:01.751Z",
+  "totalKm": 879.93,
+  "runCount": 188,
+  "averagePaceMinPerKm": 5.93,
+  "totalDurationSeconds": 313200,
+  "source": "Strava",
+  "updatedAt": "2026-10-24T23:24:17.929Z",
   "runs": [
+    {
+      "id": "20716629535",
+      "title": "Morning Run",
+      "distanceKm": 10.157799996120207,
+      "durationSeconds": 3281,
+      "paceMinPerKm": 5.38,
+      "date": 1792863198000
+    },
     {
       "id": "20696220168",
       "title": "Evening Run",
@@ -324,6 +325,1190 @@
       "durationSeconds": 3525,
       "paceMinPerKm": 5.86,
       "date": 1779675723000
+    },
+    {
+      "id": "20718182474",
+      "title": "Tuesday Evening Run",
+      "distanceKm": 5.06649999806484,
+      "durationSeconds": 1758,
+      "paceMinPerKm": 5.78,
+      "date": 1757469999000
+    },
+    {
+      "id": "20718212777",
+      "title": "Saturday Evening Run",
+      "distanceKm": 0.07519999997127721,
+      "durationSeconds": 36,
+      "paceMinPerKm": 8,
+      "date": 1751765620000
+    },
+    {
+      "id": "20718213449",
+      "title": "Saturday Evening Run",
+      "distanceKm": 3.0994999988161402,
+      "durationSeconds": 1297,
+      "paceMinPerKm": 6.98,
+      "date": 1751167070000
+    },
+    {
+      "id": "20718213916",
+      "title": "Friday Morning Run",
+      "distanceKm": 0.23349999991081422,
+      "durationSeconds": 188,
+      "paceMinPerKm": 13.45,
+      "date": 1749827167000
+    },
+    {
+      "id": "20718214400",
+      "title": "Saturday Morning Run",
+      "distanceKm": 2.7979999989312985,
+      "durationSeconds": 1228,
+      "paceMinPerKm": 7.32,
+      "date": 1749318630000
+    },
+    {
+      "id": "20718214675",
+      "title": "Saturday Evening Run",
+      "distanceKm": 1.368899999477146,
+      "durationSeconds": 545,
+      "paceMinPerKm": 6.64,
+      "date": 1748748487000
+    },
+    {
+      "id": "20718214997",
+      "title": "Saturday Evening Run",
+      "distanceKm": 1.0406999996025026,
+      "durationSeconds": 468,
+      "paceMinPerKm": 7.5,
+      "date": 1748747702000
+    },
+    {
+      "id": "20718215498",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 3.963799998486019,
+      "durationSeconds": 1950,
+      "paceMinPerKm": 8.2,
+      "date": 1748455886000
+    },
+    {
+      "id": "20718216230",
+      "title": "Saturday Evening Run",
+      "distanceKm": 2.513899999039811,
+      "durationSeconds": 1163,
+      "paceMinPerKm": 7.71,
+      "date": 1748139955000
+    },
+    {
+      "id": "20718216858",
+      "title": "Tuesday Evening Run",
+      "distanceKm": 2.838899998915677,
+      "durationSeconds": 1192,
+      "paceMinPerKm": 7,
+      "date": 1747185593000
+    },
+    {
+      "id": "20718217320",
+      "title": "Saturday Evening Run",
+      "distanceKm": 2.0212999992279603,
+      "durationSeconds": 949,
+      "paceMinPerKm": 7.83,
+      "date": 1743296636000
+    },
+    {
+      "id": "20718217770",
+      "title": "Wednesday Evening Run",
+      "distanceKm": 2.1612999991744872,
+      "durationSeconds": 1020,
+      "paceMinPerKm": 7.87,
+      "date": 1741227263000
+    },
+    {
+      "id": "20718218064",
+      "title": "Saturday Afternoon Run",
+      "distanceKm": 5.0246999980808065,
+      "durationSeconds": 2387,
+      "paceMinPerKm": 7.92,
+      "date": 1736626816000
+    },
+    {
+      "id": "20718218422",
+      "title": "Monday Afternoon Run",
+      "distanceKm": 2.2399999991444277,
+      "durationSeconds": 992,
+      "paceMinPerKm": 7.38,
+      "date": 1733790747000
+    },
+    {
+      "id": "20718218836",
+      "title": "Thursday Evening Run",
+      "distanceKm": 2.4712999990560824,
+      "durationSeconds": 992,
+      "paceMinPerKm": 6.69,
+      "date": 1729817267000
+    },
+    {
+      "id": "20718219443",
+      "title": "목요일 저녁 러닝",
+      "distanceKm": 4.129399998422768,
+      "durationSeconds": 1640,
+      "paceMinPerKm": 6.62,
+      "date": 1729210045000
+    },
+    {
+      "id": "20718220177",
+      "title": "화요일 저녁 러닝",
+      "distanceKm": 10.30239999606498,
+      "durationSeconds": 3925,
+      "paceMinPerKm": 6.35,
+      "date": 1694569418000
+    },
+    {
+      "id": "20718220629",
+      "title": "Sunday Run",
+      "distanceKm": 3.1069999988132757,
+      "durationSeconds": 1874,
+      "paceMinPerKm": 10.06,
+      "date": 1665330367000
+    },
+    {
+      "id": "20718221128",
+      "title": "Monday Run",
+      "distanceKm": 2.249499999140799,
+      "durationSeconds": 1051,
+      "paceMinPerKm": 7.79,
+      "date": 1663606691000
+    },
+    {
+      "id": "20718221504",
+      "title": "Monday Morning Run",
+      "distanceKm": 4.490999998284654,
+      "durationSeconds": 1931,
+      "paceMinPerKm": 7.17,
+      "date": 1661783378000
+    },
+    {
+      "id": "20718221741",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 4.347099998339617,
+      "durationSeconds": 1943,
+      "paceMinPerKm": 7.45,
+      "date": 1659459249000
+    },
+    {
+      "id": "20718222131",
+      "title": "Friday Morning Run",
+      "distanceKm": 3.85469999852769,
+      "durationSeconds": 1749,
+      "paceMinPerKm": 7.56,
+      "date": 1656693787000
+    },
+    {
+      "id": "20718222996",
+      "title": "Sunday Evening Run",
+      "distanceKm": 2.4269999990730025,
+      "durationSeconds": 1176,
+      "paceMinPerKm": 8.08,
+      "date": 1656299109000
+    },
+    {
+      "id": "20718223787",
+      "title": "Saturday Evening Run",
+      "distanceKm": 4.419799998311849,
+      "durationSeconds": 1858,
+      "paceMinPerKm": 7.01,
+      "date": 1656204619000
+    },
+    {
+      "id": "20718224318",
+      "title": "Thursday Evening Run",
+      "distanceKm": 4.272399998368148,
+      "durationSeconds": 1769,
+      "paceMinPerKm": 6.9,
+      "date": 1655429327000
+    },
+    {
+      "id": "20718224815",
+      "title": "Tuesday Evening Run",
+      "distanceKm": 4.103199998432775,
+      "durationSeconds": 1637,
+      "paceMinPerKm": 6.65,
+      "date": 1655255706000
+    },
+    {
+      "id": "20718225186",
+      "title": "Monday Afternoon Run",
+      "distanceKm": 4.005699998470015,
+      "durationSeconds": 1727,
+      "paceMinPerKm": 7.19,
+      "date": 1655153355000
+    },
+    {
+      "id": "20718225537",
+      "title": "Saturday Morning Run",
+      "distanceKm": 10.252899996083885,
+      "durationSeconds": 4033,
+      "paceMinPerKm": 6.56,
+      "date": 1654965223000
+    },
+    {
+      "id": "20718226001",
+      "title": "Sunday Evening Run",
+      "distanceKm": 6.297499997594658,
+      "durationSeconds": 2716,
+      "paceMinPerKm": 7.19,
+      "date": 1654487634000
+    },
+    {
+      "id": "20718226750",
+      "title": "Saturday Morning Run",
+      "distanceKm": 3.6574999986030106,
+      "durationSeconds": 1215,
+      "paceMinPerKm": 5.54,
+      "date": 1654350502000
+    },
+    {
+      "id": "20718227373",
+      "title": "Saturday Evening Run",
+      "distanceKm": 4.7306999981931,
+      "durationSeconds": 1679,
+      "paceMinPerKm": 5.92,
+      "date": 1653788863000
+    },
+    {
+      "id": "20718227893",
+      "title": "Wednesday Evening Run",
+      "distanceKm": 10.122499996133692,
+      "durationSeconds": 3522,
+      "paceMinPerKm": 5.8,
+      "date": 1653531146000
+    },
+    {
+      "id": "20718228273",
+      "title": "Thursday Evening Run",
+      "distanceKm": 4.198299998396451,
+      "durationSeconds": 1378,
+      "paceMinPerKm": 5.47,
+      "date": 1653016608000
+    },
+    {
+      "id": "20718228677",
+      "title": "Thursday Evening Run",
+      "distanceKm": 0.6264999997607071,
+      "durationSeconds": 198,
+      "paceMinPerKm": 5.27,
+      "date": 1653014768000
+    },
+    {
+      "id": "20718228989",
+      "title": "Saturday Morning Run",
+      "distanceKm": 4.53179999826907,
+      "durationSeconds": 1647,
+      "paceMinPerKm": 6.06,
+      "date": 1652553688000
+    },
+    {
+      "id": "20718229270",
+      "title": "Sunday Evening Run",
+      "distanceKm": 4.266099998370556,
+      "durationSeconds": 1483,
+      "paceMinPerKm": 5.79,
+      "date": 1652062952000
+    },
+    {
+      "id": "20718229812",
+      "title": "Monday Morning Run",
+      "distanceKm": 10.156699996120631,
+      "durationSeconds": 3547,
+      "paceMinPerKm": 5.82,
+      "date": 1651514066000
+    },
+    {
+      "id": "20718230401",
+      "title": "Friday Run",
+      "distanceKm": 3.670299998598122,
+      "durationSeconds": 1220,
+      "paceMinPerKm": 5.54,
+      "date": 1651261916000
+    },
+    {
+      "id": "20718231101",
+      "title": "Sun run",
+      "distanceKm": 10.204699996102296,
+      "durationSeconds": 3043,
+      "paceMinPerKm": 4.97,
+      "date": 1650816735000
+    },
+    {
+      "id": "20718231561",
+      "title": "Friday Morning Run",
+      "distanceKm": 5.227799998003232,
+      "durationSeconds": 1781,
+      "paceMinPerKm": 5.68,
+      "date": 1650637794000
+    },
+    {
+      "id": "20718231956",
+      "title": "Thursday Afternoon Run",
+      "distanceKm": 3.866999998522992,
+      "durationSeconds": 1351,
+      "paceMinPerKm": 5.82,
+      "date": 1650572145000
+    },
+    {
+      "id": "20718232250",
+      "title": "Tuesday Evening Run",
+      "distanceKm": 3.6257999986151193,
+      "durationSeconds": 1394,
+      "paceMinPerKm": 6.41,
+      "date": 1650417529000
+    },
+    {
+      "id": "20718232558",
+      "title": "Sunday Morning Run",
+      "distanceKm": 0.4453999998298786,
+      "durationSeconds": 185,
+      "paceMinPerKm": 6.93,
+      "date": 1650204402000
+    },
+    {
+      "id": "20718233095",
+      "title": "Saturday Run",
+      "distanceKm": 2.987899998858766,
+      "durationSeconds": 1014,
+      "paceMinPerKm": 5.66,
+      "date": 1650124905000
+    },
+    {
+      "id": "20718233778",
+      "title": "Thursday Afternoon Run",
+      "distanceKm": 3.8292999985373917,
+      "durationSeconds": 1372,
+      "paceMinPerKm": 5.97,
+      "date": 1649963718000
+    },
+    {
+      "id": "20718234278",
+      "title": "Thursday Morning Run",
+      "distanceKm": 2.659399998984237,
+      "durationSeconds": 1070,
+      "paceMinPerKm": 6.71,
+      "date": 1649952181000
+    },
+    {
+      "id": "20718234680",
+      "title": "Friday Run",
+      "distanceKm": 5.504999997897355,
+      "durationSeconds": 1725,
+      "paceMinPerKm": 5.22,
+      "date": 1649437047000
+    },
+    {
+      "id": "20718235122",
+      "title": "Saturday Morning Run",
+      "distanceKm": 5.429999997926001,
+      "durationSeconds": 1724,
+      "paceMinPerKm": 5.29,
+      "date": 1648913188000
+    },
+    {
+      "id": "20718235417",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 2.6721999989793477,
+      "durationSeconds": 980,
+      "paceMinPerKm": 6.11,
+      "date": 1648571934000
+    },
+    {
+      "id": "20718235746",
+      "title": "Tuesday Run",
+      "distanceKm": 2.7017999989680423,
+      "durationSeconds": 856,
+      "paceMinPerKm": 5.28,
+      "date": 1647999210000
+    },
+    {
+      "id": "20718236361",
+      "title": "Sunday Morning Run",
+      "distanceKm": 10.143599996125634,
+      "durationSeconds": 3473,
+      "paceMinPerKm": 5.71,
+      "date": 1647801417000
+    },
+    {
+      "id": "20718236838",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 4.3840999983254845,
+      "durationSeconds": 1456,
+      "paceMinPerKm": 5.54,
+      "date": 1647354460000
+    },
+    {
+      "id": "20718237644",
+      "title": "Wednesday Run",
+      "distanceKm": 5.953199997726164,
+      "durationSeconds": 1898,
+      "paceMinPerKm": 5.31,
+      "date": 1646846819000
+    },
+    {
+      "id": "20718238130",
+      "title": "Tuesday Afternoon Run",
+      "distanceKm": 3.2678999987518194,
+      "durationSeconds": 1139,
+      "paceMinPerKm": 5.81,
+      "date": 1646785202000
+    },
+    {
+      "id": "20718238592",
+      "title": "Sunday Evening Run",
+      "distanceKm": 5.459099997914886,
+      "durationSeconds": 1724,
+      "paceMinPerKm": 5.26,
+      "date": 1646618901000
+    },
+    {
+      "id": "20718238945",
+      "title": "Wednesday Run",
+      "distanceKm": 4.478399998289466,
+      "durationSeconds": 1443,
+      "paceMinPerKm": 5.37,
+      "date": 1646269141000
+    },
+    {
+      "id": "20718239206",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 5.327299997965228,
+      "durationSeconds": 1779,
+      "paceMinPerKm": 5.57,
+      "date": 1645548130000
+    },
+    {
+      "id": "20718239687",
+      "title": "Thursday Run",
+      "distanceKm": 4.514499998275678,
+      "durationSeconds": 1554,
+      "paceMinPerKm": 5.74,
+      "date": 1645145763000
+    },
+    {
+      "id": "20718240301",
+      "title": "Monday Morning Run",
+      "distanceKm": 5.928899997735445,
+      "durationSeconds": 1691,
+      "paceMinPerKm": 4.75,
+      "date": 1644860009000
+    },
+    {
+      "id": "20718241177",
+      "title": "Friday Run",
+      "distanceKm": 4.8401999981512756,
+      "durationSeconds": 1717,
+      "paceMinPerKm": 5.91,
+      "date": 1644600358000
+    },
+    {
+      "id": "20718241683",
+      "title": "Wednesday Run",
+      "distanceKm": 3.871099998521426,
+      "durationSeconds": 1291,
+      "paceMinPerKm": 5.56,
+      "date": 1644424790000
+    },
+    {
+      "id": "20718242059",
+      "title": "Monday Afternoon Run",
+      "distanceKm": 10.249399996085222,
+      "durationSeconds": 3436,
+      "paceMinPerKm": 5.59,
+      "date": 1644280749000
+    },
+    {
+      "id": "20718242354",
+      "title": "Tuesday Afternoon Run",
+      "distanceKm": 3.264199998753232,
+      "durationSeconds": 988,
+      "paceMinPerKm": 5.04,
+      "date": 1643763247000
+    },
+    {
+      "id": "20718242645",
+      "title": "Saturday Morning Run",
+      "distanceKm": 3.1206999988080426,
+      "durationSeconds": 966,
+      "paceMinPerKm": 5.16,
+      "date": 1643479480000
+    },
+    {
+      "id": "20718243128",
+      "title": "Monday Afternoon Run",
+      "distanceKm": 6.04829999768984,
+      "durationSeconds": 2035,
+      "paceMinPerKm": 5.61,
+      "date": 1643070787000
+    },
+    {
+      "id": "20718243664",
+      "title": "Wednesday Run",
+      "distanceKm": 5.182999998020343,
+      "durationSeconds": 1669,
+      "paceMinPerKm": 5.37,
+      "date": 1642013430000
+    },
+    {
+      "id": "20718244555",
+      "title": "Sunday Run",
+      "distanceKm": 0.9998999996180863,
+      "durationSeconds": 264,
+      "paceMinPerKm": 4.4,
+      "date": 1639961385000
+    },
+    {
+      "id": "20718245005",
+      "title": "Sunday Run",
+      "distanceKm": 4.391999998322468,
+      "durationSeconds": 1369,
+      "paceMinPerKm": 5.2,
+      "date": 1639958946000
+    },
+    {
+      "id": "20718245535",
+      "title": "Friday Run",
+      "distanceKm": 0.39309999984985466,
+      "durationSeconds": 132,
+      "paceMinPerKm": 5.6,
+      "date": 1639763451000
+    },
+    {
+      "id": "20718245822",
+      "title": "Friday Run",
+      "distanceKm": 5.50029999789915,
+      "durationSeconds": 1672,
+      "paceMinPerKm": 5.07,
+      "date": 1639761041000
+    },
+    {
+      "id": "20718246134",
+      "title": "Wednesday Run",
+      "distanceKm": 6.16959999764351,
+      "durationSeconds": 1957,
+      "paceMinPerKm": 5.29,
+      "date": 1639599689000
+    },
+    {
+      "id": "20718246441",
+      "title": "Sunday Morning Run",
+      "distanceKm": 5.502099997898463,
+      "durationSeconds": 1666,
+      "paceMinPerKm": 5.05,
+      "date": 1639331142000
+    },
+    {
+      "id": "20718247014",
+      "title": "Sunday Run",
+      "distanceKm": 0.2488999999049322,
+      "durationSeconds": 8,
+      "paceMinPerKm": 0.54,
+      "date": 1639331017000
+    },
+    {
+      "id": "20718247724",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 7.478599997143535,
+      "durationSeconds": 2277,
+      "paceMinPerKm": 5.07,
+      "date": 1638991160000
+    },
+    {
+      "id": "20718248191",
+      "title": "Sunday Run",
+      "distanceKm": 1.2487999995230183,
+      "durationSeconds": 387,
+      "paceMinPerKm": 5.17,
+      "date": 1638753614000
+    },
+    {
+      "id": "20718248778",
+      "title": "Wednesday Afternoon Run",
+      "distanceKm": 10.33069999605417,
+      "durationSeconds": 3131,
+      "paceMinPerKm": 5.05,
+      "date": 1638389912000
+    },
+    {
+      "id": "20718249159",
+      "title": "Sunday Run",
+      "distanceKm": 2.1571999991760533,
+      "durationSeconds": 687,
+      "paceMinPerKm": 5.31,
+      "date": 1638146222000
+    },
+    {
+      "id": "20718249462",
+      "title": "Saturday Run",
+      "distanceKm": 3.3264999987294366,
+      "durationSeconds": 1041,
+      "paceMinPerKm": 5.22,
+      "date": 1638029960000
+    },
+    {
+      "id": "20718249731",
+      "title": "Saturday Morning Run",
+      "distanceKm": 3.778199998556909,
+      "durationSeconds": 1119,
+      "paceMinPerKm": 4.94,
+      "date": 1638028135000
+    },
+    {
+      "id": "20718250419",
+      "title": "Monday Run",
+      "distanceKm": 1.1723999995521996,
+      "durationSeconds": 355,
+      "paceMinPerKm": 5.05,
+      "date": 1637603799000
+    },
+    {
+      "id": "20718251028",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 2.6818999989756436,
+      "durationSeconds": 819,
+      "paceMinPerKm": 5.09,
+      "date": 1637077601000
+    },
+    {
+      "id": "20718251594",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 0.520499999801194,
+      "durationSeconds": 164,
+      "paceMinPerKm": 5.26,
+      "date": 1637077313000
+    },
+    {
+      "id": "20718252188",
+      "title": "Sunday Afternoon Run",
+      "distanceKm": 13.14939999497756,
+      "durationSeconds": 4261,
+      "paceMinPerKm": 5.4,
+      "date": 1636933362000
+    },
+    {
+      "id": "20718252552",
+      "title": "Thursday Morning Run",
+      "distanceKm": 5.925099997736898,
+      "durationSeconds": 1770,
+      "paceMinPerKm": 4.98,
+      "date": 1636645941000
+    },
+    {
+      "id": "20718252827",
+      "title": "Tuesday Run",
+      "distanceKm": 3.146499998798188,
+      "durationSeconds": 991,
+      "paceMinPerKm": 5.25,
+      "date": 1636479995000
+    },
+    {
+      "id": "20718253188",
+      "title": "Sunday Afternoon Run",
+      "distanceKm": 12.230299995328613,
+      "durationSeconds": 3745,
+      "paceMinPerKm": 5.1,
+      "date": 1636326708000
+    },
+    {
+      "id": "20718253853",
+      "title": "Saturday Run",
+      "distanceKm": 2.153099999177619,
+      "durationSeconds": 672,
+      "paceMinPerKm": 5.2,
+      "date": 1636210735000
+    },
+    {
+      "id": "20718254314",
+      "title": "Saturday Run",
+      "distanceKm": 0.6751999997421061,
+      "durationSeconds": 219,
+      "paceMinPerKm": 5.41,
+      "date": 1636210029000
+    },
+    {
+      "id": "20718255165",
+      "title": "Friday Run",
+      "distanceKm": 1.4373999994509823,
+      "durationSeconds": 594,
+      "paceMinPerKm": 6.89,
+      "date": 1636128325000
+    },
+    {
+      "id": "20718255749",
+      "title": "Thursday Run",
+      "distanceKm": 3.8522999985286064,
+      "durationSeconds": 1200,
+      "paceMinPerKm": 5.19,
+      "date": 1636040580000
+    },
+    {
+      "id": "20718256075",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 6.991299997329659,
+      "durationSeconds": 2213,
+      "paceMinPerKm": 5.28,
+      "date": 1635957245000
+    },
+    {
+      "id": "20718256430",
+      "title": "Monday Morning Run",
+      "distanceKm": 6.140199997654738,
+      "durationSeconds": 1954,
+      "paceMinPerKm": 5.3,
+      "date": 1635793120000
+    },
+    {
+      "id": "20718256743",
+      "title": "Sunday Morning Run",
+      "distanceKm": 11.125699995750518,
+      "durationSeconds": 3625,
+      "paceMinPerKm": 5.43,
+      "date": 1635697943000
+    },
+    {
+      "id": "20718257328",
+      "title": "Saturday Morning Run",
+      "distanceKm": 3.1384999988012443,
+      "durationSeconds": 935,
+      "paceMinPerKm": 4.97,
+      "date": 1635610214000
+    },
+    {
+      "id": "20718257874",
+      "title": "Friday Morning Run",
+      "distanceKm": 5.432099997925199,
+      "durationSeconds": 1789,
+      "paceMinPerKm": 5.49,
+      "date": 1635525642000
+    },
+    {
+      "id": "20718258597",
+      "title": "김지현 달리기",
+      "distanceKm": 1.5762999993979292,
+      "durationSeconds": 545,
+      "paceMinPerKm": 5.76,
+      "date": 1635525586000
+    },
+    {
+      "id": "20718259138",
+      "title": "Sunday Morning Run",
+      "distanceKm": 10.204099996102526,
+      "durationSeconds": 3511,
+      "paceMinPerKm": 5.73,
+      "date": 1635088930000
+    },
+    {
+      "id": "20718259523",
+      "title": "Friday Morning Run",
+      "distanceKm": 5.222999998005065,
+      "durationSeconds": 1806,
+      "paceMinPerKm": 5.76,
+      "date": 1634920666000
+    },
+    {
+      "id": "20718259799",
+      "title": "Friday Morning Run",
+      "distanceKm": 1.1375999995654915,
+      "durationSeconds": 361,
+      "paceMinPerKm": 5.29,
+      "date": 1634920023000
+    },
+    {
+      "id": "20718260075",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 5.623999997851902,
+      "durationSeconds": 1811,
+      "paceMinPerKm": 5.37,
+      "date": 1634755546000
+    },
+    {
+      "id": "20718260680",
+      "title": "Monday Morning Run",
+      "distanceKm": 4.217699998389041,
+      "durationSeconds": 1370,
+      "paceMinPerKm": 5.41,
+      "date": 1634573628000
+    },
+    {
+      "id": "20718261230",
+      "title": "Friday Afternoon Run",
+      "distanceKm": 6.216499997625596,
+      "durationSeconds": 2061,
+      "paceMinPerKm": 5.53,
+      "date": 1634325300000
+    },
+    {
+      "id": "20718262029",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 7.181599997256974,
+      "durationSeconds": 2366,
+      "paceMinPerKm": 5.49,
+      "date": 1634149890000
+    },
+    {
+      "id": "20718262573",
+      "title": "Sunday Afternoon Run",
+      "distanceKm": 10.281799996072845,
+      "durationSeconds": 3591,
+      "paceMinPerKm": 5.82,
+      "date": 1633898518000
+    },
+    {
+      "id": "20718263023",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 5.048599998071678,
+      "durationSeconds": 1689,
+      "paceMinPerKm": 5.58,
+      "date": 1633545685000
+    },
+    {
+      "id": "20718263329",
+      "title": "Monday Evening Run",
+      "distanceKm": 9.06959999653585,
+      "durationSeconds": 3108,
+      "paceMinPerKm": 5.71,
+      "date": 1633397102000
+    },
+    {
+      "id": "20718263701",
+      "title": "Saturday Morning Run",
+      "distanceKm": 6.172799997642287,
+      "durationSeconds": 2119,
+      "paceMinPerKm": 5.72,
+      "date": 1633184724000
+    },
+    {
+      "id": "20718264301",
+      "title": "Friday Morning Run",
+      "distanceKm": 4.317599998350885,
+      "durationSeconds": 1512,
+      "paceMinPerKm": 5.84,
+      "date": 1633105099000
+    },
+    {
+      "id": "20718264821",
+      "title": "Friday Morning Run",
+      "distanceKm": 8.16889999687987,
+      "durationSeconds": 2896,
+      "paceMinPerKm": 5.91,
+      "date": 1632504768000
+    },
+    {
+      "id": "20718265285",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 9.35219999642791,
+      "durationSeconds": 3004,
+      "paceMinPerKm": 5.35,
+      "date": 1632241744000
+    },
+    {
+      "id": "20718266223",
+      "title": "Monday Morning Run",
+      "distanceKm": 10.153899996121698,
+      "durationSeconds": 3320,
+      "paceMinPerKm": 5.45,
+      "date": 1632158631000
+    },
+    {
+      "id": "20718266643",
+      "title": "Saturday Morning Run",
+      "distanceKm": 6.094699997672118,
+      "durationSeconds": 2089,
+      "paceMinPerKm": 5.71,
+      "date": 1631974023000
+    },
+    {
+      "id": "20718266956",
+      "title": "Thursday Morning Run",
+      "distanceKm": 6.2604999976087905,
+      "durationSeconds": 2093,
+      "paceMinPerKm": 5.57,
+      "date": 1631803727000
+    },
+    {
+      "id": "20718267300",
+      "title": "Tuesday Afternoon Run",
+      "distanceKm": 6.089299997674181,
+      "durationSeconds": 2079,
+      "paceMinPerKm": 5.69,
+      "date": 1631653313000
+    },
+    {
+      "id": "20718267678",
+      "title": "Sunday Evening Run",
+      "distanceKm": 5.497599997900181,
+      "durationSeconds": 1843,
+      "paceMinPerKm": 5.59,
+      "date": 1631495911000
+    },
+    {
+      "id": "20718268270",
+      "title": "Friday Morning Run",
+      "distanceKm": 5.164899998027256,
+      "durationSeconds": 1802,
+      "paceMinPerKm": 5.82,
+      "date": 1631297051000
+    },
+    {
+      "id": "20718268737",
+      "title": "Tuesday Morning Run",
+      "distanceKm": 5.0885999980564,
+      "durationSeconds": 1807,
+      "paceMinPerKm": 5.92,
+      "date": 1631035766000
+    },
+    {
+      "id": "20718269518",
+      "title": "Saturday Morning Run",
+      "distanceKm": 5.150199998032871,
+      "durationSeconds": 1889,
+      "paceMinPerKm": 6.11,
+      "date": 1630770243000
+    },
+    {
+      "id": "20718270057",
+      "title": "1주차 1회",
+      "distanceKm": 5.379199997945404,
+      "durationSeconds": 1857,
+      "paceMinPerKm": 5.75,
+      "date": 1630694525000
+    },
+    {
+      "id": "20718270362",
+      "title": "금요일 오전 러닝",
+      "distanceKm": 3.0835999988222134,
+      "durationSeconds": 1103,
+      "paceMinPerKm": 5.96,
+      "date": 1630075408000
+    },
+    {
+      "id": "20718270713",
+      "title": "목요일 오전 러닝",
+      "distanceKm": 2.7090999989652538,
+      "durationSeconds": 1132,
+      "paceMinPerKm": 6.96,
+      "date": 1629992694000
+    },
+    {
+      "id": "20718271152",
+      "title": "수요일 오전 러닝",
+      "distanceKm": 2.2894999991255207,
+      "durationSeconds": 835,
+      "paceMinPerKm": 6.08,
+      "date": 1629911335000
+    },
+    {
+      "id": "20718272058",
+      "title": "토요일 오전 러닝",
+      "distanceKm": 4.882099998135273,
+      "durationSeconds": 2035,
+      "paceMinPerKm": 6.95,
+      "date": 1624725856000
+    },
+    {
+      "id": "20718272270",
+      "title": "금요일 오전 러닝",
+      "distanceKm": 2.2083999991564975,
+      "durationSeconds": 986,
+      "paceMinPerKm": 7.44,
+      "date": 1622217343000
+    },
+    {
+      "id": "20718273047",
+      "title": "화요일 오전 러닝",
+      "distanceKm": 3.3036999987381455,
+      "durationSeconds": 2060,
+      "paceMinPerKm": 10.39,
+      "date": 1620749017000
+    },
+    {
+      "id": "20718273653",
+      "title": "토요일 오전 러닝",
+      "distanceKm": 2.6606999989837403,
+      "durationSeconds": 1207,
+      "paceMinPerKm": 7.56,
+      "date": 1619882737000
+    },
+    {
+      "id": "20718273956",
+      "title": "화요일 오전 러닝",
+      "distanceKm": 2.1238999991887724,
+      "durationSeconds": 780,
+      "paceMinPerKm": 6.12,
+      "date": 1618327721000
+    },
+    {
+      "id": "20718274314",
+      "title": "토요일 오전 러닝",
+      "distanceKm": 3.8549999985275756,
+      "durationSeconds": 1420,
+      "paceMinPerKm": 6.14,
+      "date": 1615047639000
+    },
+    {
+      "id": "20718274641",
+      "title": "수요일 오후 러닝",
+      "distanceKm": 1.2703999995147686,
+      "durationSeconds": 719,
+      "paceMinPerKm": 9.44,
+      "date": 1607558004000
+    },
+    {
+      "id": "20718275170",
+      "title": "토요일 오전 러닝",
+      "distanceKm": 2.899099998892683,
+      "durationSeconds": 1260,
+      "paceMinPerKm": 7.24,
+      "date": 1607186526000
+    },
+    {
+      "id": "20718275672",
+      "title": "금요일 오후 러닝",
+      "distanceKm": 3.59039999862864,
+      "durationSeconds": 1494,
+      "paceMinPerKm": 6.94,
+      "date": 1607113296000
+    },
+    {
+      "id": "20718276364",
+      "title": "금요일 오전 러닝",
+      "distanceKm": 2.371499999094201,
+      "durationSeconds": 940,
+      "paceMinPerKm": 6.61,
+      "date": 1604689723000
+    },
+    {
+      "id": "20718276983",
+      "title": "수요일 저녁 러닝",
+      "distanceKm": 1.4725999994375376,
+      "durationSeconds": 643,
+      "paceMinPerKm": 7.28,
+      "date": 1603329355000
+    },
+    {
+      "id": "20718277360",
+      "title": "금요일 오후 러닝",
+      "distanceKm": 1.4774999994356661,
+      "durationSeconds": 499,
+      "paceMinPerKm": 5.63,
+      "date": 1601063142000
+    },
+    {
+      "id": "20718277672",
+      "title": "수요일 야간 러닝",
+      "distanceKm": 0.7027999997315642,
+      "durationSeconds": 261,
+      "paceMinPerKm": 6.2,
+      "date": 1594873105000
+    },
+    {
+      "id": "20718278077",
+      "title": "Tuesday Run",
+      "distanceKm": 3.08839999882038,
+      "durationSeconds": 1223,
+      "paceMinPerKm": 6.6,
+      "date": 1594180345000
+    },
+    {
+      "id": "20718278671",
+      "title": "금요일 오전 러닝",
+      "distanceKm": 1.5417999994111067,
+      "durationSeconds": 603,
+      "paceMinPerKm": 6.52,
+      "date": 1593192051000
+    },
+    {
+      "id": "20718279124",
+      "title": "수요일 오후 러닝",
+      "distanceKm": 2.690799998972244,
+      "durationSeconds": 996,
+      "paceMinPerKm": 6.17,
+      "date": 1592436068000
+    },
+    {
+      "id": "20718279741",
+      "title": "토요일 오전 러닝",
+      "distanceKm": 1.0255999996082699,
+      "durationSeconds": 424,
+      "paceMinPerKm": 6.89,
+      "date": 1578166629000
+    },
+    {
+      "id": "20718280310",
+      "title": "목요일 오전 러닝",
+      "distanceKm": 1.9031999992730693,
+      "durationSeconds": 685,
+      "paceMinPerKm": 6,
+      "date": 1575567461000
+    },
+    {
+      "id": "20718280767",
+      "title": "수요일 오전 러닝",
+      "distanceKm": 0.6658999997456582,
+      "durationSeconds": 230,
+      "paceMinPerKm": 5.76,
+      "date": 1574270947000
+    },
+    {
+      "id": "20718281111",
+      "title": "월요일 오전 러닝",
+      "distanceKm": 1.2415999995257683,
+      "durationSeconds": 451,
+      "paceMinPerKm": 6.06,
+      "date": 1573496795000
+    },
+    {
+      "id": "20718281459",
+      "title": "Wednesday Run",
+      "distanceKm": 0.5852999997764435,
+      "durationSeconds": 209,
+      "paceMinPerKm": 5.95,
+      "date": 1571859068000
+    },
+    {
+      "id": "20718281797",
+      "title": "Sunday Run",
+      "distanceKm": 0.9638999996318366,
+      "durationSeconds": 342,
+      "paceMinPerKm": 5.92,
+      "date": 1569780491000
+    },
+    {
+      "id": "20718282343",
+      "title": "Thursday Run",
+      "distanceKm": 2.9645999988676652,
+      "durationSeconds": 1090,
+      "paceMinPerKm": 6.13,
+      "date": 1569518263000
+    },
+    {
+      "id": "20718282950",
+      "title": "Wednesday Morning Run",
+      "distanceKm": 0.934499999643066,
+      "durationSeconds": 277,
+      "paceMinPerKm": 4.94,
+      "date": 1569430050000
+    },
+    {
+      "id": "20718283736",
+      "title": "Tuesday Run",
+      "distanceKm": 2.8652999989055936,
+      "durationSeconds": 1034,
+      "paceMinPerKm": 6.02,
+      "date": 1569347582000
+    },
+    {
+      "id": "20718284205",
+      "title": "Thursday Run",
+      "distanceKm": 3.5857999986303977,
+      "durationSeconds": 1240,
+      "paceMinPerKm": 5.76,
+      "date": 1568905974000
     }
   ]
 }
