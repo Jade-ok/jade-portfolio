@@ -1,10 +1,16 @@
 {
-	"totalKm": 879.93,
-	"runCount": 188,
-	"averagePaceMinPerKm": 5.93,
-	"totalDurationSeconds": 313200,
+	"snapshotTotalKm": 1112,
+	"snapshotRunCount": 236,
+	"snapshotAveragePaceSecondsPerKm": 365,
+	"snapshotThrough": "2026-10-24T17:33:18.000Z",
+	"newRunsKm": 0,
+	"newRunsCount": 0,
+	"totalKm": 1112,
+	"runCount": 236,
+	"averagePaceMinPerKm": 6.08,
+	"totalDurationSeconds": 405880,
 	"source": "Strava",
-	"updatedAt": "2026-10-24T23:24:17.929Z",
+	"updatedAt": "2026-10-25T02:00:59.961Z",
 	"runs": [
 		{
 			"id": "20716629535",

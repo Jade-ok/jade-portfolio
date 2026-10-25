@@ -1,5 +1,15 @@
 import fs from "node:fs/promises";
 
+// Strava snapshot supplied on 2026-10-24. FitnessSyncer's free Strava source
+// does not include the complete history, so only runs after this snapshot are
+// added to these totals. The pace keeps the site's prior 6:05/km baseline.
+const runningSnapshot = {
+	totalKm: 1112,
+	runCount: 236,
+	averagePaceSecondsPerKm: 6 * 60 + 5,
+	through: "2026-10-24T17:33:18.000Z",
+};
+
 const {
 	FITNESSSYNCER_CLIENT_ID,
 	FITNESSSYNCER_CLIENT_SECRET,
@@ -95,10 +105,7 @@ for (let offset = 0; ; offset += 100) {
 	}
 }
 
-// 3. 각 activity 상세 데이터를 읽어서 Running만 합산
-let totalKm = 0;
-let totalDurationSeconds = 0;
-let runCount = 0;
+// 3. 각 activity 상세 데이터를 읽어서 Running만 수집
 const runs = [];
 
 for (const item of items) {
@@ -119,10 +126,6 @@ for (const item of items) {
 			Number(activity.pace) ||
 			(distanceKm > 0 && durationSeconds > 0 ? durationSeconds / 60 / distanceKm : 0);
 
-		totalKm += distanceKm;
-		totalDurationSeconds += durationSeconds;
-		runCount += 1;
-
 		runs.push({
 			id: item.itemId,
 			title: activity.title ?? "Run",
@@ -134,13 +137,26 @@ for (const item of items) {
 	}
 }
 
-// 4. Strava의 전체 Running 기록으로 Astro에서 사용할 JSON 만들기
-const roundedTotalKm = Number(totalKm.toFixed(2));
-const averagePaceMinPerKm =
-	totalKm > 0 ? Number((totalDurationSeconds / 60 / totalKm).toFixed(2)) : 0;
+// 4. 스냅샷 이후의 신규 Strava 러닝만 기준값에 더하기
+const snapshotThroughMs = Date.parse(runningSnapshot.through);
+const newRuns = runs.filter((run) => Number(run.date) > snapshotThroughMs);
+const newRunsKm = newRuns.reduce((sum, run) => sum + run.distanceKm, 0);
+const newRunsDurationSeconds = newRuns.reduce((sum, run) => sum + run.durationSeconds, 0);
+
+const totalKm = Number((runningSnapshot.totalKm + newRunsKm).toFixed(2));
+const runCount = runningSnapshot.runCount + newRuns.length;
+const totalDurationSeconds =
+	runningSnapshot.totalKm * runningSnapshot.averagePaceSecondsPerKm + newRunsDurationSeconds;
+const averagePaceMinPerKm = Number((totalDurationSeconds / 60 / totalKm).toFixed(2));
 
 const output = {
-	totalKm: roundedTotalKm,
+	snapshotTotalKm: runningSnapshot.totalKm,
+	snapshotRunCount: runningSnapshot.runCount,
+	snapshotAveragePaceSecondsPerKm: runningSnapshot.averagePaceSecondsPerKm,
+	snapshotThrough: runningSnapshot.through,
+	newRunsKm: Number(newRunsKm.toFixed(2)),
+	newRunsCount: newRuns.length,
+	totalKm,
 	runCount,
 	averagePaceMinPerKm,
 	totalDurationSeconds,
@@ -151,9 +167,11 @@ const output = {
 
 await fs.mkdir("src/data", { recursive: true });
 
-await fs.writeFile("src/data/running.json", JSON.stringify(output, null, "\t"));
+await fs.writeFile("src/data/running.json", `${JSON.stringify(output, null, "\t")}\n`);
 
-console.log(`Strava running activities: ${runCount}`);
-console.log(`Total running distance: ${roundedTotalKm.toFixed(2)} km`);
+console.log(`FitnessSyncer running activities: ${runs.length}`);
+console.log(`New runs since Strava snapshot: ${newRuns.length}`);
+console.log(`Total running distance: ${totalKm.toFixed(2)} km`);
+console.log(`Total run count: ${runCount}`);
 console.log(`Average pace: ${averagePaceMinPerKm.toFixed(2)} min/km`);
 console.log("Saved: src/data/running.json");
