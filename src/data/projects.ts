@@ -105,7 +105,7 @@ export const projects: Project[] = [
 		slug: "prairiecalendar",
 		title: "PrairieCalendar",
 		year: "2025-",
-		statusLabel: "Shipped · 50 Users",
+		statusLabel: "Shipped · 53 Users",
 		eyebrow: "Side",
 		meta: "Side · 2025-",
 		desc: "Chrome extension exporting PrairieTest exam schedules to Google Calendar and ICS.",
@@ -114,10 +114,10 @@ export const projects: Project[] = [
 		href: "/projects/prairiecalendar",
 		detail: {
 			kicker: "Side Project · Live in the Chrome Web Store · 2025-",
-			lede: "Chrome extension exporting booked PrairieTest exams to Google Calendar or an ICS file. Live in the Web Store with 50 users.",
+			lede: "Chrome extension exporting booked PrairieTest exams to Google Calendar or an ICS file. Live in the Web Store with 53 users.",
 			stats: [
 				{ label: "Exports", value: "Google Calendar + ICS" },
-				{ label: "Users", value: "50" },
+				{ label: "Users", value: "53" },
 				{ label: "Status", value: "Live" },
 			],
 			narrative: [
@@ -133,8 +133,8 @@ export const projects: Project[] = [
 				},
 				{
 					label: "03 · Result",
-					title: "50 users",
-					body: "Shipped to the Chrome Web Store with 50 users. Eighteen automated tests cover timestamp parsing, ICS generation, and Google export across several timezone settings.",
+					title: "53 users, rated 5.0",
+					body: "Shipped to the Chrome Web Store with 53 users and a 5.0 star rating across 6 reviews. Eighteen automated tests cover timestamp parsing, ICS generation, and Google export across several timezone settings.",
 				},
 			],
 			links: [{ label: "GitHub ↗", href: "https://github.com/Jade-ok/PrairieCalendar" }],

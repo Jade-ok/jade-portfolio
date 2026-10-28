@@ -254,9 +254,10 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		index: "/03",
 		eyebrow: "SIDE PROJECT · LIVE IN THE CHROME WEB STORE · 2025 —",
 		title: "PrairieCalendar",
-		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 50 users.",
+		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 53 users and a 5.0 rating.",
 		metrics: [
-			{ value: "50", label: "USERS", emphasis: true },
+			{ value: "53", label: "USERS", emphasis: true },
+			{ value: "5.0", label: "RATING · 6 REVIEWS" },
 			{ value: "18", label: "AUTOMATED TESTS" },
 		],
 
@@ -341,6 +342,12 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 				after: "features",
 			},
 			{
+				src: "/project-img/prairiecalendar-img/webstore.png",
+				alt: "PrairieCalendar listing on the Chrome Web Store, showing a 5.0 star rating and the installed user count",
+				caption: "Live on the Chrome Web Store",
+				after: "next",
+			},
+			{
 				src: "/project-img/prairiecalendar-img/architecture.png",
 				alt: "PrairieCalendar system architecture from PrairieTest page parsing to Google Calendar and ICS export",
 				caption: "Reservation-to-calendar data flow",
@@ -411,6 +418,20 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 				alt: "Entity relationship diagram for the Smart Home Database schema",
 				caption: "ER diagram",
 				after: "problem",
+			},
+			{
+				src: "/project-img/smart-home-database/browseDataimg.png",
+				alt: "Browse Your Data screen listing device records, with the SELECT statement the app ran against the DeviceInRoom table",
+				caption: "Browse view, showing the Oracle query behind each table",
+				after: "features",
+				wide: true,
+			},
+			{
+				src: "/project-img/smart-home-database/activityHistoryimg.png",
+				alt: "Activity History screen with an AND/OR filter builder and the parameterized SELECT statement it generates",
+				caption: "Activity History — filters compile to a parameterized query",
+				after: "owned",
+				wide: true,
 			},
 		],
 
