@@ -254,9 +254,9 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 		index: "/03",
 		eyebrow: "SIDE PROJECT · LIVE IN THE CHROME WEB STORE · 2025 —",
 		title: "PrairieCalendar",
-		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 53 users and a 5.0 rating.",
+		lede: "A Chrome extension that sends booked PrairieTest exams to Google Calendar or an ICS file. It is live in the Chrome Web Store with 64 users and a 5.0 rating.",
 		metrics: [
-			{ value: "53", label: "USERS", emphasis: true },
+			{ value: "64", label: "USERS", emphasis: true },
 			{ value: "5.0", label: "RATING · 6 REVIEWS" },
 			{ value: "18", label: "AUTOMATED TESTS" },
 		],
@@ -343,7 +343,7 @@ export const projectDetails: Record<string, ProjectDetailContent> = {
 			},
 			{
 				src: "/project-img/prairiecalendar-img/webstore.png",
-				alt: "PrairieCalendar listing on the Chrome Web Store, showing a 5.0 star rating and the installed user count",
+				alt: "PrairieCalendar listing on the Chrome Web Store, showing 64 users and a 5.0 star rating across 6 ratings",
 				caption: "Live on the Chrome Web Store",
 				after: "next",
 			},
