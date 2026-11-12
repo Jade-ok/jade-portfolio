@@ -3,15 +3,31 @@
 	"snapshotRunCount": 236,
 	"snapshotAveragePaceSecondsPerKm": 365,
 	"snapshotThrough": "2026-10-24T17:33:18.000Z",
-	"newRunsKm": 0,
-	"newRunsCount": 0,
-	"totalKm": 1112,
-	"runCount": 236,
+	"newRunsKm": 8.06,
+	"newRunsCount": 2,
+	"totalKm": 1120.06,
+	"runCount": 238,
 	"averagePaceMinPerKm": 6.08,
-	"totalDurationSeconds": 405880,
+	"totalDurationSeconds": 408724,
 	"source": "Strava",
-	"updatedAt": "2026-10-25T02:00:59.961Z",
+	"updatedAt": "2026-11-12T05:33:53.755Z",
 	"runs": [
+		{
+			"id": "20954501855",
+			"title": "Afternoon Run",
+			"distanceKm": 5.005199998088254,
+			"durationSeconds": 1751,
+			"paceMinPerKm": 5.83,
+			"date": 1794444068000
+		},
+		{
+			"id": "20825137640",
+			"title": "Night Run",
+			"distanceKm": 3.055499998832946,
+			"durationSeconds": 1093,
+			"paceMinPerKm": 5.96,
+			"date": 1793597830000
+		},
 		{
 			"id": "20716629535",
 			"title": "Morning Run",
